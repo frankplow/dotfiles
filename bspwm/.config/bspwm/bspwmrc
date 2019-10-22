@@ -25,7 +25,7 @@ bspc config gapless_monocle      true
 
 # launch aesthetic programs
 
-admiral | lemonbar -g $((2560 - 64 - 64 - 4 - 4))x$((25 - 4))+64+64 -f "CtrlD:size=10" -f "Siji:size=10" -F "#d0d3cb" -B "#2d2c2a" -r 4 -R "#5e5340" -a 16 | bash &
+$HOME/scripts/bar/lemonbar.sh | lemonbar -g $((2560 - 64 - 64 - 4 - 4))x$((25 - 4))+64+64 -f "CtrlD:size=10" -f "Siji:size=10" -F "#d0d3cb" -B "#2d2c2a" -r 4 -R "#5e5340" -a 16 | bash &
 feh --bg-scale /home/frank/pictures/backgrounds/blur_dark.jpg
 unclutter &
 sleep 1
