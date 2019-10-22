@@ -41,6 +41,12 @@ while read -r line; do
         H*)
             volume_pulse=${line#?}
             ;;
+        I*)
+            network=${line#?}
+            ;;
+        J*)
+            battery=${line#?}
+            ;;
     esac
     echo "%{l}${arch}${bspwm}%{c}${spotify}%{r}${volume_alsa} ${date} ${clock} ${power}"
 
