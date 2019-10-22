@@ -25,7 +25,7 @@ bspc config gapless_monocle      true
 
 # launch aesthetic programs
 
-admiral | lemonbar -g $((2560 - {{bspwm.window_gap}} - {{bspwm.window_gap}} - {{bspwm.border_width}} - {{bspwm.border_width}}))x$(({{bar.height}} - {{bspwm.border_width}}))+{{bspwm.window_gap}}+{{bspwm.window_gap}} -f "{{bar.font_text}}:size={{bar.font_size}}" -f "{{bar.font_symbol}}:size={{bar.font_size}}" -F "#{{bar.foreground}}" -B "#{{bar.background}}" -r {{bspwm.border_width}} -R "#{{bar.border}}" -a 16 | bash &
+$HOME/scripts/bar/lemonbar.sh | lemonbar -g $((2560 - {{bspwm.window_gap}} - {{bspwm.window_gap}} - {{bspwm.border_width}} - {{bspwm.border_width}}))x$(({{bar.height}} - {{bspwm.border_width}}))+{{bspwm.window_gap}}+{{bspwm.window_gap}} -f "{{bar.font_text}}:size={{bar.font_size}}" -f "{{bar.font_symbol}}:size={{bar.font_size}}" -F "#{{bar.foreground}}" -B "#{{bar.background}}" -r {{bspwm.border_width}} -R "#{{bar.border}}" -a 16 | bash &
 feh --bg-scale {{wallpaper}}
 unclutter &
 sleep 1
