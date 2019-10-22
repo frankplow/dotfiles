@@ -149,7 +149,7 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 try
-    colorscheme dim
+    colorscheme ansi16
 catch
 endtry
 
