@@ -14,8 +14,8 @@ $widgetdir/power.sh > "$PANEL_FIFO" &
 $widgetdir/spotify.sh > "$PANEL_FIFO" &
 $widgetdir/volume_alsa.sh > "$PANEL_FIFO" &
 #$widgetdir/volume_pulse.sh > "$PANEL_FIFO" &
-$widgetdir/network.sh > "$PANEL_FIFO" &
-$widgetdir/battery.sh > "$PANEL_FIFO" &
+#$widgetdir/network.sh > "$PANEL_FIFO" &
+#$widgetdir/battery.sh > "$PANEL_FIFO" &
 
 while read -r line; do
     case $line in

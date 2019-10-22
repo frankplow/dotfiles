@@ -148,24 +148,11 @@ if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
 
+set background=light
 try
-    colorscheme dim
+    colorscheme ansi16
 catch
 endtry
-
-" Tweaks to theme
-set background=light
-hi Search term=bold ctermfg=3 ctermbg=NONE cterm=reverse,bold
-hi LineNr term=bold cterm=bold ctermfg=Yellow
-hi Error term=bold ctermfg=9 ctermbg=NONE cterm=reverse,bold
-hi ErrorMsg term=bold ctermfg=9 ctermbg=NONE cterm=reverse,bold
-hi SignColumn ctermbg=NONE ctermfg=NONE
-hi ColorColumn ctermbg=NONE
-hi FoldColumn ctermbg=NONE
-hi SignColumn ctermbg=NONE
-hi LineNr cterm=NONE
-hi CursorLineNr cterm=bold
-
 
 " Set extra options when running in GUI mode
 if has("gui_running")

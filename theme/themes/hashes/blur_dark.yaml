@@ -1,3 +1,9 @@
+name:               blur_dark
+author:             "frank plowman"
+
+font:               bitmap
+font_size:          10
+
 foreground:         d5dadc
 background:         231f1d
 active-opacity:     0.8 
@@ -18,8 +24,6 @@ colour12:           5b4a3d
 colour13:           8c8c81
 colour14:           706c61
 colour15:           f0f2f2
-font:               bitmap
-font_size:          10
 
 base00:             231f1d
 base01:             3b342e

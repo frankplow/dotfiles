@@ -1,7 +1,5 @@
 $HOME/.config/bspwm/bspwmrc
 $HOME/.config/termite/config
 $HOME/.config/qutebrowser/config.py
-$HOME/.config/admiral.d/arch.sh
-$HOME/.config/admiral.d/power.sh
-$HOME/.config/admiral.d/bspwm.sh
 $HOME/scripts/bar/colours.sh
+$HOME/.local/share/nvim/site/colors/base16.vim

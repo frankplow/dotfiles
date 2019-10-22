@@ -10,9 +10,10 @@ plugins=(
 
 # themes
 ZSH_THEME="base16"
-ZSH_HIGHLIGHT_STYLES=$(echo $ZSH_HIGHLIGHT_STYLES | sed 's/black/default/g')
 
 source $ZSH/oh-my-zsh.sh
+typeset -gA ZSH_HIGHLIGHT_STYLES
+: ${ZSH_HIGHLIGHT_STYLES[comment]='fg=08'}
 
 # history settings
 setopt noincappendhistory
