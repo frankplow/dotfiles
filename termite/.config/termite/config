@@ -1,0 +1,44 @@
+[options]
+font = bitmap 10
+
+[colors]
+
+# special
+foreground      = #2c2b27
+foreground_bold = #2c2b27
+cursor          = #2c2b27
+background      = #f5f5e2
+
+# black
+color0  = #1b2021
+color8  = #51513d
+
+# red
+color1  = #891c14
+color9  = #ab4444
+
+# green
+color2  = #62a66b
+color10 = #98c473
+
+# yellow
+color3  = #edb458
+color11 = #f2d17d
+
+# blue
+color4  = #4d7a9d
+color12 = #689cc5
+
+# magenta
+color5  = #9d5c63
+color13 = #c48e89
+
+# cyan
+color6  = #1d7874
+color14 = #35a09b
+
+# white
+color7  = #605b56
+color15 = #8a837c
+
+
