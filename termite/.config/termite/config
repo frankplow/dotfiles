@@ -4,41 +4,41 @@ font = bitmap 10
 [colors]
 
 # special
-foreground      = #2c2b27
-foreground_bold = #2c2b27
-cursor          = #2c2b27
-background      = #f5f5e2
+foreground      = #d5dadc
+foreground_bold = #d5dadc
+cursor          = #d5dadc
+background      = #231f1d
 
 # black
-color0  = #1b2021
-color8  = #51513d
+color0  = #231f1d
+color8  = #979a97
 
 # red
-color1  = #891c14
-color9  = #ab4444
+color1  = #635646
+color9  = #635646
 
 # green
-color2  = #62a66b
-color10 = #98c473
+color2  = #828274
+color10 = #828274
 
 # yellow
-color3  = #edb458
-color11 = #f2d17d
+color3  = #6a5e4b
+color11 = #6a5e4b
 
 # blue
-color4  = #4d7a9d
-color12 = #689cc5
+color4  = #5b4a3d
+color12 = #5b4a3d
 
 # magenta
-color5  = #9d5c63
-color13 = #c48e89
+color5  = #8c8c81
+color13 = #8c8c81
 
 # cyan
-color6  = #1d7874
-color14 = #35a09b
+color6  = #706c61
+color14 = #706c61
 
 # white
-color7  = #605b56
-color15 = #8a837c
+color7  = #d5dadc
+color15 = #f0f2f2
 
 
