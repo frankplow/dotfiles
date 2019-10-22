@@ -1,41 +1,58 @@
-foreground:         d0d3cb
-background:         2d2c2a
+foreground:         d5dadc
+background:         231f1d
 active-opacity:     0.8 
 inactive-opacity:   0.4
-colour0:            d0d3cb
-colour1:            959983
-colour2:            858676
-colour3:            7b7768
-colour4:            6c6654
-colour5:            5e5340
-colour6:            53432f
-colour7:            2d2c2a
-colour8:            d0d3cb
-colour9:            959983
-colour10:           858676
-colour11:           7b7768
-colour12:           6c6654
-colour13:           5e5340
-colour14:           53432f
-colour15:           2d2c2a
+colour0:            231f1d
+colour1:            635646
+colour2:            828274
+colour3:            6a5e4b
+colour4:            5b4a3d
+colour5:            8c8c81
+colour6:            706c61
+colour7:            d5dadc
+colour8:            979a97
+colour9:            635646
+colour10:           828274
+colour11:           6a5e4b
+colour12:           5b4a3d
+colour13:           8c8c81
+colour14:           706c61
+colour15:           f0f2f2
 font:               bitmap
 font_size:          10
+
+base00:             231f1d
+base01:             3b342e
+base02:             615c51
+base03:             979a97
+base04:             abb0b0
+base05:             d5dadc
+base06:             e3e6e8
+base07:             f0f2f2
+base08:             635646
+base09:             493d30
+base0a:             6a5e4b
+base0b:             828274
+base0c:             706c61
+base0d:             5b4a3d
+base0e:             8c8c81
+base0f:             92938d
 
 bspwm:
     window_gap:         64
     border_width:       4
-    border_colour:      5e5340
+    border_colour:      6a5e4b
 
 bar:
     height:             25
-    border:             5e5340
+    border:             6a5e4b
     font_text:          CtrlD
     font_symbol:        Siji
     font_size:          10
-    foreground:         d0d3cb
-    background:         2d2c2a
-    highlight:          5e5340
-    power_colour:       5e5340
-    arch_colour:        5e5340
+    foreground:         d5dadc
+    background:         231f1d
+    highlight:          6a5e4b
+    power_colour:       6a5e4b
+    arch_colour:        6a5e4b
 
 wallpaper:             /home/frank/pictures/backgrounds/blur_dark.jpg
