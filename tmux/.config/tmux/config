@@ -1,0 +1,56 @@
+#
+# keybindings
+#
+
+# change prefix to ctrl+a
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+# reload config
+bind r source-file ~/.config/tmux/config
+
+# prefixless window switching
+bind -n C-h select-window -p
+bind -n C-l select-window -n
+
+# prefixless window creation/deletion
+bind -n C-w kill-window
+bind -n C-o new-window
+
+#
+# colours
+#
+
+# colourspace init
+set -ga terminal-overrides ",xterm-termite:TC"
+
+# statusbar colours
+set -g status-bg default
+set -g status-fg yellow
+
+#
+# statusbar config
+#
+
+set -g status-position bottom
+set -g status-justify left
+
+set -g status-left '#[fg=green][#S] '
+set-window-option -g window-status-current-style bright
+set-window-option -g window-status-style none
+set-window-option -g window-status-current-format ' #I: #W#F '
+set-window-option -g window-status-format ' #I: #W#F '
+
+set -g status-right '#[fg=red]#(whoami)#[fg=yellow]@#[fg=blue]#H'
+
+#
+# miscellaneous
+#
+
+# enable mouse control
+set -g mouse on
+
+# set shell
+set -g default-command /usr/bin/zsh
+set -g default-shell /usr/bin/zsh

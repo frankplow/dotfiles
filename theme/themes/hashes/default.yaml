@@ -1,0 +1,41 @@
+foreground:         2c2b27
+background:         f5f5e2
+active-opacity:     1
+inactive-opacity:   1
+colour0:            1b2021
+colour1:            891c14
+colour2:            62a66b
+colour3:            edb458
+colour4:            4d7a9d
+colour5:            9d5c63
+colour6:            1d7874
+colour7:            605b56
+colour8:            51513d
+colour9:            ab4444
+colour10:           98c473
+colour11:           f2d17d
+colour12:           689cc5
+colour13:           c48e89
+colour14:           35a09b
+colour15:           8a837c
+font:          bitmap
+font_size:          10
+
+bspwm:
+    window_gap:         40
+    border_width:       5
+    border_colour:       edb458
+
+bar:
+    height:             25
+    border:             f5f5e2
+    font_text:          CtrlD
+    font_symbol:        Siji
+    font_size:          10
+    foreground:         2c2b27
+    background:         f5f5e2
+    highlight:          edb458
+    power_colour:        ac3931
+    arch_colour:         4d7a9d
+
+wallpaper:             /home/frank/pictures/backgrounds/spray.jpg

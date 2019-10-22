@@ -1,0 +1,41 @@
+foreground:         d0d3cb
+background:         2d2c2a
+active-opacity:     0.8 
+inactive-opacity:   0.4
+colour0:            d0d3cb
+colour1:            959983
+colour2:            858676
+colour3:            7b7768
+colour4:            6c6654
+colour5:            5e5340
+colour6:            53432f
+colour7:            2d2c2a
+colour8:            d0d3cb
+colour9:            959983
+colour10:           858676
+colour11:           7b7768
+colour12:           6c6654
+colour13:           5e5340
+colour14:           53432f
+colour15:           2d2c2a
+font:               bitmap
+font_size:          10
+
+bspwm:
+    window_gap:         64
+    border_width:       4
+    border_colour:      5e5340
+
+bar:
+    height:             25
+    border:             5e5340
+    font_text:          CtrlD
+    font_symbol:        Siji
+    font_size:          10
+    foreground:         d0d3cb
+    background:         2d2c2a
+    highlight:          5e5340
+    power_colour:       5e5340
+    arch_colour:        5e5340
+
+wallpaper:             /home/frank/pictures/backgrounds/blur_dark.jpg

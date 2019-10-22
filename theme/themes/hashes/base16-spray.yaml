@@ -1,0 +1,53 @@
+scheme:     "spray"
+author:     "frank plowman"
+
+# base16 colorscheme
+base00:     "f5f5e2"        # default background
+base01:     "e2e2c6"        # alt background
+base02:     "d4d3b5"        # selection
+base03:     "adab8d"        # comments
+base04:     "565643"        # alt foreground
+base05:     "1e1e0d"        # foreground
+base06:     "111101"
+base07:     "0a0a00"
+base08:     "ac3931"        # variables
+base09:     "edb458"        # integers, booleans, constants
+base0a:     "fed766"        # classes, search
+base0b:     "7ca982"        # strings
+base0c:     "35a09b"        # support, regex, markup
+base0d:     "4d7a9d"        # functions
+base0e:     "9d5c63"        # keywords
+base0f:     "852821"        # deprecated
+
+# terminal colorscheme
+foreground: "1e1e0d"
+background: "f5f5e2"
+colour01:   "852821"        # red
+colour02:   "7ca982"        # green
+colour03:   "edb458"        # yellow
+colour04:   "4d7a9d"        # blue
+colour05:   "9d5c63"        # purple
+colour06:   "1d7874"        # cyan
+
+# highlight colour
+highlight:  "edb458"
+
+bspwm:
+    window_gap:         40
+    border_width:       5
+
+bar:
+    height:             25
+    foreground:         2c2b27
+    background:         f5f5e2
+    border:             f5f5e2
+    font_text:          CtrlD
+    font_symbol:        Siji
+    font_size:          10
+
+termite:
+    font_text:          CtrlD
+    font_symbol:        Siji
+    font_size:          13
+
+wallpaper:             /home/frank/pictures/backgrounds/spray.jpg

@@ -1,0 +1,8 @@
+#!/bin/env bash
+
+FOREGROUND="#2c2b27
+BACKGROUND="#f5f5e2
+HIGHLIGHT="#edb458"
+ARCH="#4d7a9d"
+POWER="#ac3931"
+
