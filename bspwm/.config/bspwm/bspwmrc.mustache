@@ -1,12 +1,9 @@
 #! /bin/bash
 
-WIDTH=$(xrandr | tr , $'\n' | grep current | cut -d' ' -f3)
-HEIGHT=$(xrandr | tr , $'\n' | grep current | cut -d' ' -f5)
-
 # launch daemons
 
-sxhkd &
-compton -b -i {{inactive-opacity}} --active-opacity {{active-opacity}}
+[ $(pgrep sxhkd | wc -l) -eq 0 ] && sxhkd &
+[ $(pgrep compton | wc -l) -eq 0 ] && compton -b -i {{inactive-opacity}} --active-opacity {{active-opacity}}
 
 # bspwm settings
 
@@ -28,7 +25,6 @@ bspc config gapless_monocle      true
 
 # launch aesthetic programs
 
-lemonbar.sh &
+[ $(pgrep lemonbar | wc -l) -eq 0 ] && lemonbar.sh &
 feh --bg-scale {{wallpaper}}
-unclutter &
-sleep 1
+[ $(pgrep unclutter | wc -l) -eq 0 ] && unclutter &
