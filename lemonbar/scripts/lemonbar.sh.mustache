@@ -15,6 +15,7 @@ PANEL_FIFO="/tmp/lemon_fifo"
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
+# launch the bar
 cat $PANEL_FIFO | $widgetdir/reader.sh | lemonbar -g $(($WIDTH - {{bspwm.window_gap}} - {{bspwm.window_gap}} - {{bspwm.border_width}} - {{bspwm.border_width}}))\
 x$(({{bar.height}} - {{bspwm.border_width}}))\
 +{{bspwm.window_gap}}+{{bspwm.window_gap}}\
@@ -22,8 +23,8 @@ x$(({{bar.height}} - {{bspwm.border_width}}))\
  -F "#{{bar.foreground}}" -B "#{{bar.background}}"\
  -r {{bspwm.border_width}} -R "#{{bar.border}}"\
  -a 16 | bash &
-xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -a bar)
 
+# launch widgets
 $widgetdir/arch.sh > "$PANEL_FIFO" &
 $widgetdir/bspwm.sh > "$PANEL_FIFO" &
 $widgetdir/clock.sh > "$PANEL_FIFO" &
@@ -35,5 +36,8 @@ $widgetdir/volume_alsa.sh > "$PANEL_FIFO" &
 #$widgetdir/network.sh > "$PANEL_FIFO" &
 #$widgetdir/battery.sh > "$PANEL_FIFO" &
 
-wait
+# ensure bar goes underneath fullscreen windows
+sleep 1
+xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -a bar)
 
+wait
