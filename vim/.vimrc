@@ -147,6 +147,9 @@ set showtabline=1
 " Enable syntax highlighting
 syntax enable 
 
+" Set 16-color terminal mode
+set t_Co=16
+
 set background=light
 try
     colorscheme ansi16
