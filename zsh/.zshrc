@@ -55,7 +55,7 @@ preexec() { echo -ne '\e[5 q' ;} # use beam shape cursor for each new prompt.
 setopt COMPLETE_ALIASES
 alias ls='ls --color=auto'
 alias pacman='pacman --color=auto'
-alias v='nvim'
+alias v='vim'
 
 # go doc coloring
 go() {

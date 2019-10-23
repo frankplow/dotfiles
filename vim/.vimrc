@@ -49,10 +49,14 @@ let mapleader = ","
 nmap <leader>w :w!<cr>
 
 " enable runtime paths
-set runtimepath=~/.vim,$VIM,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after,~/.local/share/nvim/site
+set runtimepath=$VIM,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.config/vim
+
+" enable packpaths
+set packpath=$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.config/vim/pack
 
 " move viminfo files
-set viminfo+=n~/.config/nvim/viminfo
+set viminfo+=n~/.config/vim/viminfo
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -130,23 +134,18 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
-
 " Add a bit extra margin to the left
 set foldcolumn=1
 
 " Show tab line only when there are two or more tabs open
 set showtabline=1
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable 
-
-" Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
 
 set background=light
 try
@@ -177,9 +176,9 @@ set ffs=unix,dos,mac
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
-set nowb
-set noswapfile
+"set nobackup
+"set nowb
+"set noswapfile
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -244,7 +243,6 @@ map <leader>t<leader> :tabnext
 let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
-
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -405,21 +403,12 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-" arduino-cli commands from within editor
-command -nargs=1 Ardc :!arduino-cli compile -b <args>
-command -nargs=1 Ardu :!arduino-cli upload -p /dev/ttyUSB0 -b <args> 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-plug init
+" => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin('~/.config/nvim/plugins')
 
-" vim-go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-" Python semantic highlighting
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-let g:semshi#error_sign=v:false
+call plug#begin('~/.config/vim/plugins')
 
 " vim-surround
 Plug 'tpope/vim-surround'
@@ -429,22 +418,3 @@ Plug 'lambdalisue/suda.vim'
 command W w suda://%
 
 call plug#end()
-
-" semshi colours
-function SemshiHighlights()
-    hi semshiLocal ctermfg=4
-    hi semshiGlobal ctermfg=12
-    hi semshiImported ctermfg=12 cterm=bold
-    hi semshiParameter ctermfg=6
-    hi semshiParameterUnused ctermfg=6 cterm=underline
-    hi semshiFree ctermfg=5
-    hi semshiBuiltin ctermfg=13
-    hi semshiAttribute ctermfg=1
-    hi semshiSelf ctermfg=7
-    hi semshiUnresolved ctermfg=11 cterm=underline
-    hi semshiSelected ctermfg=3 ctermbg=NONE cterm=reverse
-    hi semshiErrorSign ctermfg=9 ctermbg=NONE cterm=reverse
-    hi semshiErrorChar ctermfg=9 ctermbg=NONE cterm=reverse
-    sign define semshiError text=E> texthl=semshiErrorSign
-endfunction
-autocmd FileType python call SemshiHighlights()
