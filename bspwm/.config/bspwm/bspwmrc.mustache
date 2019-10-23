@@ -1,6 +1,7 @@
 #! /bin/bash
 
-
+WIDTH=$(xrandr | tr , $'\n' | grep current | cut -d' ' -f3)
+HEIGHT=$(xrandr | tr , $'\n' | grep current | cut -d' ' -f5)
 
 # launch daemons
 
