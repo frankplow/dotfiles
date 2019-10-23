@@ -1,4 +1,3 @@
-     
 " Maintainer: 
 "       Amir Salihefendic — @amix3k
 "
@@ -149,6 +148,11 @@ syntax enable
 
 " Set 16-color terminal mode
 set t_Co=16
+
+" Use a blinking upright bar cursor in Insert mode, a blinking block in normal
+let &t_SI = "\e[5 q"
+let &t_EI = "\e[2 q"
+
 
 set background=light
 try
