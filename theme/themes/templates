@@ -2,4 +2,4 @@ $HOME/.config/bspwm/bspwmrc
 $HOME/.config/termite/config
 $HOME/.config/qutebrowser/config.py
 $HOME/scripts/bar/colours.sh
-$HOME/.local/share/nvim/site/colors/base16.vim
+$HOME/scripts/lemonbar.sh

@@ -1,0 +1,39 @@
+#!/bin/env bash
+
+#if xdo id -a "$PANEL_WM_NAME" > /dev/null ; then
+#        printf "%s\n" "The panel is already running." >&2
+#            exit 1
+#fi
+
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+WIDTH=$(xrandr | tr , $'\n' | grep current | cut -d' ' -f3)
+HEIGHT=$(xrandr | tr , $'\n' | grep current | cut -d' ' -f5)
+widgetdir="${0%/*}/bar"
+PANEL_FIFO="/tmp/lemon_fifo"
+
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
+cat $PANEL_FIFO | $widgetdir/reader.sh | lemonbar -g $(($WIDTH - {{bspwm.window_gap}} - {{bspwm.window_gap}} - {{bspwm.border_width}} - {{bspwm.border_width}}))\
+x$(({{bar.height}} - {{bspwm.border_width}}))\
++{{bspwm.window_gap}}+{{bspwm.window_gap}}\
+ -f "{{bar.font_text}}:size={{bar.font_size}}" -f "{{bar.font_symbol}}:size={{bar.font_size}}"\
+ -F "#{{bar.foreground}}" -B "#{{bar.background}}"\
+ -r {{bspwm.border_width}} -R "#{{bar.border}}"\
+ -a 16 | bash &
+xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -a bar)
+
+$widgetdir/arch.sh > "$PANEL_FIFO" &
+$widgetdir/bspwm.sh > "$PANEL_FIFO" &
+$widgetdir/clock.sh > "$PANEL_FIFO" &
+$widgetdir/date.sh > "$PANEL_FIFO" &
+$widgetdir/power.sh > "$PANEL_FIFO" &
+$widgetdir/spotify.sh > "$PANEL_FIFO" &
+$widgetdir/volume_alsa.sh > "$PANEL_FIFO" &
+#$widgetdir/volume_pulse.sh > "$PANEL_FIFO" &
+#$widgetdir/network.sh > "$PANEL_FIFO" &
+#$widgetdir/battery.sh > "$PANEL_FIFO" &
+
+wait
+
