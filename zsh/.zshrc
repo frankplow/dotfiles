@@ -1,8 +1,9 @@
 # plugins
 plugins=(
-    colored-man-pages
     z
     zsh-syntax-highlighting
+    colored-man-pages
+    colour-godoc
 )
 for plugin in $plugins; do source "$HOME/.config/zsh/$plugin/$plugin.plugin.zsh"; done
 
@@ -56,12 +57,3 @@ setopt COMPLETE_ALIASES
 alias ls='ls --color=auto'
 alias pacman='pacman --color=auto'
 alias v='vim'
-
-# go doc coloring
-go() {
-    if [[ $1 == "doc" ]]; then
-        command go "$@" | sed -re "s/\(func \|type \|interface\|struct\|const\|var\)/`tput setaf 3`&`tput sgr0`/g;s/\(map[\|string\|float64\|float32\|uint64\|uint32\|uint16\|uint8\|uint\|int64\|int32\|int16\|int8\|int\)/`tput setaf 2`&`tput sgr0`/g;s/^\s*[A-Z]+$/`tput setaf 1; tput bold`&`tput sgr0`/g"
-    else
-        command go "$@"
-    fi
-}
