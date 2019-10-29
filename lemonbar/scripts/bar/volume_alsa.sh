@@ -1,21 +1,22 @@
-#!/usr/bin/bash
+#!/bin/env bash
 
 print_volume() {
     VOL=$(amixer -D hw:PCH sget Master | grep Playback | tail -n 1 | cut -d'[' -f2 | tr -d ']%[:space:]')
     MUTE=$(amixer -D hw:PCH sget Master | grep Playback | tail -n 1 | cut -d'[' -f4 | tr -d ']')
 
-    echo -ne "G"
+    RET="G"
     if [ "$MUTE" == "off" ]; then
-        echo -ne "\ue04f "
+        RET="$RET\ue04f "
     elif [ "$VOL" -lt 33 ]; then
-        echo -ne "\ue04e "
+        RET="$RET\ue04e "
     elif [ "$VOL" -lt 66 ]; then
-        echo -ne "\ue050 "
+        RET="$RET\ue050 "
     else
-        echo -ne "\ue05d "
+        RET="$RET\ue05d "
     fi
 
-    echo "$VOL% "
+    RET="$RET$VOL% "
+    echo -e $RET
 }
 
 print_volume

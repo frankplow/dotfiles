@@ -7,13 +7,12 @@ dbus-monitor --profile "interface='org.freedesktop.DBus.Properties',member='Prop
                 NAME=$(dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:'org.mpris.MediaPlayer2.Player' string:'Metadata' | grep -iC1 title | tail -n1 | cut -d'"' -f2)
                 ARTIST=$(dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:'org.mpris.MediaPlayer2.Player' string:'Metadata' | grep -iC2 :artist | tail -n1 | cut -d'"' -f2)
                 STATUS=$(dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:'org.mpris.MediaPlayer2.Player' string:'PlaybackStatus' | grep string | cut -d'"' -f2 | tr -d '[:space:]')
-                echo -ne "F\ue05c $ARTIST - $NAME %{A:dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause:}"
+                RET="F\ue05c $ARTIST - $NAME %{A:dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause:}"
                 if [ "$STATUS" == "Paused" ]; then
-                    echo -e "\ue09a%{A}"
+                    RET="$RET\ue09a%{A}"
                 else
-                    echo -e "\ue059%{A}"
+                    RET="$RET\ue059%{A}"
                 fi
-            else
-                echo
+                echo -e $RET
             fi
     done
