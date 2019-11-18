@@ -11,6 +11,9 @@ hi CursorLine               cterm=NONE      ctermfg=NONE    ctermbg=black
 hi LineNr                   cterm=NONE      ctermfg=3       ctermbg=NONE
 hi CursorLineNr             cterm=bold      ctermfg=3       ctermbg=NONE
 
+hi VertSplit                cterm=NONE      ctermfg=3       ctermbg=3 
+
+
 " column
 hi CursorColumn             cterm=NONE      ctermfg=NONE    ctermbg=NONE 
 hi FoldColumn               cterm=NONE      ctermfg=NONE    ctermbg=NONE 
