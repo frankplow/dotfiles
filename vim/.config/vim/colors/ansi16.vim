@@ -13,6 +13,9 @@ hi CursorLineNr             cterm=bold      ctermfg=3       ctermbg=NONE
 
 hi VertSplit                cterm=NONE      ctermfg=3       ctermbg=3 
 
+hi TabLine					cterm=underline	ctermfg=3		ctermbg=NONE
+hi TabLineFill				cterm=underline	ctermfg=3		ctermbg=NONE
+hi TabLineSel				cterm=bold		ctermfg=3		ctermbg=NONE
 
 " column
 hi CursorColumn             cterm=NONE      ctermfg=NONE    ctermbg=NONE 

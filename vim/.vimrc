@@ -8,6 +8,11 @@ set ruler
 set relativenumber
 set numberwidth=3
 
+" tabs settings
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
 " enable filetype plugins
 filetype plugin on
 filetype indent on
