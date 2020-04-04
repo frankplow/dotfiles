@@ -43,7 +43,7 @@ base0e:             "8c8c81"
 base0f:             "92938d"
 
 bspwm:
-    window_gap:         16
+    window_gap:         32
     border_width:       4
     border_colour:      "6a5e4b"
 

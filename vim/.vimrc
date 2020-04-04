@@ -30,6 +30,8 @@ let &t_EI = "\<Esc>[2 q"
 " plugins
 call plug#begin('~/.config/vim/plugins')
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'lambdalisue/suda.vim'
+Plug 'bfrg/vim-cpp-modern'
 command W w suda://%
 call plug#end()

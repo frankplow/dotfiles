@@ -1,3 +1,15 @@
 [submodule "zsh/.config/zsh/zsh-syntax-highlighting"]
 	path = zsh/.config/zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "vim/.config/vim/plugins/suda.vim"]
+	path = vim/.config/vim/plugins/suda.vim
+	url = https://github.com/lambdalisue/suda.vim
+[submodule "vim/.config/vim/plugins/vim-commentary"]
+	path = vim/.config/vim/plugins/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "vim/.config/vim/plugins/vim-cpp-modern"]
+	path = vim/.config/vim/plugins/vim-cpp-modern
+	url = https://github.com/bfrg/vim-cpp-modern
+[submodule "vim/.config/vim/plugins/vim-surround"]
+	path = vim/.config/vim/plugins/vim-surround
+	url = https://github.com/tpope/vim-surround
