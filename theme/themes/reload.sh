@@ -8,3 +8,5 @@ killall -USR1 termite
 #    qutebrowser :config-source
 #fi
 bash $HOME/.config/bspwm/bspwmrc
+
+spicetify update

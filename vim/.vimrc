@@ -38,5 +38,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'lambdalisue/suda.vim'
 Plug 'bfrg/vim-cpp-modern'
+Plug 'calviken/vim-gdscript3'
 command W w suda://%
 call plug#end()
