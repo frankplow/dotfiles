@@ -1,0 +1,63 @@
+name:               blur_dark
+author:             "frank plowman"
+
+font:               CtrlD
+font_size:          10
+
+foreground:         "b9b9b9"
+background:         "101010"
+active-opacity:     1.0
+inactive-opacity:   1.0
+colour0:            "101010"
+colour1:            "282828"
+colour2:            "404040"
+colour3:            "585858"
+colour4:            "707070"
+colour5:            "888888"
+colour6:            "a0a0a0"
+colour7:            "404040"
+colour8:            "888888"
+colour9:            "282828"
+colour10:           "404040"
+colour11:           "585858"
+colour12:           "707070"
+colour13:           "888888"
+colour14:           "a0a0a0"
+colour15:           "b9b9b9"
+
+base00:             "000000"
+base01:             "3b342e"
+base02:             "615c51"
+base03:             "979a97"
+base04:             "abb0b0"
+base05:             "ffffff"
+base06:             "e3e6e8"
+base07:             "f0f2f2"
+base08:             "635646"
+base09:             "493d30"
+base0a:             "6a5e4b"
+base0b:             "828274"
+base0c:             "706c61"
+base0d:             "5b4a3d"
+base0e:             "8c8c81"
+base0f:             "92938d"
+
+bspwm:
+    window_gap:         0
+    border_width:       1
+    active_border:      "b9b9b9"
+    inactive_border:    "404040"
+
+bar:
+    height:             20
+    border:             "404040"
+    font_text:          CtrlD
+    font_symbol:        Siji
+    font_size:          10
+    foreground:         "b9b9b9"
+    background:         "101010"
+    highlight:          "404040"
+    power_colour:       "404040"
+    arch_colour:        "404040"
+
+wallpaper:             /home/frank/pictures/backgrounds/grass.jpg

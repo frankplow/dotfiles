@@ -45,7 +45,8 @@ base0f:             "92938d"
 bspwm:
     window_gap:         32
     border_width:       4
-    border_colour:      "6a5e4b"
+    active_border:      "6a5e4b"
+    inactive_border:    "231f1d"
 
 bar:
     height:             25

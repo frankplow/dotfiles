@@ -13,6 +13,10 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" borders
+set fillchars+=vert:│
+set fillchars+=fold:―
+
 " enable filetype plugins
 filetype plugin on
 filetype indent on

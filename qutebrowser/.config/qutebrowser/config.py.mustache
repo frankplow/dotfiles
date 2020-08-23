@@ -102,7 +102,7 @@ c.colors.completion.fg = '#{{background}}'
 
 # Background color of the selected completion item.
 # Type: QssColor
-c.colors.completion.item.selected.bg = '#{{bspwm.border_colour}}'
+c.colors.completion.item.selected.bg = '#{{bspwm.active_border}}'
 
 # Foreground color of the selected completion item.
 # Type: QssColor
@@ -130,7 +130,7 @@ c.colors.statusbar.insert.fg = '#{{background}}'
 
 # Background color of the statusbar in insert mode.
 # Type: QssColor
-c.colors.statusbar.insert.bg = '#{{bspwm.border_colour}}'
+c.colors.statusbar.insert.bg = '#{{bspwm.active_border}}'
 
 # Foreground color of the statusbar in passthrough mode.
 # Type: QssColor
@@ -170,7 +170,7 @@ c.colors.statusbar.progress.bg = '#{{colour6}}'
 
 # Default foreground color of the URL in the statusbar.
 # Type: QssColor
-c.colors.statusbar.url.fg = '#{{bspwm.border_colour}}'
+c.colors.statusbar.url.fg = '#{{bspwm.active_border}}'
 
 # Foreground color of the URL in the statusbar on error.
 # Type: QssColor
@@ -209,7 +209,7 @@ c.colors.tabs.indicator.system = 'rgb'
 
 # Foreground color of unselected odd tabs.
 # Type: QtColor
-c.colors.tabs.odd.fg = '#{{bspwm.border_colour}}'
+c.colors.tabs.odd.fg = '#{{bspwm.active_border}}'
 
 # Background color of unselected odd tabs.
 # Type: QtColor
@@ -217,7 +217,7 @@ c.colors.tabs.odd.bg = '#{{background}}'
 
 # Foreground color of unselected even tabs.
 # Type: QtColor
-c.colors.tabs.even.fg = '#{{bspwm.border_colour}}'
+c.colors.tabs.even.fg = '#{{bspwm.active_border}}'
 
 # Background color of unselected even tabs.
 # Type: QtColor
@@ -229,7 +229,7 @@ c.colors.tabs.selected.odd.fg = '#{{background}}'
 
 # Background color of selected odd tabs.
 # Type: QtColor
-c.colors.tabs.selected.odd.bg = '#{{bspwm.border_colour}}'
+c.colors.tabs.selected.odd.bg = '#{{bspwm.active_border}}'
 
 # Foreground color of selected even tabs.
 # Type: QtColor
@@ -237,7 +237,7 @@ c.colors.tabs.selected.even.fg = '#{{background}}'
 
 # Background color of selected even tabs.
 # Type: QtColor
-c.colors.tabs.selected.even.bg = '#{{bspwm.border_colour}}'
+c.colors.tabs.selected.even.bg = '#{{bspwm.active_border}}'
 
 # Default monospace fonts. Whenever "monospace" is used in a font
 # setting, it's replaced with the fonts listed here.
@@ -286,7 +286,11 @@ c.fonts.prompts = '10pt default_family'
 
 # Font used in the tab bar.
 # Type: QtFont
-c.fonts.tabs = '10pt default_family'
+c.fonts.tabs.selected = '10pt default_family'
+
+# Font used in the tab bar.
+# Type: QtFont
+c.fonts.tabs.unselected = '10pt default_family'
 
 # Hard minimum font size (in pixels).
 # Type: Int
