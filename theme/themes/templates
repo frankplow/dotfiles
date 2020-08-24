@@ -4,4 +4,4 @@ $HOME/.config/qutebrowser/config.py
 $HOME/.config/spicetify/Themes/theme/color.ini
 $HOME/scripts/bar/colours.sh
 $HOME/scripts/lemonbar.sh
-$HOME/.local/share/rofi/themes/adaptive.rasi
+$HOME/.config/rofi/adaptive.rasi
