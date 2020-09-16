@@ -9,6 +9,7 @@ for plugin in $plugins; do source "$HOME/.config/zsh/$plugin/$plugin.plugin.zsh"
 
 # theme
 PROMPT="%F{01}%32<...<%~%<< %F{4}%#%f "
+# PROMPT="%n@%m: %1~ %# "
 
 # history settings
 setopt noincappendhistory
