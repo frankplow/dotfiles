@@ -58,3 +58,4 @@ setopt COMPLETE_ALIASES
 alias ls='ls --color=auto'
 alias pacman='pacman --color=auto'
 alias v='vim'
+alias dmesg='dmesg -L=always | less -r'

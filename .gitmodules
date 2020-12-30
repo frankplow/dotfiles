@@ -1,6 +1,3 @@
-[submodule "zsh/.config/zsh/zsh-syntax-highlighting"]
-	path = zsh/.config/zsh/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "vim/.config/vim/plugins/suda.vim"]
 	path = vim/.config/vim/plugins/suda.vim
 	url = https://github.com/lambdalisue/suda.vim
