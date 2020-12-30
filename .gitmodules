@@ -13,3 +13,6 @@
 [submodule "vim/.config/vim/autoload"]
 	path = vim/.config/vim/autoload
 	url = https://github.com/junegunn/vim-plug
+[submodule "zsh/.config/zsh/zsh-syntax-highlighting"]
+	path = zsh/.config/zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
