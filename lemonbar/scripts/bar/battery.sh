@@ -2,10 +2,13 @@
 
 while true
 do
+    CHARGING=$(cat /sys/class/power_supply/AC/online | tr -d '\n')
     LEVEL=$(cat /sys/class/power_supply/BAT0/capacity | tr -d '\n')
 
     RET="J"
-    if [ "$LEVEL" -lt 25 ]; then
+    if [ $CHARGING ]; then
+        RET="$RET\ue09e "
+    elif [ "$LEVEL" -lt 25 ]; then
         RET="$RET\ue038 "
     elif [ "$LEVEL" -lt 50 ]; then
         RET="$RET\ue039 "
