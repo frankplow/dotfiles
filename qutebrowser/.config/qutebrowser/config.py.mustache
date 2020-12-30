@@ -3,6 +3,9 @@
 #   qute://help/configuring.html
 #   qute://help/settings.html
 
+config.bind(',p', ':spawn --userscript qute-pass --username-target secret --username-pattern "UserName: (.+)"')
+config.bind(',P', ':spawn --userscript qute-pass --username-target secret --username-pattern "UserName: (.+)" --password-only')
+
 # Uncomment this to still load settings configured via autoconfig.yml
 # config.load_autoconfig()
 
