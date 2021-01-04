@@ -1,13 +1,14 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
 # launch daemons
-
 [ $(pgrep sxhkd | wc -l) -eq 0 ] && sxhkd &
 [ $(pgrep compton | wc -l) -eq 0 ] && compton -b -i {{inactive-opacity}} --active-opacity {{active-opacity}}
 
-# bspwm settings
+# set correct monitor
+autorandr -c
 
-bspc monitor -d I II III IV
+# bspwm settings
+bspc monitor -d 1 2 3 4
 
 bspc config normal_border_color		"#{{bspwm.inactive_border}}"
 bspc config active_border_color		"#{{bspwm.active_border}}"
@@ -24,9 +25,9 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc rule -a "lemonbar" layer=above
+bspc rule -a "Zathura" state=tiled
 
 # launch aesthetic programs
-
 [ $(pgrep lemonbar | wc -l) -eq 0 ] && lemonbar.sh &
 feh --bg-scale {{wallpaper}}
 [ $(pgrep unclutter | wc -l) -eq 0 ] && unclutter &

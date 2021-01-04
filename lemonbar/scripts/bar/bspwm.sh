@@ -17,10 +17,11 @@ process () {
 			while [ $# -gt 0 ]; do
 				item="$1"
 				name="${item#?}"
-				num=$( bspc query -N -n .window -d $name | wc -l )
 
-				if [[ $name =~ ^(I|II|III|IV)$ ]]; then
+				if [[ $name =~ ^[0-9]$ ]]; then
+                    num=$( bspc query -N -n .window -d $name | wc -l )
                     RET="${RET}%{A:bspc desktop -f $name:}"
+
                     case $item in
                         f*)
                             # free desktop
