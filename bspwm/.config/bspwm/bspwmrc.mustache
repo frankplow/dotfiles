@@ -5,7 +5,7 @@
 [ $(pgrep compton | wc -l) -eq 0 ] && compton -b -i {{inactive-opacity}} --active-opacity {{active-opacity}}
 
 # set correct monitor
-autorandr -c
+# autorandr -c
 
 # bspwm settings
 bspc monitor -d 1 2 3 4
