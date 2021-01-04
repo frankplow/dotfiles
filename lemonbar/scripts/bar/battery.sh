@@ -6,7 +6,7 @@ do
     LEVEL=$(cat /sys/class/power_supply/BAT0/capacity | tr -d '\n')
 
     RET="J"
-    if [ $CHARGING ]; then
+    if [ $CHARGING -gt 0 ]; then
         RET="$RET\ue09e "
     elif [ "$LEVEL" -lt 25 ]; then
         RET="$RET\ue038 "
