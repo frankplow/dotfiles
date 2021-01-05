@@ -17,6 +17,11 @@ set expandtab
 set fillchars+=vert:│
 set fillchars+=fold:―
 
+" cursor
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+
 " enable filetype plugins
 filetype plugin on
 filetype indent on
