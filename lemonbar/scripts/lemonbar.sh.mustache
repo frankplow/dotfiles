@@ -19,7 +19,7 @@ mkfifo "$PANEL_FIFO"
 cat $PANEL_FIFO | $widgetdir/reader.sh | lemonbar -g $(($WIDTH - {{bspwm.window_gap}} - {{bspwm.window_gap}} - {{bspwm.border_width}} - {{bspwm.border_width}}))\
 x$(({{bar.height}} - {{bspwm.border_width}}))\
 +{{bspwm.window_gap}}+{{bspwm.window_gap}}\
- -f "{{bar.font_text}}:size={{bar.font_size}}" -f "{{bar.font_symbol}}:size={{bar.font_size}}"\
+ -f "{{bar.font_text}}:size={{bar.font_size}}" -f "{{bar.font_symbol}}:size={{bar.font_size}}" -f "{{bar.font_unicode}}:size={{bar.font_size}}"\
  -F "#{{bar.foreground}}" -B "#{{bar.background}}"\
  -r {{bspwm.border_width}} -R "#{{bar.border}}"\
  -a 16 | bash &
@@ -33,8 +33,8 @@ $widgetdir/power.sh > "$PANEL_FIFO" &
 $widgetdir/spotify.sh > "$PANEL_FIFO" &
 $widgetdir/volume_alsa.sh > "$PANEL_FIFO" &
 #$widgetdir/volume_pulse.sh > "$PANEL_FIFO" &
-#$widgetdir/network.sh > "$PANEL_FIFO" &
-#$widgetdir/battery.sh > "$PANEL_FIFO" &
+$widgetdir/network.sh > "$PANEL_FIFO" &
+$widgetdir/battery.sh > "$PANEL_FIFO" &
 
 # ensure bar goes underneath fullscreen windows
 sleep 1

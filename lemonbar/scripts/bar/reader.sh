@@ -33,6 +33,6 @@ while read -r line; do
             battery=${line#?}
             ;;
     esac
-    echo "%{l}${arch}${bspwm}%{c}${spotify}%{r}${volume_alsa} ${date} ${clock} ${power}"
+    echo "%{l}${arch}${bspwm}%{c}${spotify}%{r}${battery} ${network} ${volume_alsa} ${date} ${clock} ${power}"
 
 done
