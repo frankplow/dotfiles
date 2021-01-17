@@ -36,7 +36,7 @@ hi MoreMsg                  cterm=NONE      ctermfg=6       ctermbg=NONE
 hi ModeMsg                  cterm=bold      ctermfg=6       ctermbg=NONE
 
 " visual aids
-hi MatchParen               cterm=reverse   ctermfg=NONE    ctermbg=NONE 
+hi MatchParen               cterm=underline ctermfg=NONE    ctermbg=NONE 
 hi Visual                   cterm=reverse   ctermfg=11      ctermbg=NONE 
 hi VisualNOS                cterm=NONE      ctermfg=9       ctermbg=NONE 
 hi NonText                  cterm=NONE      ctermfg=7       ctermbg=NONE
