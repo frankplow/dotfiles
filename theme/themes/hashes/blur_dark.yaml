@@ -43,7 +43,7 @@ base0e:             "8c8c81"
 base0f:             "92938d"
 
 bspwm:
-    window_gap:         32
+    window_gap:         16
     border_width:       4
     active_border:      "6a5e4b"
     inactive_border:    "231f1d"
@@ -53,6 +53,7 @@ bar:
     border:             "6a5e4b"
     font_text:          CtrlD
     font_symbol:        Siji
+    font_unicode:       UW Ttyp0
     font_size:          10
     foreground:         "d5dadc"
     background:         "231f1d"
