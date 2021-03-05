@@ -16,13 +16,16 @@ PANEL_FIFO="/tmp/lemon_fifo"
 mkfifo "$PANEL_FIFO"
 
 # launch the bar
-cat $PANEL_FIFO | $widgetdir/reader.sh | lemonbar -g $(($WIDTH - {{bspwm.window_gap}} - {{bspwm.window_gap}} - {{bspwm.border_width}} - {{bspwm.border_width}}))\
-x$(({{bar.height}} - {{bspwm.border_width}}))\
-+{{bspwm.window_gap}}+{{bspwm.window_gap}}\
- -f "{{bar.font_text}}:size={{bar.font_size}}" -f "{{bar.font_symbol}}:size={{bar.font_size}}" -f "{{bar.font_unicode}}:size={{bar.font_size}}"\
- -F "#{{bar.foreground}}" -B "#{{bar.background}}"\
- -r {{bspwm.border_width}} -R "#{{bar.border}}"\
- -a 16 | bash &
+cat $PANEL_FIFO | $widgetdir/reader.sh | lemonbar\
+ -g $(($WIDTH - $THEME_WINDOW_GAP - $THEME_WINDOW_GAP - $THEME_BORDER_WIDTH - $THEME_BORDER_WIDTH))\
+x$(($THEME_BAR_HEIGHT - $THEME_BORDER_WIDTH))\
++$THEME_WINDOW_GAP+$THEME_WINDOW_GAP\
+ -f "$THEME_FONT_TEXT:size=$THEME_FONT_SIZE"\
+ -f "$THEME_FONT_SYMBOLS:size=$THEME_FONT_SIZE"\
+ -f "$THEME_FONT_UNICODE:size=$THEME_FONT_SIZE"\
+ -F "#$THEME_FOREGROUND" -B "#$THEME_BACKGROUND"\
+ -r $THEME_BORDER_WIDTH -R "#$THEME_BORDER_ACTIVE"\
+ -a $THEME_WINDOW_GAP | bash &
 
 # launch widgets
 $widgetdir/arch.sh > "$PANEL_FIFO" &
@@ -41,3 +44,4 @@ sleep 1
 xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -a bar)
 
 wait
+

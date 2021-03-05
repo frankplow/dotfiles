@@ -3,6 +3,5 @@ termite/.config/termite/config
 qutebrowser/.config/qutebrowser/quickmarks
 
 lemonbar/scripts/bar/colours.sh
-lemonbar/scripts/lemonbar.sh
 
 rofi/.local/share/rofi/themes/adaptive.rasi
