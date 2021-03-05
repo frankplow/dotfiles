@@ -3,6 +3,9 @@
 # fonts
 export THEME_FONT_FAMILY="bitmap"
 export THEME_FONT_SIZE=10
+export THEME_FONT_TEXT="CtrlD"
+export THEME_FONT_SYMBOLS="Siji"
+export THEME_FONT_UNICODE="UW Ttyp0"
 
 # colours
 export THEME_FOREGROUND="d5dadc"
