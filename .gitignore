@@ -1,6 +1,5 @@
 termite/.config/termite/config
 
-qutebrowser/.config/qutebrowser/config.py
 qutebrowser/.config/qutebrowser/quickmarks
 
 lemonbar/scripts/bar/colours.sh

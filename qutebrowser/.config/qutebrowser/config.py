@@ -3,6 +3,8 @@
 #   qute://help/configuring.html
 #   qute://help/settings.html
 
+from os import environ
+
 config.bind(',p', ':spawn --userscript qute-pass --username-target secret --username-pattern "UserName: (.+)"')
 config.bind(',P', ':spawn --userscript qute-pass --username-target secret --username-pattern "UserName: (.+)" --password-only')
 
@@ -89,37 +91,37 @@ c.input.mouse.back_forward_buttons = False
 # Colors
 #
 
-c.colors.completion.category.bg = '#{{background}}'
-c.colors.completion.category.fg = '#{{foreground}}'
-c.colors.completion.even.bg = '#{{foreground}}'
-c.colors.completion.odd.bg = '#{{foreground}}'
-c.colors.completion.fg = '#{{background}}'
-c.colors.completion.item.selected.bg = '#{{bspwm.active_border}}'
-c.colors.completion.item.selected.fg = '#{{background}}'
-c.colors.completion.item.selected.border.bottom = '#{{bspwm.active_border}}'
-c.colors.completion.item.selected.border.top = '#{{bspwm.active_border}}'
-c.colors.completion.match.fg = '#{{colour12}}'
-c.colors.completion.item.selected.match.fg = '#{{colour12}}'
+c.colors.completion.category.bg = '#'+environ['THEME_BACKGROUND']
+c.colors.completion.category.fg = '#'+environ['THEME_FOREGROUND']
+c.colors.completion.even.bg = '#'+environ['THEME_FOREGROUND']
+c.colors.completion.odd.bg = '#'+environ['THEME_FOREGROUND']
+c.colors.completion.fg = '#'+environ['THEME_BACKGROUND']
+c.colors.completion.item.selected.bg = '#'+environ['THEME_BORDER_ACTIVE']
+c.colors.completion.item.selected.fg = '#'+environ['THEME_BACKGROUND']
+c.colors.completion.item.selected.border.bottom = '#'+environ['THEME_BORDER_ACTIVE']
+c.colors.completion.item.selected.border.top = '#'+environ['THEME_BORDER_ACTIVE']
+c.colors.completion.match.fg = '#'+environ['THEME_COLOUR12']
+c.colors.completion.item.selected.match.fg = '#'+environ['THEME_COLOUR12']
 
-c.colors.statusbar.normal.fg = '#{{foreground}}'
-c.colors.statusbar.normal.bg = '#{{background}}'
-c.colors.statusbar.insert.fg = '#{{background}}'
-c.colors.statusbar.insert.bg = '#{{bspwm.active_border}}'
-c.colors.statusbar.passthrough.fg = '#{{background}}'
-c.colors.statusbar.passthrough.bg = '#{{colour14}}'
-c.colors.statusbar.private.fg = '#{{foreground}}'
-c.colors.statusbar.private.bg = '#{{background}}'
-c.colors.statusbar.command.fg = '#{{background}}'
-c.colors.statusbar.command.bg = '#{{foreground}}'
-c.colors.statusbar.command.private.fg = '#{{foreground}}'
-c.colors.statusbar.command.private.bg = '#{{background}}'
-c.colors.statusbar.progress.bg = '#{{colour6}}'
-c.colors.statusbar.url.fg = '#{{bspwm.active_border}}'
-c.colors.statusbar.url.error.fg = '#{{colour9}}'
-c.colors.statusbar.url.hover.fg = '#{{colour14}}'
-c.colors.statusbar.url.success.http.fg = '#{{colour1}}'
-c.colors.statusbar.url.success.https.fg = '#{{colour10}}'
-c.colors.statusbar.url.warn.fg = '#{{colour1}}'
+c.colors.statusbar.normal.fg = '#'+environ['THEME_FOREGROUND']
+c.colors.statusbar.normal.bg = '#'+environ['THEME_BACKGROUND']
+c.colors.statusbar.insert.fg = '#'+environ['THEME_BACKGROUND']
+c.colors.statusbar.insert.bg = '#'+environ['THEME_BORDER_ACTIVE']
+c.colors.statusbar.passthrough.fg = '#'+environ['THEME_BACKGROUND']
+c.colors.statusbar.passthrough.bg = '#'+environ['THEME_COLOUR14']
+c.colors.statusbar.private.fg = '#'+environ['THEME_FOREGROUND']
+c.colors.statusbar.private.bg = '#'+environ['THEME_BACKGROUND']
+c.colors.statusbar.command.fg = '#'+environ['THEME_BACKGROUND']
+c.colors.statusbar.command.bg = '#'+environ['THEME_FOREGROUND']
+c.colors.statusbar.command.private.fg = '#'+environ['THEME_FOREGROUND']
+c.colors.statusbar.command.private.bg = '#'+environ['THEME_BACKGROUND']
+c.colors.statusbar.progress.bg = '#'+environ['THEME_COLOUR6']
+c.colors.statusbar.url.fg = '#'+environ['THEME_BORDER_ACTIVE']
+c.colors.statusbar.url.error.fg = '#'+environ['THEME_COLOUR9']
+c.colors.statusbar.url.hover.fg = '#'+environ['THEME_COLOUR14']
+c.colors.statusbar.url.success.http.fg = '#'+environ['THEME_COLOUR1']
+c.colors.statusbar.url.success.https.fg = '#'+environ['THEME_COLOUR10']
+c.colors.statusbar.url.warn.fg = '#'+environ['THEME_COLOUR1']
 
 # Color gradient interpolation system for the tab indicator.
 # Type: ColorSystem
@@ -130,15 +132,15 @@ c.colors.statusbar.url.warn.fg = '#{{colour1}}'
 #   - none: Don't show a gradient.
 c.colors.tabs.indicator.system = 'rgb'
 
-c.colors.tabs.bar.bg = '#{{background}}'
-c.colors.tabs.odd.fg = '#{{bspwm.active_border}}'
-c.colors.tabs.odd.bg = '#{{background}}'
-c.colors.tabs.even.fg = '#{{bspwm.active_border}}'
-c.colors.tabs.even.bg = '#{{background}}'
-c.colors.tabs.selected.odd.fg = '#{{background}}'
-c.colors.tabs.selected.odd.bg = '#{{bspwm.active_border}}'
-c.colors.tabs.selected.even.fg = '#{{background}}'
-c.colors.tabs.selected.even.bg = '#{{bspwm.active_border}}'
+c.colors.tabs.bar.bg = '#'+environ['THEME_BACKGROUND']
+c.colors.tabs.odd.fg = '#'+environ['THEME_BORDER_ACTIVE']
+c.colors.tabs.odd.bg = '#'+environ['THEME_BACKGROUND']
+c.colors.tabs.even.fg = '#'+environ['THEME_BORDER_ACTIVE']
+c.colors.tabs.even.bg = '#'+environ['THEME_BACKGROUND']
+c.colors.tabs.selected.odd.fg = '#'+environ['THEME_BACKGROUND']
+c.colors.tabs.selected.odd.bg = '#'+environ['THEME_BORDER_ACTIVE']
+c.colors.tabs.selected.even.fg = '#'+environ['THEME_BACKGROUND']
+c.colors.tabs.selected.even.bg = '#'+environ['THEME_BORDER_ACTIVE']
 
 # Default monospace fonts. Whenever "monospace" is used in a font
 # setting, it's replaced with the fonts listed here.
