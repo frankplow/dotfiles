@@ -48,6 +48,7 @@ hi Warning                  cterm=NONE      ctermfg=1       ctermbg=NONE
 hi WarningMsg               cterm=NONE      ctermfg=1       ctermbg=NONE
 hi Ignore                   cterm=reverse   ctermfg=2       ctermbg=NONE 
 hi SpecialKey               cterm=NONE      ctermfg=7       ctermbg=NONE
+hi Conceal                  cterm=NONE      ctermfg=NONE    ctermbg=NONE
 
 " variable types
 hi Constant                 cterm=NONE      ctermfg=3       ctermbg=NONE 
@@ -85,3 +86,6 @@ hi Type                     cterm=NONE      ctermfg=3       ctermbg=NONE
 hi StorageClass             cterm=NONE      ctermfg=11      ctermbg=NONE 
 hi Structure                cterm=NONE      ctermfg=5       ctermbg=NONE 
 hi Typedef                  cterm=NONE      ctermfg=3       ctermbg=NONE 
+
+" tex-specific
+hi TexStyleItal             cterm=bold
