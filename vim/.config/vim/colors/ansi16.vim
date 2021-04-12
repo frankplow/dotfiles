@@ -88,4 +88,4 @@ hi Structure                cterm=NONE      ctermfg=5       ctermbg=NONE
 hi Typedef                  cterm=NONE      ctermfg=3       ctermbg=NONE 
 
 " tex-specific
-hi TexStyleItal             cterm=bold
+hi texEmphStyle             cterm=bold
