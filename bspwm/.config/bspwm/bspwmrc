@@ -3,8 +3,8 @@
 source $HOME/themes/blur_dark
 
 # launch daemons
-[ $(pgrep sxhkd | wc -l) -eq 0 ] && sxhkd &
-[ $(pgrep compton | wc -l) -eq 0 ] && compton -b \
+[ -z $(pgrep sxhkd) ] && sxhkd &
+[ -z $(pgrep compton) ] && picom -b \
     -i $THEME_OPACITY_INACTIVE --active-opacity $THEME_OPACITY_ACTIVE
 
 # bspwm settings
