@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-. /home/frank/scripts/bar/colours.sh
-
 if ! type bspc &> /dev/null; then
 	echo "bspc not found"
 	exit 1
@@ -29,7 +27,7 @@ process () {
                             ;;
                         F*)
                             # focused free desktop
-                            RET="${RET}%{F$HIGHLIGHT}"
+                            RET="${RET}%{F#$THEME_BAR_HIGHLIGHT}"
                             ;;
                         o*)
                             # occupied desktop
@@ -37,15 +35,15 @@ process () {
                             ;;
                         O*)
                             # focused occupied desktop
-                            RET="${RET}%{F$HIGHLIGHT}"
+                            RET="${RET}%{F#$THEME_BAR_HIGHLIGHT}"
                             ;;
                         u*)
                             # urgent desktop
-                            RET="${RET}%{F$HIGHGIGHT}"
+                            RET="${RET}%{F#$HIGHGIGHT}"
                             ;;
                         U*)
                             # focused urgent desktop
-                            RET="${RET}%{F$HIGHLIGHT}"
+                            RET="${RET}%{F#$THEME_BAR_HIGHLIGHT}"
                             ;;
                     esac
 

@@ -3,38 +3,38 @@
  * User: frankplow
  */
 * {
-    foreground:                  #{{foreground}};
-    background:                  #{{background}};
+    foreground:                  #$THEME_FOREGROUND;
+    background:                  #$THEME_BACKGROUND;
 
-    border-color:                #{{bspwm.active_border}};
-    background-color:            #{{background}};
+    border-color:                #$THEME_BORDER_ACTIVE;
+    background-color:            #$THEME_BACKGROUND;
 
-    normal-foreground:           #{{foreground}};
-    normal-background:           #{{background}};
-    alternate-normal-foreground: #{{foreground}};
-    alternate-normal-background: #{{background}};
-    selected-normal-foreground:  #{{background}};
-    selected-normal-background:  #{{bspwm.active_border}};
+    normal-foreground:           #$THEME_FOREGROUND;
+    normal-background:           #$THEME_BACKGROUND;
+    alternate-normal-foreground: #$THEME_FOREGROUND;
+    alternate-normal-background: #$THEME_BACKGROUND;
+    selected-normal-foreground:  #$THEME_BACKGROUND;
+    selected-normal-background:  #$THEME_BORDER_ACTIVE;
 
-    urgent-foreground:           #{{colour9}};
-    urgent-background:           #{{background}};
-    alternate-urgent-foreground: #{{colour9}};
-    alternate-urgent-background: #{{background}};
-    selected-urgent-foreground:  #{{background}};
-    selected-urgent-background:  #{{colour9}};
+    urgent-foreground:           #$THEME_COLOUR9;
+    urgent-background:           #$THEME_BACKGROUND;
+    alternate-urgent-foreground: #$THEME_COLOUR9;
+    alternate-urgent-background: #$THEME_BACKGROUND;
+    selected-urgent-foreground:  #$THEME_BACKGROUND;
+    selected-urgent-background:  #$THEME_COLOUR9;
 
-    active-foreground:           #{{bspwm.active_border}};
-    active-background:           #{{background}};
-    alternate-active-foreground: #{{bspwm.active_border}};
-    alternate-active-background: #{{background}};
-    selected-active-foreground:  #{{background}};
-    selected-active-background:  #{{bspwm.active_border}};
+    active-foreground:           #$THEME_BORDER_ACTIVE;
+    active-background:           #$THEME_BACKGROUND;
+    alternate-active-foreground: #$THEME_BORDER_ACTIVE;
+    alternate-active-background: #$THEME_BACKGROUND;
+    selected-active-foreground:  #$THEME_BACKGROUND;
+    selected-active-background:  #$THEME_BORDER_ACTIVE;
 
     lightbg:                     rgba ( 238, 232, 213, 100 % );
     lightfg:                     rgba ( 88, 104, 117, 100 % );
-    red:                         #{{colour9}};
-    blue:                        #{{colour12}};
-    separatorcolor:              #{{bspwm.active_border}};
+    red:                         #$THEME_COLOUR9;
+    blue:                        #$THEME_COLOUR12;
+    separatorcolor:              #$THEME_BORDER_ACTIVE;
     spacing:                     2;
 }
 #window {
