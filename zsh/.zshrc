@@ -1,15 +1,8 @@
-# plugins
-plugins=(
-    z
-    zsh-syntax-highlighting
-    colored-man-pages
-    colour-godoc
-)
-for plugin in $plugins; do source "$HOME/.config/zsh/$plugin/$plugin.plugin.zsh"; done
-
 fpath=($HOME/.config/zsh/functions $fpath)
 
 # theme
+autoload -U colors
+colors
 PROMPT="%F{01}%32<...<%~%<< %F{4}%#%f "
 # PROMPT="%n@%m: %1~ %# "
 
@@ -54,6 +47,15 @@ zle-line-init() {
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # use beam shape cursor for each new prompt.
+
+# plugins
+plugins=(
+    z
+    zsh-syntax-highlighting
+    colored-man-pages
+    colour-godoc
+)
+for plugin in $plugins; do source "$HOME/.config/zsh/$plugin/$plugin.plugin.zsh"; done
 
 # aliases
 setopt COMPLETE_ALIASES
