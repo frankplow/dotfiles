@@ -3,7 +3,10 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+env:
+  # Disable DPI scaling
+  WINIT_X11_SCALE_FACTOR: "1"
+
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
@@ -99,7 +102,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: bitmap
+    family: $THEME_FONT_FAMILY
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -138,7 +141,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 10.0
+  size: $THEME_FONT_SIZE
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -166,8 +169,8 @@ font:
 colors:
   # Default colors
   primary:
-   background: '#231f1d'
-   foreground: '#d5dadc'
+   background: '#$THEME_BACKGROUND'
+   foreground: '#$THEME_FOREGROUND'
 
     # Bright and dim foreground colors
     #
@@ -223,25 +226,25 @@ colors:
 
   # Normal colors
   normal:
-    black:   '#393733'
-    red:     '#635646'
-    green:   '#828274'
-    yellow:  '#6a5e4b'
-    blue:    '#5b4a3d'
-    magenta: '#8c8c81'
-    cyan:    '#706c61'
-    white:   '#d5dadc'
+    black:   '#$THEME_COLOUR0'
+    red:     '#$THEME_COLOUR1'
+    green:   '#$THEME_COLOUR2'
+    yellow:  '#$THEME_COLOUR3'
+    blue:    '#$THEME_COLOUR4'
+    magenta: '#$THEME_COLOUR5'
+    cyan:    '#$THEME_COLOUR6'
+    white:   '#$THEME_COLOUR7'
 
   # Bright colors
   bright:
-    black:   '#979a97'
-    red:     '#635646'
-    green:   '#828274'
-    yellow:  '#6a5e4b'
-    blue:    '#5b4a3d'
-    magenta: '#8c8c81'
-    cyan:    '#706c61'
-    white:   '#f0f2f2'
+    black:   '#$THEME_COLOUR8'
+    red:     '#$THEME_COLOUR9'
+    green:   '#$THEME_COLOUR10'
+    yellow:  '#$THEME_COLOUR11'
+    blue:    '#$THEME_COLOUR12'
+    magenta: '#$THEME_COLOUR13'
+    cyan:    '#$THEME_COLOUR14'
+    white:   '#$THEME_COLOUR15'
 
   # Dim colors
   #

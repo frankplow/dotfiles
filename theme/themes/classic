@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+export THEME_N_WINDOWS=10
+
+# fonts
+export THEME_FONT_FAMILY="IBM Plex Mono"
+export THEME_FONT_SIZE=10
+export THEME_FONT_TEXT="IBM Plex Mono"
+export THEME_FONT_SYMBOLS="Siji"
+export THEME_FONT_UNICODE="UW Ttyp0"
+
+# colours
+export THEME_FOREGROUND="ffffff"
+export THEME_BACKGROUND="000000"
+
+export THEME_COLOUR0="000000"
+export THEME_COLOUR1="aa0000"
+export THEME_COLOUR2="00aa00"
+export THEME_COLOUR3="aa5500"
+export THEME_COLOUR4="0000aa"
+export THEME_COLOUR5="aa00aa"
+export THEME_COLOUR6="00aaaa"
+export THEME_COLOUR7="aaaaaa"
+export THEME_COLOUR8="555555"
+export THEME_COLOUR9="ff0000"
+export THEME_COLOUR10="00ff00"
+export THEME_COLOUR11="ffff00"
+export THEME_COLOUR12="0000ff"
+export THEME_COLOUR13="ff00ff"
+export THEME_COLOUR14="00ffff"
+export THEME_COLOUR15="ffffff"
+
+export THEME_HIGHLIGHT=$THEME_COLOUR6
+
+# window appearance
+export THEME_OPACITY_ACTIVE=1.0
+export THEME_OPACITY_INACTIVE=1.0
+export THEME_WINDOW_GAP=0
+export THEME_BORDER_WIDTH=2
+export THEME_BORDER_ACTIVE=$THEME_FOREGROUND
+export THEME_BORDER_INACTIVE=$THEME_COLOUR8
+
+# lemonbar
+export THEME_ENABLE_BAR=false
+export THEME_BAR_HEIGHT=0
+
+export THEME_WALLPAPER="/home/frank/pictures/backgrounds/black.png"

@@ -25,7 +25,7 @@ do
             RET="$RET "
         fi
 
-        echo -e $RET
     fi
+    echo -e $RET
     sleep 10
 done

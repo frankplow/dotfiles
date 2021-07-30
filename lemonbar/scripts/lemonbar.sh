@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 #if xdo id -a "$PANEL_WM_NAME" > /dev/null ; then
 #        printf "%s\n" "The panel is already running." >&2
@@ -23,9 +23,9 @@ x$(($THEME_BAR_HEIGHT - $THEME_BORDER_WIDTH))\
  -f "$THEME_FONT_TEXT:size=$THEME_FONT_SIZE"\
  -f "$THEME_FONT_SYMBOLS:size=$THEME_FONT_SIZE"\
  -f "$THEME_FONT_UNICODE:size=$THEME_FONT_SIZE"\
- -F "#$THEME_FOREGROUND" -B "#$THEME_BACKGROUND"\
- -r $THEME_BORDER_WIDTH -R "#$THEME_BORDER_ACTIVE"\
- -a $THEME_WINDOW_GAP | bash &
+ -F "#$THEME_BAR_FOREGROUND" -B "#$THEME_BAR_BACKGROUND"\
+ -r $THEME_BORDER_WIDTH -R "#$THEME_BAR_BORDER"\
+ -a 16 | bash &
 
 # launch widgets
 $widgetdir/arch.sh > "$PANEL_FIFO" &

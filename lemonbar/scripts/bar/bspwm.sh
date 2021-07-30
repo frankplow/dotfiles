@@ -16,7 +16,7 @@ process () {
 				item="$1"
 				name="${item#?}"
 
-				if [[ $name =~ ^[0-9]$ ]]; then
+                if [[ $name =~ ^[0-9]+$ ]]; then
                     num=$( bspc query -N -n .window -d $name | wc -l )
                     RET="${RET}%{A:bspc desktop -f $name:}"
 
@@ -39,7 +39,7 @@ process () {
                             ;;
                         u*)
                             # urgent desktop
-                            RET="${RET}%{F#$HIGHGIGHT}"
+                            RET="${RET}%{F#$THEME_BAR_HIGHLIGHT}"
                             ;;
                         U*)
                             # focused urgent desktop

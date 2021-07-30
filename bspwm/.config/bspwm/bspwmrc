@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source $HOME/themes/blur_dark
+. "$HOME/themes/active_theme"
 
 # launch daemons
 [ -z $(pgrep sxhkd) ] && sxhkd &
@@ -27,9 +27,9 @@ bspc rule -a "Zathura" state=tiled
 
 # set up monitor
 autorandr -c
-bspc monitor focused -d 1 2 3 4
+bspc monitor focused -d $(seq 1 $THEME_N_WINDOWS)
 
 # launch background programs
-[ $(pgrep lemonbar | wc -l) -eq 0 ] && lemonbar.sh &
-feh --bg-scale /home/frank/pictures/backgrounds/blur_dark.jpg
-[ $(pgrep unclutter | wc -l) -eq 0 ] && unclutter &
+[ "$THEME_ENABLE_BAR" = true ] && [ -z $(pgrep lemonbar) ] && lemonbar.sh &
+feh --bg-scale $THEME_WALLPAPER
+[ -z $(pgrep unclutter) ] && unclutter &
