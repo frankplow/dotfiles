@@ -10,11 +10,11 @@ do
 
         RET="I"
         if [ "$CONN" -lt 33 ]; then
-            RET="$RET\ue0ee "
+            RET="$RET\u$THEME_SYMBOL_NETWORK_NONE "
         elif [ "$CONN" -lt 66 ]; then
-            RET="$RET\ue0ef "
+            RET="$RET\u$THEME_SYMBOL_NETWORK_LOW "
         else
-            RET="$RET\ue0f0 "
+            RET="$RET\u$THEME_SYMBOL_NETWORK_HIGH "
         fi
 
         RET="$RET$SSID"

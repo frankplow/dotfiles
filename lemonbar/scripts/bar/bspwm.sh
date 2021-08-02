@@ -49,22 +49,22 @@ process () {
 
                     case $num in
                         0)
-                            RET="${RET} \ue001 "
+                            RET="${RET} \u$THEME_SYMBOL_DESKTOP_ZERO "
                             ;;
                         1)
-                            RET="${RET} \ue000 "
+                            RET="${RET} \u$THEME_SYMBOL_DESKTOP_ONE "
                             ;;
                         2)
-                            RET="${RET} \ue006 "
+                            RET="${RET} \u$THEME_SYMBOL_DESKTOP_TWO "
                             ;;
                         3)
-                            RET="${RET} \ue004 "
+                            RET="${RET} \u$THEME_SYMBOL_DESKTOP_THREE "
                             ;;
                         4)
-                            RET="${RET} \ue002 "
+                            RET="${RET} \u$THEME_SYMBOL_DESKTOP_FOUR "
                             ;;
                         *)
-                            RET="${RET} \ue007 "
+                            RET="${RET} \u$THEME_SYMBOL_DESKTOP_MORE "
                             ;;
                     esac
 

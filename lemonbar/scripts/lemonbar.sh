@@ -40,8 +40,26 @@ $widgetdir/network.sh > "$PANEL_FIFO" &
 $widgetdir/battery.sh > "$PANEL_FIFO" &
 
 # ensure bar goes underneath fullscreen windows
-sleep 1
-xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -a bar)
+# sleep 1
+# xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -a bar)
 
-wait
-
+if [ "$THEME_BAR_MODE" = "always" ]; then
+    wait
+elif [ "$THEME_BAR_MODE" = "hover" ]; then
+    SHOWN=false
+    while true; do
+        eval $(xdotool getmouselocation --shell)
+        if [ "$Y" -le $(($THEME_BAR_HEIGHT + $THEME_WINDOW_GAP + $THEME_WINDOW_GAP)) ]; then
+            [ $SHOWN = false ] && xdo show -a bar
+            SHOWN=true
+        elif [ "$Y" -ge $((2 * ($THEME_BAR_HEIGHT + $THEME_WINDOW_GAP + $THEME_WINDOW_GAP))) ]; then
+            [ $SHOWN = true ] && xdo hide -a bar
+            [ $SHOWN = true ] && bspc config top_padding 0
+            SHOWN=false
+        fi
+        sleep 0.05
+    done
+else
+    echo "Error launching lemonbar. THEME_BAR_MODE \"$THEME_BAR_MODE\" is not valid." 1>&2
+    exit
+fi
