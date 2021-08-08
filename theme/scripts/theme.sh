@@ -23,4 +23,4 @@ for template in $(find $DOTFILES -name "*.envs"); do
     envsubst < $template > $install_path
 done
 
-. "$HOME/themes/reload.sh"
+. "$HOME/scripts/reload_theme.sh"
