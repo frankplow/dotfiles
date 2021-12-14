@@ -27,6 +27,8 @@ x$(($THEME_BAR_HEIGHT - $THEME_BORDER_WIDTH))\
  -r $THEME_BORDER_WIDTH -R "#$THEME_BAR_BORDER"\
  -a 16 | bash &
 
+bar_pid=$!
+
 # launch widgets
 $widgetdir/arch.sh > "$PANEL_FIFO" &
 $widgetdir/bspwm.sh > "$PANEL_FIFO" &
@@ -40,14 +42,14 @@ $widgetdir/network.sh > "$PANEL_FIFO" &
 $widgetdir/battery.sh > "$PANEL_FIFO" &
 
 # ensure bar goes underneath fullscreen windows
-# sleep 1
-# xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -a bar)
+sleep 0.1
+xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -a bar)
 
 if [ "$THEME_BAR_MODE" = "always" ]; then
     wait
 elif [ "$THEME_BAR_MODE" = "hover" ]; then
     SHOWN=false
-    while true; do
+    while kill -0 $bar_pid > /dev/null; do
         eval $(xdotool getmouselocation --shell)
         if [ "$Y" -le $(($THEME_BAR_HEIGHT + $THEME_WINDOW_GAP + $THEME_WINDOW_GAP)) ]; then
             [ $SHOWN = false ] && xdo show -a bar

@@ -31,7 +31,7 @@ hi IncSearch                cterm=reverse   ctermfg=13      ctermbg=NONE
 " prompt / statusline
 hi StatusLine               cterm=bold      ctermfg=3       ctermbg=NONE
 hi StatusLineNC             cterm=NONE      ctermfg=3       ctermbg=NONE 
-hi Question                 cterm=NONE      ctermfg=4       ctermbg=NONE
+hi Question                 cterm=NONE      ctermfg=12      ctermbg=NONE
 hi MoreMsg                  cterm=NONE      ctermfg=6       ctermbg=NONE
 hi ModeMsg                  cterm=bold      ctermfg=6       ctermbg=NONE
 
@@ -61,7 +61,7 @@ hi Float                    cterm=NONE      ctermfg=3       ctermbg=NONE
 hi Identifier               cterm=NONE      ctermfg=11      ctermbg=NONE 
 
 " language constructs
-hi Function                 cterm=NONE      ctermfg=4       ctermbg=NONE 
+hi Function                 cterm=NONE      ctermfg=12      ctermbg=NONE 
 hi Statement                cterm=NONE      ctermfg=10      ctermbg=NONE 
 hi Repeat                   cterm=NONE      ctermfg=11      ctermbg=NONE 
 hi Label                    cterm=NONE      ctermfg=11      ctermbg=NONE 
@@ -78,7 +78,7 @@ hi Debug                    cterm=NONE      ctermfg=9       ctermbg=NONE
 
 " c-likes
 hi PreProc                  cterm=NONE      ctermfg=11      ctermbg=NONE 
-hi Include                  cterm=NONE      ctermfg=4       ctermbg=NONE 
+hi Include                  cterm=NONE      ctermfg=12      ctermbg=NONE 
 hi Define                   cterm=NONE      ctermfg=6       ctermbg=NONE 
 hi Macro                    cterm=NONE      ctermfg=1       ctermbg=NONE 
 hi PreCondit                cterm=NONE      ctermfg=13      ctermbg=NONE 

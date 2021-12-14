@@ -3,7 +3,8 @@ fpath=($HOME/.config/zsh/functions $fpath)
 # theme
 autoload -U colors
 colors
-PROMPT="%F{01}%32<...<%~%<< %F{4}%#%f "
+eval $(dircolors)
+PROMPT="%F{01}%32<...<%~%<< %F{12}%#%f "
 # PROMPT="%n@%m: %1~ %# "
 
 # history settings
@@ -63,3 +64,5 @@ alias ls='ls --color=auto'
 alias pacman='pacman --color=auto'
 alias v='vim'
 alias dmesg='dmesg -L=always | less -r'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'

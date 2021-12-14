@@ -64,21 +64,24 @@ c.url.start_pages = 'https://www.google.co.uk'
 # Type: List of String
 c.url.yank_ignored_parameters = ['ref', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
 
+# Input settings
 c.input.mouse.back_forward_buttons = False
+c.tabs.mousewheel_switching = False
 
 #
 # Colors
 #
+c.colors.webpage.darkmode.enabled = False
 
 c.colors.completion.category.bg = '#'+environ['THEME_BACKGROUND']
 c.colors.completion.category.fg = '#'+environ['THEME_FOREGROUND']
 c.colors.completion.even.bg = '#'+environ['THEME_FOREGROUND']
 c.colors.completion.odd.bg = '#'+environ['THEME_FOREGROUND']
 c.colors.completion.fg = '#'+environ['THEME_BACKGROUND']
-c.colors.completion.item.selected.bg = '#'+environ['THEME_BORDER_ACTIVE']
+c.colors.completion.item.selected.bg = '#'+environ['THEME_HIGHLIGHT']
 c.colors.completion.item.selected.fg = '#'+environ['THEME_BACKGROUND']
-c.colors.completion.item.selected.border.bottom = '#'+environ['THEME_BORDER_ACTIVE']
-c.colors.completion.item.selected.border.top = '#'+environ['THEME_BORDER_ACTIVE']
+c.colors.completion.item.selected.border.bottom = '#'+environ['THEME_HIGHLIGHT']
+c.colors.completion.item.selected.border.top = '#'+environ['THEME_HIGHLIGHT']
 c.colors.completion.match.fg = '#'+environ['THEME_COLOUR12']
 c.colors.completion.item.selected.match.fg = '#'+environ['THEME_COLOUR12']
 
@@ -124,19 +127,19 @@ c.colors.tabs.selected.even.bg = '#'+environ['THEME_BORDER_ACTIVE']
 # Default monospace fonts. Whenever "monospace" is used in a font
 # setting, it's replaced with the fonts listed here.
 # Type: Font
-c.fonts.default_family = ["CtrlD", "xos4 Terminus", "Terminus", "Monospace", "DejaVu Sans Mono", "Monaco", "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", "Courier", "Liberation Mono", "monospace", "Fixed", "Consolas", "Terminal"]
-c.fonts.completion.entry = '10pt default_family'
-c.fonts.completion.category = 'bold 10pt default_family'
-c.fonts.debug_console = '10pt default_family'
-c.fonts.downloads = '10pt default_family'
-c.fonts.hints = 'bold 10pt default_family'
-c.fonts.keyhint = '10pt default_family'
-c.fonts.messages.error = '10pt default_family'
-c.fonts.messages.info = '10pt default_family'
-c.fonts.messages.warning = '10pt default_family'
-c.fonts.prompts = '10pt default_family'
-c.fonts.tabs.selected = '10pt default_family'
-c.fonts.tabs.unselected = '10pt default_family'
+c.fonts.default_family = [environ['THEME_FONT_FAMILY'], "xos4 Terminus", "Terminus", "Monospace", "DejaVu Sans Mono", "Monaco", "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", "Courier", "Liberation Mono", "monospace", "Fixed", "Consolas", "Terminal"]
+c.fonts.completion.entry = environ['THEME_FONT_SIZE'] + 'pt default_family'
+c.fonts.completion.category = 'bold ' + environ['THEME_FONT_SIZE'] + 'pt default_family'
+c.fonts.debug_console = environ['THEME_FONT_SIZE'] + 'pt default_family'
+c.fonts.downloads = environ['THEME_FONT_SIZE'] + 'pt default_family'
+c.fonts.hints = 'bold ' + environ['THEME_FONT_SIZE'] + 'pt default_family'
+c.fonts.keyhint = environ['THEME_FONT_SIZE'] + 'pt default_family'
+c.fonts.messages.error = environ['THEME_FONT_SIZE'] + 'pt default_family'
+c.fonts.messages.info = environ['THEME_FONT_SIZE'] + 'pt default_family'
+c.fonts.messages.warning = environ['THEME_FONT_SIZE'] + 'pt default_family'
+c.fonts.prompts = environ['THEME_FONT_SIZE'] + 'pt default_family'
+c.fonts.tabs.selected = environ['THEME_FONT_SIZE'] + 'pt default_family'
+c.fonts.tabs.unselected = environ['THEME_FONT_SIZE'] + 'pt default_family'
 
 # Hard minimum font size (in pixels).
 # Type: Int
