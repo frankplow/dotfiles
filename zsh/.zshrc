@@ -4,7 +4,7 @@ fpath=($HOME/.config/zsh/functions $fpath)
 autoload -U colors
 colors
 eval $(dircolors)
-PROMPT="%F{01}%32<...<%~%<< %F{12}%#%f "
+PROMPT=$'%{\033[38;5;1m%}%32<...<%~%<< %{\033[38;5;12m%}%#%f '
 # PROMPT="%n@%m: %1~ %# "
 
 # history settings
@@ -17,9 +17,9 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
+# # vi mode
+# bindkey -v
+# export KEYTIMEOUT=1
 
 # vi keys in tab complete
 bindkey -M menuselect 'h' vi-backward-char
@@ -50,11 +50,12 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # use beam shape cursor for each new prompt.
 
 # plugins
-plugins=(
+plugins+=(
     z
     zsh-syntax-highlighting
     colored-man-pages
     colour-godoc
+    zsh-vi-mode
 )
 for plugin in $plugins; do source "$HOME/.config/zsh/$plugin/$plugin.plugin.zsh"; done
 
@@ -66,3 +67,6 @@ alias v='vim'
 alias dmesg='dmesg -L=always | less -r'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
+alias less='less -r'
+
+export QSYS_ROOTDIR="/home/frank/downloads/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/21.1/quartus/sopc_builder/bin"

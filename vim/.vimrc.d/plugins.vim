@@ -7,6 +7,7 @@ call plug#begin("~/.config/vim/plugins")
     Plug 'tpope/vim-sleuth'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-dispatch'
+    Plug 'tpope/vim-fugitive'
     Plug 'lambdalisue/suda.vim'
     command! W w suda://%
     Plug '~/.config/vim/plugins/vim-meetmaker'
@@ -14,20 +15,27 @@ call plug#begin("~/.config/vim/plugins")
     " lsp
     Plug 'prabirshrestha/vim-lsp'
     let g:lsp_semantic_enabled=v:true
-    set tagfunc=lsp#tagfunc
+    let g:lsp_document_highlight_delay=100
+    let g:lsp_diagnostics_float_cursor=1
+    let g:lsp_diagnostics_float_delay=100
+    hi link lspReference MatchParen
+    autocmd User lsp_buffer_enabled setlocal tagfunc=lsp#tagfunc
     if (executable('clangd'))
         au User lsp_setup call lsp#register_server({
             \ 'name': 'clangd',
-            \ 'cmd': {server_info->['clangd']},
+            \ 'cmd': {server_info->[
+            \     'clangd',
+            \     '--query-driver', '/**/*'
+            \ ]},
             \ 'allowlist': ['c', 'cpp'],
             \ 'semantic_highlight': {
             \     'type': 'Type',
-            \     'class': 'Class',
+            \     'class': 'Identifier',
             \     'enum': 'Type',
             \     'interface': '',
             \     'struct': 'Type',
             \     'typeParameter': 'Type',
-            \     'parameter': 'Type',
+            \     'parameter': 'Identifier',
             \     'variable': 'Identifier',
             \     'property': '',
             \     'enumMember': '',
@@ -69,6 +77,22 @@ call plug#begin("~/.config/vim/plugins")
             \ },
             \ 'allowlist': ['vim']})
     endif
+    if executable('cmake-language-server')
+        au User lsp_setup call lsp#register_server({
+            \ 'name': 'cmake',
+            \ 'cmd': {server_info->['cmake-language-server']},
+            \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'build/'))},
+            \ 'initialization_options': {
+            \   'buildDirectory': 'build'
+            \ },
+            \ 'allowlist': ['cmake']})
+    endif
+    if (executable('rust-analyzer'))
+        au User lsp_setup call lsp#register_server({
+            \ 'name': 'rust-analyzer',
+            \ 'cmd': {server_info->['rust-analyzer']},
+            \ 'allowlist': ['rust']})
+    endif
     
     " autocompletion
     Plug 'prabirshrestha/asyncomplete.vim'
@@ -107,3 +131,5 @@ call plug#begin("~/.config/vim/plugins")
     Plug 'sqwishy/vim-sqf-syntax'
     Plug 'sevko/vim-nand2tetris-syntax'
 call plug#end()
+
+runtime! ftplugin/man.vim
