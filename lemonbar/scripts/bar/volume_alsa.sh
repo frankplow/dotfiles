@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 print_volume() {
-    VOL=$(amixer -D hw:PCH sget Master | grep Playback | tail -n 1 | cut -d'[' -f2 | tr -d ']%[:space:]')
-    MUTE=$(amixer -D hw:PCH sget Master | grep Playback | tail -n 1 | cut -d'[' -f4 | tr -d ']')
+    VOL=$(amixer -M sget Master | grep Playback | tail -n 1 | cut -d'[' -f2 | tr -d ']%[:space:]')
+    MUTE=$(amixer -M sget Master | grep Playback | tail -n 1 | cut -d'[' -f3 | tr -d ']')
 
     RET="G"
     if [ "$MUTE" == "off" ]; then
