@@ -17,9 +17,9 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 
-# # vi mode
-# bindkey -v
-# export KEYTIMEOUT=1
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
 
 # vi keys in tab complete
 bindkey -M menuselect 'h' vi-backward-char
@@ -52,10 +52,9 @@ preexec() { echo -ne '\e[5 q' ;} # use beam shape cursor for each new prompt.
 # plugins
 plugins+=(
     z
-    zsh-syntax-highlighting
     colored-man-pages
     colour-godoc
-    zsh-vi-mode
+    zsh-syntax-highlighting
 )
 for plugin in $plugins; do source "$HOME/.config/zsh/$plugin/$plugin.plugin.zsh"; done
 
@@ -68,5 +67,3 @@ alias dmesg='dmesg -L=always | less -r'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias less='less -r'
-
-export QSYS_ROOTDIR="/home/frank/downloads/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/21.1/quartus/sopc_builder/bin"
