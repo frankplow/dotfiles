@@ -2,6 +2,6 @@ theme/themes/active_theme
 
 qutebrowser/.config/qutebrowser/quickmarks
 
-rofi/.local/share/rofi/themes/adaptive.rasi
+rofi/.config/rofi/theme.rasi
 
 alacritty/.config/alacritty/alacritty.yml

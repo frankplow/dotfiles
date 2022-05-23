@@ -32,6 +32,7 @@ bspc rule -a "Zathura" state=tiled
 # set up monitor
 autorandr -c
 bspc monitor focused -d $(seq 1 $THEME_N_WINDOWS)
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # launch background programs
 [ -z $(pgrep lemonbar) ] && lemonbar.sh &

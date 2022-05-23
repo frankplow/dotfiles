@@ -7,6 +7,8 @@ call plug#begin("~/.config/vim/plugins")
     Plug 'tpope/vim-sleuth'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-dispatch'
+    nmap '<CR> :Start -wait=always<CR>
+    nmap '! :Start! -wait=always
     Plug 'tpope/vim-fugitive'
     Plug 'lambdalisue/suda.vim'
     command! W w suda://%

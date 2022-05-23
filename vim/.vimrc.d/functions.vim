@@ -28,3 +28,11 @@ function! Redir(cmd, rng, start, end)
     call setline(1, output)
 endfunction
 command! -nargs=1 -complete=command -bar -range Redir silent call Redir(<q-args>, <range>, <line1>, <line2>)
+
+" from https://gist.github.com/mattsacks/1544768
+function! Syn()
+  for id in synstack(line("."), col("."))
+    echo synIDattr(id, "name")
+  endfor
+endfunction
+command! -nargs=0 Syn call Syn()
