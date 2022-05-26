@@ -21,7 +21,14 @@ call plug#begin("~/.config/vim/plugins")
     let g:lsp_diagnostics_float_cursor=1
     let g:lsp_diagnostics_float_delay=100
     hi link lspReference MatchParen
-    autocmd User lsp_buffer_enabled setlocal tagfunc=lsp#tagfunc
+    function! s:on_lsp_buffer_enabled() abort
+        setlocal signcolumn=yes
+        if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+        nmap <buffer> gd <plug>(lsp-definition)
+        nmap <buffer> gD <plug>(lsp-declaration)
+        nmap <buffer> K <plug>(lsp-hover)
+    endfunction
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
     if (executable('clangd'))
         au User lsp_setup call lsp#register_server({
             \ 'name': 'clangd',
@@ -99,12 +106,9 @@ call plug#begin("~/.config/vim/plugins")
     " autocompletion
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
-    function! s:on_lsp_buffer_enabled() abort
-        inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-        inoremap <expr> <cr> pumvisible() ? asyncomplete#close_popup() . "\<cr>" : "\<cr>"
-    endfunction
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <cr> pumvisible() ? asyncomplete#close_popup() . "\<cr>" : "\<cr>"
 
     " tex
     Plug 'plasticboy/vim-markdown'
@@ -115,8 +119,8 @@ call plug#begin("~/.config/vim/plugins")
     Plug 'SirVer/ultisnips'
     let g:UltiSnipsSnippetDirectories=["~/.config/vim/UltiSnips"]
     let g:UltiSnipsEditSplit = "tabdo"
-    let g:UltiSnipsExpandTrigger = "<Tab>"
-    let g:UltiSnipsJumpForewardTrigger = "<Tab>"
+    let g:UltiSnipsExpandTrigger = "<C-Tab>"
+    let g:UltiSnipsJumpForewardTrigger = "<C-Tab>"
     let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 
     Plug 'preservim/vim-pencil'
