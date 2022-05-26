@@ -34,6 +34,8 @@ autorandr -c
 bspc monitor focused -d $(seq 1 $THEME_N_WINDOWS)
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+xsetroot -cursor_name left_ptr
+
 # launch background programs
 [ -z $(pgrep lemonbar) ] && lemonbar.sh &
 feh --bg-scale $THEME_WALLPAPER

@@ -28,6 +28,9 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
+# backward search
+bindkey -v '^R' history-incremental-pattern-search-backward
+
 # change cursor shape for different vi modes.
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
@@ -62,7 +65,6 @@ for plugin in $plugins; do source "$HOME/.config/zsh/$plugin/$plugin.plugin.zsh"
 setopt COMPLETE_ALIASES
 alias ls='ls --color=auto'
 alias pacman='pacman --color=auto'
-alias v='vim'
 alias dmesg='dmesg -L=always | less -r'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
