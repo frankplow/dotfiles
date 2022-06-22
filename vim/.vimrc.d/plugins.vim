@@ -13,6 +13,9 @@ call plug#begin("~/.config/vim/plugins")
     Plug 'lambdalisue/suda.vim'
     command! W w suda://%
     Plug '~/.config/vim/plugins/vim-meetmaker'
+    Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf.vim'
+    Plug 'christoomey/vim-tmux-navigator'
 
     " lsp
     Plug 'prabirshrestha/vim-lsp'
