@@ -20,10 +20,13 @@ call plug#begin("~/.config/vim/plugins")
     " lsp
     Plug 'prabirshrestha/vim-lsp'
     let g:lsp_semantic_enabled=v:true
+    let g:lsp_semantic_delay=500
     let g:lsp_document_highlight_delay=100
     let g:lsp_diagnostics_float_cursor=1
     let g:lsp_diagnostics_float_delay=100
     hi link lspReference MatchParen
+    hi link lspWarningHighlight Warning
+    hi link lspWarningText WarningMsg
     function! s:on_lsp_buffer_enabled() abort
         setlocal signcolumn=yes
         if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
@@ -40,32 +43,10 @@ call plug#begin("~/.config/vim/plugins")
             \     '--query-driver', '/**/*'
             \ ]},
             \ 'allowlist': ['c', 'cpp'],
-            \ 'semantic_highlight': {
-            \     'type': 'Type',
-            \     'class': 'Identifier',
-            \     'enum': 'Type',
-            \     'interface': '',
-            \     'struct': 'Type',
-            \     'typeParameter': 'Type',
-            \     'parameter': 'Identifier',
-            \     'variable': 'Identifier',
-            \     'property': '',
-            \     'enumMember': '',
-            \     'event': '',
-            \     'function': 'Function',
-            \     'method': 'Function',
-            \     'macro': 'Macro',
-            \     'keyword': 'Keyword',
-            \     'modifier': 'Type',
-            \     'comment': 'Comment',
-            \     'string': 'String',
-            \     'number': 'Number',
-            \     'regexp': 'String',
-            \     'operator': 'Operator',
-            \     'namespace': 'Special'
-            \ }
             \ })
     endif
+    hi link LspSemanticNamespace Include
+    hi link LspSemanticConcept Macro
     if executable('texlab')
        au User lsp_setup call lsp#register_server({
           \ 'name': 'texlab',

@@ -24,6 +24,7 @@ set fillchars+=fold:―
 set ignorecase
 set smartcase
 set hlsearch
+nnoremap <silent> <ESC> :noh<CR>
 
 " wildmenu
 set wildmenu
@@ -49,3 +50,7 @@ endtry
 " filetype-specfic
 filetype plugin on
 let g:tex_flavor='latex'
+
+" splits
+set splitbelow
+set splitright
