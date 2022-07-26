@@ -15,7 +15,8 @@ call plug#begin("~/.config/vim/plugins")
     Plug '~/.config/vim/plugins/vim-meetmaker'
     Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
-    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'heewa/vim-tmux-navigator', { 'branch': 'add-no-wrap-option' }
+    let g:tmux_navigator_no_wrap = 1
 
     " lsp
     Plug 'prabirshrestha/vim-lsp'
