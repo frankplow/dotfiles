@@ -40,3 +40,4 @@ xsetroot -cursor_name left_ptr
 [ -z $(pgrep lemonbar) ] && lemonbar.sh &
 feh --bg-scale $THEME_WALLPAPER
 [ -z $(pgrep unclutter) ] && unclutter &
+[ -z $(pgrep redshift) ] && redshift &
