@@ -48,6 +48,8 @@ call plug#begin("~/.config/vim/plugins")
     endif
     hi link LspSemanticNamespace Include
     hi link LspSemanticConcept Macro
+    hi link LspSemanticMacro Macro
+    hi link LspSemanticMethod Function
     if executable('texlab')
        au User lsp_setup call lsp#register_server({
           \ 'name': 'texlab',
@@ -87,6 +89,8 @@ call plug#begin("~/.config/vim/plugins")
             \ 'cmd': {server_info->['rust-analyzer']},
             \ 'allowlist': ['rust']})
     endif
+    hi link LspSemanticBuiltinType Type
+    hi link LspSemanticGeneric Type
     
     " autocompletion
     Plug 'prabirshrestha/asyncomplete.vim'
