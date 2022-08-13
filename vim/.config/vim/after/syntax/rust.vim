@@ -1,8 +1,14 @@
 " custom keywords
 syn match myTodo contained "\v\@\w+"
-" V needed due to: https://github.com/vim/vim/issues/1265 V
-syntax cluster rustCommentLine add=myTodo 
-syntax cluster rustCommentBlock add=myTodo 
 hi def link myTodo Todo
+syn region rustCommentLine start="//" end="$" contains=rustTodo,myTodo,@Spell
+syn region rustCommentLineDoc start="//\%(//\@!\|!\)" end="$" contains=rustTodo,myTodo,@Spell
+syn region rustCommentLineDocError start="//\%(//\@!\|!\)" end="$" contains=rustTodo,myTodo,@Spell contained
+syn region rustCommentBlock matchgroup=rustCommentBlock start="/\*\%(!\|\*[*/]\@!\)\@!" end="\*/" contains=rustTodo,myTodo,rustCommentBlockNest,@Spell
+syn region rustCommentBlockDoc matchgroup=rustCommentBlockDoc start="/\*\%(!\|\*[*/]\@!\)" end="\*/" contains=rustTodo,myTodo,rustCommentBlockDocNest,rustCommentBlockDocRustCode,@Spell
+syn region rustCommentBlockDocError matchgroup=rustCommentBlockDocError start="/\*\%(!\|\*[*/]\@!\)" end="\*/" contains=rustTodo,myTodo,rustCommentBlockDocNestError,@Spell contained
+syn region rustCommentBlockNest matchgroup=rustCommentBlock start="/\*" end="\*/" contains=rustTodo,myTodo,rustCommentBlockNest,@Spell contained transparent
+syn region rustCommentBlockDocNest matchgroup=rustCommentBlockDoc start="/\*" end="\*/" contains=rustTodo,myTodo,rustCommentBlockDocNest,@Spell contained transparent
+syn region rustCommentBlockDocNestError matchgroup=rustCommentBlockDocError start="/\*" end="\*/" contains=rustTodo,myTodo,rustCommentBlockDocNestError,@Spell contained transparent
 
 call matchadd('ColorColumn', '\%>80v', 1)

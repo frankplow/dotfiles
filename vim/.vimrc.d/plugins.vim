@@ -17,9 +17,12 @@ call plug#begin("~/.config/vim/plugins")
     Plug 'junegunn/fzf.vim'
     Plug 'heewa/vim-tmux-navigator', { 'branch': 'add-no-wrap-option' }
     let g:tmux_navigator_no_wrap = 1
+    Plug 'rust-lang/rust.vim'
+    let g:cargo_makeprg_params='build'
 
     " lsp
     Plug 'prabirshrestha/vim-lsp'
+    nnoremap <silent> <TAB> :LspHover<CR>
     let g:lsp_semantic_enabled=v:true
     let g:lsp_semantic_delay=500
     let g:lsp_document_highlight_delay=100
