@@ -24,7 +24,6 @@ set fillchars+=fold:―
 set ignorecase
 set smartcase
 set hlsearch
-nnoremap <silent> <ESC> :noh<CR>
 
 " wildmenu
 set wildmenu
@@ -54,3 +53,5 @@ let g:tex_flavor='latex'
 " splits
 set splitbelow
 set splitright
+
+nnoremap <silent> <ESC> :noh<CR>:call popup_clear()<CR>

@@ -15,6 +15,8 @@ call plug#begin("~/.config/vim/plugins")
     Plug '~/.config/vim/plugins/vim-meetmaker'
     Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
+    nmap g/ :call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- \"\"", 1, fzf#vim#with_preview(), 0)<CR>
+    nmap g* :call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- \"<C-R><C-W>\"", 1, fzf#vim#with_preview(), 0)<CR>
     Plug 'heewa/vim-tmux-navigator', { 'branch': 'add-no-wrap-option' }
     let g:tmux_navigator_no_wrap = 1
     Plug 'rust-lang/rust.vim'
@@ -22,7 +24,7 @@ call plug#begin("~/.config/vim/plugins")
 
     " lsp
     Plug 'prabirshrestha/vim-lsp'
-    nnoremap <silent> <TAB> :LspHover<CR>
+    nnoremap <silent> <Space> :call popup_clear()<CR>:LspHover<CR>
     let g:lsp_semantic_enabled=v:true
     let g:lsp_semantic_delay=500
     let g:lsp_document_highlight_delay=100
