@@ -1,9 +1,10 @@
-vim.cmd [[packadd packer.nvim]]
-
-local compile_path = require('packer/util').join_paths(
-    vim.fn.stdpath('config'),
-    'packer_compiled.vim'
-)
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local compile_path = vim.fn.stdpath('config')..'/packer_compiled.vim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  vim.cmd [[packadd packer.nvim]]
+end
 
 require('packer').startup({
     function(use)
@@ -61,6 +62,10 @@ require('packer').startup({
         use {'sqwishy/vim-sqf-syntax', ft = {'sqf'}}
 
         use {'sevko/vim-nand2tetris-syntax', ft = {'hdl'}}
+
+        if packer_bootstrap then
+          require('packer').sync()
+        end
    end,
     config = {compile_path = compile_path}
 })
