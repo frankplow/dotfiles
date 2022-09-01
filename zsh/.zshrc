@@ -54,7 +54,7 @@ preexec() { echo -ne '\e[5 q' ;} # use beam shape cursor for each new prompt.
 
 # plugins
 plugins+=(
-    z
+    zsh-z
     colored-man-pages
     colour-godoc
     zsh-syntax-highlighting

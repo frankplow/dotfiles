@@ -19,3 +19,6 @@
 [submodule "zsh/.config/zsh/zsh-vi-mode"]
 	path = zsh/.config/zsh/zsh-vi-mode
 	url = https://github.com/jeffreytse/zsh-vi-mode
+[submodule "zsh/.config/zsh/zsh-z"]
+	path = zsh/.config/zsh/zsh-z
+	url = https://github.com/agkozak/zsh-z
