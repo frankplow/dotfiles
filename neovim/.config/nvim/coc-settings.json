@@ -1,0 +1,9 @@
+{
+    "semanticTokens": {
+        "filetypes": ["*"]
+    },
+    "rust-analyzer": {
+        "server.path": "rust-analyzer",
+        "inlayHints.enable": false
+    }
+}

@@ -60,13 +60,16 @@ hi DiffText                 cterm=bold      ctermfg=NONE    ctermbg=NONE
 
 " variable types
 hi Constant                 cterm=NONE      ctermfg=11      ctermbg=NONE
-hi String                   cterm=NONE      ctermfg=10      ctermbg=NONE
-hi StringDelimiter          cterm=NONE      ctermfg=10      ctermbg=NONE
-hi Character                cterm=NONE      ctermfg=10      ctermbg=NONE
-hi Number                   cterm=NONE      ctermfg=11      ctermbg=NONE
-hi Boolean                  cterm=NONE      ctermfg=11      ctermbg=NONE
-hi Float                    cterm=NONE      ctermfg=11      ctermbg=NONE
 hi Identifier               cterm=NONE      ctermfg=9       ctermbg=NONE
+
+" literals
+hi Number                   cterm=NONE      ctermfg=10      ctermbg=NONE
+hi link Float Number
+hi link Boolean Number
+hi link Char Number
+hi link SpecialChar Number
+hi link String Number
+hi link StringDelimiter String
 
 " language constructs
 hi Function                 cterm=NONE      ctermfg=12      ctermbg=NONE
@@ -83,12 +86,14 @@ hi Tag                      cterm=NONE      ctermfg=9       ctermbg=NONE
 hi Delimiter                cterm=NONE      ctermfg=13      ctermbg=NONE
 hi SpecialComment           cterm=NONE      ctermfg=14      ctermbg=NONE
 hi Debug                    cterm=NONE      ctermfg=9       ctermbg=NONE
+hi link Decorator Macro
+hi Interface                cterm=NONE      ctermfg=14      ctermbg=NONE
 
 " c-likes
 hi PreProc                  cterm=NONE      ctermfg=11      ctermbg=NONE
 hi Include                  cterm=NONE      ctermfg=12      ctermbg=NONE
 hi Define                   cterm=NONE      ctermfg=14      ctermbg=NONE
-hi Macro                    cterm=NONE      ctermfg=9       ctermbg=NONE
+hi Macro                    cterm=NONE      ctermfg=14      ctermbg=NONE
 hi PreCondit                cterm=NONE      ctermfg=13      ctermbg=NONE
 hi Type                     cterm=NONE      ctermfg=11      ctermbg=NONE
 hi StorageClass             cterm=NONE      ctermfg=14      ctermbg=NONE
@@ -101,3 +106,69 @@ hi texEmphStyle             cterm=bold
 " c-specific
 hi link cppModifier cStorageClass
 hi link cppCast Function
+
+" coc
+if IsPluginInstalled('coc.nvim')
+  hi link CocHighlightText MatchParen
+
+  " semantic tokens standard set
+  hi link CocSemNamespace Include
+  hi link CocSemType Type
+  hi link CocSemClass Type
+  hi link CocSemEnum Type
+  hi link CocSemInterface Interface
+  hi link CocSemStruct Type
+  hi link CocSemTypeParameter Type
+  hi link CocSemParameter Identifier
+  hi link CocSemVariable Identifier
+  hi link CocSemProperty Identifier
+  hi link CocSemEnumMember Constant
+  hi link CocSemEvent Keyword
+  hi link CocSemFunction Function
+  hi link CocSemMethod Function
+  hi link CocSemMacro Macro
+  hi link CocSemKeyword Keyword
+  hi link CocSemModifier StorageClass
+  hi link CocSemComment Comment
+  hi link CocSemString String
+  hi link CocSemNumber Number
+  hi link CocSemRegexp String
+  hi link CocSemOperator Operator
+  hi link CocSemDecorator Decorator
+
+  " semantic tokens rust-analyzer
+  hi link CocSemAngle CocSemPunctuation
+  hi link CocSemArithmetic CocSemOperator
+  hi link CocSemAttribute CocSemDecorator
+  hi link CocSemAttributeBracket CocSemDecorator
+  hi link CocSemBitwise CocSemOperator
+  hi link CocSemBoolean Boolean
+  hi link CocSemBrace CocSemPunctuation
+  hi link CocSemBracket CocSemPunctuation
+  hi link CocSemBuiltinAttribute CocSemAttribute
+  hi link CocSemBuiltinType CocSemType
+  hi link CocSemCharacter CocSemString
+  hi link CocSemColon CocSemPunctuation
+  hi link CocSemComma CocSemPunctuation
+  hi link CocSemComparison CocSemOperator
+  hi link CocSemConstParameter CocSemParameter
+  hi link CocSemDerive CocSemAttribute
+  hi link CocSemDeriveHelper CocSemAttribute
+  hi link CocSemDot CocSemPunctuation
+  hi link CocSemEscapeSequence CocSemString
+  hi link CocSemFormatSpecifier CocSemString
+  hi link CocSemGeneric CocSemUnknown
+  hi link CocSemLabel CocSemMacro
+  hi link CocSemLifetime CocSemTypeParameter
+  hi link CocSemLogical CocSemOperator
+  hi link CocSemMacroBang CocSemMacro
+  hi link CocSemParenthesis CocSemPunctuation
+  hi clear CocSemPunctuation
+  hi link CocSemSelfKeyword CocSemParameter
+  hi link CocSemSelfTypeKeyword CocSemType
+  hi link CocSemSemicolon CocSemPunctuation
+  hi link CocSemTypeAlias CocSemType
+  hi link CocSemToolModule CocSemNamespace
+  hi link CocSemUnion CocSemStruct
+  hi link CocSemUnresolvedReference Warning
+endif
