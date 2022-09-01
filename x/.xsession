@@ -5,8 +5,7 @@ xrdb -merge ~/.Xresources
 # dbus-update-activation-environment --systemd --all
 
 # keyboard setup
-setxkbmap -model "Keychron K2" gb
-setxkbmap -option caps:super
+caps_to_super.sh &
 
 # sleep
 xset s off

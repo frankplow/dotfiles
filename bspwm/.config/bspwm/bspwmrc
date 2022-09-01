@@ -41,3 +41,4 @@ xsetroot -cursor_name left_ptr
 feh --bg-scale $THEME_WALLPAPER
 [ -z $(pgrep unclutter) ] && unclutter &
 [ -z $(pgrep redshift) ] && redshift &
+upower-notifications.sh &
