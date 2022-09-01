@@ -10,4 +10,7 @@ vim.api.nvim_set_option('wildmode', 'list:longest')
 vim.api.nvim_set_option('splitbelow', true)
 vim.api.nvim_set_option('splitright', true)
 
+-- mouse mode
+vim.api.nvim_set_option('mouse', 'a')
+
 -- vim:et:ts=4:sw=4

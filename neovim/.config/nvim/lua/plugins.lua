@@ -55,8 +55,11 @@ require('packer').startup({
             'rust-lang/rust.vim',
             config = function()
                 vim.api.nvim_set_var('cargo_makeprg_params', 'build')
+                vim.api.nvim_set_var('cargo_shell_command_runner', 'Start')
+                vim.api.nvim_set_var('rustfmt_autosave', true)
             end,
-            ft = {'rust', 'toml'}
+            ft = {'rust', 'toml'},
+            after = 'vim-dispatch'
         }
 
         use {'sqwishy/vim-sqf-syntax', ft = {'sqf'}}
