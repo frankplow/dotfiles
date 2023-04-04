@@ -38,7 +38,8 @@ require('packer').startup({
             'neoclide/coc.nvim', branch = 'release',
             config = function()
                 vim.fn['coc#util#install_extension']({'coc-clangd',
-                                                      'coc-rust-analyzer'})
+                                                      'coc-rust-analyzer',
+                                                      'coc-pyright'})
 
                 vim.api.nvim_create_autocmd('CursorHold', {
                       callback = function()
@@ -60,6 +61,20 @@ require('packer').startup({
             end,
             ft = {'rust', 'toml'},
             after = 'vim-dispatch'
+        }
+
+        use {
+            'psf/black', branch = 'stable',
+            config = function()
+                local groupid = vim.api.nvim_create_augroup('Format', {clear = false})
+                vim.api.nvim_create_autocmd('BufWritePre', {
+                    pattern = '*.py',
+                    callback = function()
+                        vim.fn['black#Black']()
+                    end,
+                    group = groupid
+                })
+            end
         }
 
         use {'sqwishy/vim-sqf-syntax', ft = {'sqf'}}
