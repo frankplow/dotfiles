@@ -83,4 +83,66 @@ vim.api.nvim_create_user_command(
     {nargs = 1, complete = command, bar = true, range = true}
 )
 
+vim.cmd([[
+    let g:clang_format_auto = v:false
+    if executable('brew')
+        call system('test -f $(brew --prefix)/Cellar/clang-format/*/share/clang/clang-format.py')
+        if v:shell_error ==# 0
+            let g:clang_format_plugin_path = '/opt/homebrew/Cellar/clang-format/*/share/clang/clang-format.py'
+            let g:clang_format_auto = v:true
+        else
+            call system('test -f $(brew --prefix)/Cellar/llvm/*/share/clang/clang-format.py')
+            if v:shell_error ==# 1
+                let g:clang_format_plugin_path = '/opt/homebrew/Cellar/llvm/*/share/clang/clang-format.py'
+                let g:clang_format_auto = v:true
+            endif
+        endif
+    else
+        call system('test -f /usr/share/clang/clang-format.py')
+        if v:shell_error ==# 0
+            let g:clang_format_plugin_path = '/usr/share/clang/clang-format.py'
+            let g:clang_format_auto = v:true
+        endif
+    fi
+]])
+
+vim.cmd([[
+    if has('python')
+        function ClangFormat() range
+            let l:lines=a:firstline .. ":" .. a:lastline
+            execute 'pyf' g:clang_format_plugin_path
+        endfunction
+    elseif has('python3')
+        function ClangFormat() range
+            let l:lines=a:firstline .. ":" .. a:lastline
+            execute 'py3f' g:clang_format_plugin_path
+        endfunction
+    endif
+]])
+
+vim.api.nvim_create_user_command(
+    'ClangFormat',
+    [[
+        if <bang>0 || !empty(findfile('.clang-format', expand('%:p:h') . ';'))
+            <line1>,<line2>call ClangFormat()
+        endif
+    ]],
+    {nargs = 0, bang = true, range='%'}
+)
+
+vim.api.nvim_create_autocmd(
+    {'BufWritePre'},
+    {
+        pattern = {'*.c', '*.cpp', '*.h', '*.hpp'},
+        command =
+        [[
+            if g:clang_format_auto && &modified && !empty(findfile('.clang-format', expand('%:p:h') . ';'))
+                let winview=winsaveview()
+                %call ClangFormat()
+                call winrestview(winview)
+            endif
+        ]]
+    }
+)
+
 -- vim:et:ts=4:sw=4

@@ -22,3 +22,6 @@
 [submodule "zsh/.config/zsh/zsh-z"]
 	path = zsh/.config/zsh/zsh-z
 	url = https://github.com/agkozak/zsh-z
+[submodule "tmux/.config/tmux/plugins/tmux-current-pane-hostname"]
+	path = tmux/.config/tmux/plugins/tmux-current-pane-hostname
+	url = https://github.com/soyuka/tmux-current-pane-hostname

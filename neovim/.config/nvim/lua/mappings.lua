@@ -41,6 +41,12 @@ if packer_plugins["fzf.vim"] then
         ':call fzf#vim#grep("' .. rg_cmd .. '\\"<C-R><C-W>\\"", 1, fzf#vim#with_preview(), 0)<CR>',
         {noremap = true}
     )
+    vim.api.nvim_set_keymap(
+        'n',
+        'g<CR>',
+        ':Buffers<CR>',
+        {noremap = true}
+    )
 end
 
 if packer_plugins["coc.nvim"] then
@@ -87,6 +93,18 @@ if packer_plugins["coc.nvim"] then
         'n',
         'gr',
         '<Plug>(coc-references)',
+        {silent = true}
+    )
+    vim.api.nvim_set_keymap(
+        'n',
+        ']g',
+        '<Plug>(coc-diagnostic-next)',
+        {silent = true}
+    )
+    vim.api.nvim_set_keymap(
+        'n',
+        '[g',
+        '<Plug>(coc-diagnostic-prev)',
         {silent = true}
     )
 end
