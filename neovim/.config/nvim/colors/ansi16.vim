@@ -107,6 +107,10 @@ hi texEmphStyle             cterm=bold
 hi link cppModifier cStorageClass
 hi link cppCast Function
 
+" haskell-specific
+hi link ConId Type
+hi link VarId Identifier
+
 " coc
 if IsPluginInstalled('coc.nvim')
   hi link CocHighlightText MatchParen
