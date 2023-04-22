@@ -33,19 +33,19 @@ if packer_plugins["fzf.vim"] then
         'n',
         'g/',
         ':call fzf#vim#grep("' .. rg_cmd .. '\\"\\"", 1, fzf#vim#with_preview(), 0)<CR>',
-        {noremap = true}
+        {silent = true, noremap = true}
     )
     vim.api.nvim_set_keymap(
         'n',
         'g*',
         ':call fzf#vim#grep("' .. rg_cmd .. '\\"<C-R><C-W>\\"", 1, fzf#vim#with_preview(), 0)<CR>',
-        {noremap = true}
+        {silent = true, noremap = true}
     )
     vim.api.nvim_set_keymap(
         'n',
         'g<CR>',
         ':Buffers<CR>',
-        {noremap = true}
+        {silent = true, noremap = true}
     )
 end
 
