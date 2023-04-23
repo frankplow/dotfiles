@@ -28,8 +28,7 @@ call plug#begin()
 
     Plug 'junegunn/fzf.vim'
 
-    Plug 'heewa/vim-tmux-navigator', { 'branch': 'add-no-wrap-option' }
-    let g:tmux_navigator_no_wrap=v:true
+    Plug 'christoomey/vim-tmux-navigator'
 
     Plug 'neoclide/coc.nvim', { 'branch': 'release' }
     call coc#util#install_extension(['coc-clangd'])
