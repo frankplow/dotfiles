@@ -174,3 +174,7 @@ hi link CocSemTypeAlias CocSemType
 hi link CocSemToolModule CocSemNamespace
 hi link CocSemUnion CocSemStruct
 hi link CocSemUnresolvedReference Warning
+
+hi GitGutterAdd             cterm=NONE      ctermfg=2       ctermbg=NONE
+hi GitGutterChange          cterm=NONE      ctermfg=4       ctermbg=NONE
+hi GitGutterDelete          cterm=NONE      ctermfg=1       ctermbg=NONE

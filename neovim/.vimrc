@@ -18,6 +18,10 @@ call plug#begin()
 
     Plug 'tpope/vim-fugitive'
 
+    Plug 'airblade/vim-gitgutter'
+    let g:gitgutter_sign_removed_above_and_below='='
+    let g:gitgutter_sign_modified_removed='≃'
+
     Plug 'lambdalisue/suda.vim'
 
     Plug 'junegunn/fzf'
@@ -111,7 +115,8 @@ set number
 set relativenumber
 set cursorline
 set cursorlineopt=number
-set numberwidth=6
+set numberwidth=5
+set signcolumn=yes:1
 
 " Characters
 let &listchars='eol:¶'

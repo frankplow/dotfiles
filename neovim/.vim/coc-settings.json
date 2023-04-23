@@ -6,6 +6,11 @@
     "rust-analyzer": {
         "server.path": "rust-analyzer"
     },
+    "diagnostic": {
+        "errorSign": ">",
+        "hintSign": ">",
+        "infoSign": ">"
+    },
     "languageserver": {
         "haskell": {
             "command": "haskell-language-server-wrapper",
