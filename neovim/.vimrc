@@ -140,7 +140,9 @@ nnoremap K :ShowDocumentation<CR>
 nnoremap '<CR> :Start! -wait=always<CR>
 nnoremap '! :Start! -wait=always
 
-nnoremap g<CR> :History<CR>
+nnoremap <silent> g<CR> :History<CR>
+nnoremap <silent> g/ :Rg<CR>
+nnoremap <silent> g* :Rg <C-R><C-W><CR>
 
 inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <silent><expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<Tab>"
@@ -148,6 +150,7 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gD <Plug>(coc-declaration)
 nnoremap <silent> gy <Plug>(coc-type-definition)
 nnoremap <silent> gi <Plug>(coc-implementation)
 nnoremap <silent> gr <Plug>(coc-references)
