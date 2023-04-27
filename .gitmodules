@@ -25,3 +25,6 @@
 [submodule "tmux/.config/tmux/plugins/tmux-current-pane-hostname"]
 	path = tmux/.config/tmux/plugins/tmux-current-pane-hostname
 	url = https://github.com/soyuka/tmux-current-pane-hostname
+[submodule "tmux/.config/tmux/plugins/tmux-yank"]
+	path = tmux/.config/tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank
