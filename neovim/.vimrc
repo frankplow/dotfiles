@@ -36,6 +36,8 @@ call plug#begin()
     call coc#util#install_extension(['coc-pyright'])
     au CursorHold * call CocActionAsync('highlight')
 
+    Plug 'antoinemadec/coc-fzf'
+
     Plug 'rust-lang/rust.vim'
     let g:cargo_makeprg_params='build'
     let g:cargo_shell_command_runner='Start'
