@@ -176,6 +176,9 @@ set splitright
 
 " Mouse mode
 set mouse=a
+
+" Build with multiple threads
+let &makeprg='make -j'
 " }}}
 
 " vim:et:ts=4:sw=4:fdm=marker
