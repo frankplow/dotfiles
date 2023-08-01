@@ -135,6 +135,8 @@ autocmd VimEnter * silent !echo -ne "\e[2 q]"
 " }}}
 
 " {{{ Mappings
+let g:mapleader=','
+
 nnoremap <silent> <ESC> :noh<CR>
 
 nnoremap K :ShowDocumentation<CR>
