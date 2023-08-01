@@ -64,6 +64,8 @@ function! ShowDocumentation()
     endif
 endfunction
 
+command -nargs=0 ShowDocumentation call ShowDocumentation()
+
 " https://gist.github.com/mattsacks/1544768
 function! Syn()
     for id in synstack(line("."), col("."))
