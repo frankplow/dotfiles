@@ -179,6 +179,9 @@ set splitright
 " Mouse mode
 set mouse=a
 
+" Updatetime
+set updatetime=100
+
 " Build with multiple threads
 let &makeprg='make -j'
 " }}}
