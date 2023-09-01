@@ -4,9 +4,6 @@
 xrdb -merge ~/.Xresources
 # dbus-update-activation-environment --systemd --all
 
-# keyboard setup
-caps_to_super.sh &
-
 # sleep
 xset s off
 xset +dpms
