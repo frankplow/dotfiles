@@ -20,7 +20,7 @@ print_volume() {
 }
 
 print_volume
-stdbuf -oL alsactl monitor |
+stdbuf -oL amixer events |
     while read -r line; do
         print_volume
     done
