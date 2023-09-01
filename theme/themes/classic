@@ -3,9 +3,9 @@
 export THEME_N_WINDOWS=10
 
 # fonts
-export THEME_FONT_FAMILY="IBM Plex Mono"
+export THEME_FONT_FAMILY="SF Mono"
 export THEME_FONT_SIZE=9
-export THEME_FONT_TEXT="IBM Plex Mono"
+export THEME_FONT_TEXT="SF Mono"
 export THEME_FONT_SYMBOLS="FontAwesome"
 export THEME_FONT_UNICODE="IBM Plex Serif"
 
