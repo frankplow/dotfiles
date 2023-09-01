@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # THEME="$HOME/themes/"$1".theme"
-DOTFILES="$HOME/.dot"
+DOTFILES="$HOME/.dotfiles"
 # ARG=""
 # for line in $(cat $THEME)
 # do
@@ -19,7 +19,7 @@ cp $THEME "$HOME/themes/active_theme"
 
 for template in $(find $DOTFILES -name "*.envs"); do
     #TODO: use the envvar in the sed argument rather than hard-coding it
-    install_path="$HOME/$(echo $template | sed -r 's/^\/home\/frank\/\.dot\/\w+\/(.*)\.envs$/\1/')"
+    install_path="$HOME/$(echo $template | sed -r 's/^\/home\/frank\/\.dotfiles\/\w+\/(.*)\.envs$/\1/')"
     envsubst < $template > $install_path
 done
 
