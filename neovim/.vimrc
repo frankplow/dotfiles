@@ -18,6 +18,10 @@ call plug#begin()
 
     Plug 'tpope/vim-fugitive'
 
+    Plug 'tpope/vim-repeat'
+
+    Plug 'tpope/vim-unimpaired'
+
     Plug 'airblade/vim-gitgutter'
     let g:gitgutter_sign_removed_above_and_below='='
     let g:gitgutter_sign_modified_removed='≃'
