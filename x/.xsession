@@ -5,11 +5,5 @@ xrdb -merge ~/.Xresources
 # dbus-update-activation-environment --systemd --all
 
 # sleep
-xset s off
-xset +dpms
-xset dpms 0 0 0
-# xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock &
-xidlehook --not-when-fullscreen \
-    --timer 300 'xsecurelock' '' \
-    --timer 120 'xset force standby' '' \
-    --timer 1380 'systemctl suspend' '' &
+xset s 300 5
+xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock &
