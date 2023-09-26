@@ -13,15 +13,6 @@
 [submodule "vim/.config/vim/autoload"]
 	path = vim/.config/vim/autoload
 	url = https://github.com/junegunn/vim-plug
-[submodule "zsh/.config/zsh/zsh-syntax-highlighting"]
-	path = zsh/.config/zsh/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting
-[submodule "zsh/.config/zsh/zsh-vi-mode"]
-	path = zsh/.config/zsh/zsh-vi-mode
-	url = https://github.com/jeffreytse/zsh-vi-mode
-[submodule "zsh/.config/zsh/zsh-z"]
-	path = zsh/.config/zsh/zsh-z
-	url = https://github.com/agkozak/zsh-z
 [submodule "tmux/.config/tmux/plugins/tmux-current-pane-hostname"]
 	path = tmux/.config/tmux/plugins/tmux-current-pane-hostname
 	url = https://github.com/soyuka/tmux-current-pane-hostname
