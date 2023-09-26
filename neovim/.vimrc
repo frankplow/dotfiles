@@ -51,6 +51,8 @@ call plug#begin()
     augroup Format
         au BufWritePre *.py call black#Black()
     augroup END
+
+    Plug 'github/copilot.vim'
 call plug#end()
 " }}}
 
