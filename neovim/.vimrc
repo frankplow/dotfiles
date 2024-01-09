@@ -47,12 +47,8 @@ call plug#begin()
     Plug 'rust-lang/rust.vim'
     let g:cargo_makeprg_params='build'
     let g:cargo_shell_command_runner='Start'
-    let g:rustfmt_autosave=v:true
 
     Plug 'psf/black', { 'branch': 'stable' }
-    augroup Format
-        au BufWritePre *.py call black#Black()
-    augroup END
 
     Plug 'github/copilot.vim'
 call plug#end()
@@ -79,6 +75,23 @@ EOF
 " }}}
 
 " {{{ Commands
+function! AutoFormat(enable)
+    let g:rustfmt_autosave=a:enable
+
+    if a:enable
+        augroup Format
+            au BufWritePre *.py call black#Black()
+        augroup END
+    else
+        autocmd! Format *
+    endif
+endfunction
+
+call AutoFormat(v:true)
+
+command -nargs=0 EnableAutoFormat call AutoFormat(v:true)
+command -nargs=0 DisableAutoFormat call AutoFormat(v:false)
+
 function! ShowDocumentation()
     let l:word = expand('<cword>')
     if CocAction('hasProvider', 'hover')
