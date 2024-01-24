@@ -18,13 +18,6 @@ if status is-interactive
     # Remove welcome message
     set -U fish_greeting
 
-    # Enable vi mode
-    set -g fish_cursor_insert line
-    set -g fish_cursor_default block
-    set -g fish_cursor_visual underscore
-    fish_vi_key_bindings
-    fish_vi_cursor
-
     # Set colors
     if not set -q CLICOLOR
         set -x CLICOLOR 1
