@@ -1,7 +1,14 @@
 {
     "inlayHint.enable": false,
     "semanticTokens": {
+        "enable": true,
         "filetypes": ["*"]
+    },
+    "clangd": {
+        "compilationDatabaseCandidates": [
+            "${workspaceFolder}",
+            "${workspaceFolder}/build"
+        ]
     },
     "rust-analyzer": {
         "server.path": "rust-analyzer"
