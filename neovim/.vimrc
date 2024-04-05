@@ -49,21 +49,25 @@ call plug#begin()
     Plug 'github/copilot.vim'
 
     Plug 'neovim/nvim-lspconfig'
+
+    Plug 'gfanto/fzf-lsp.nvim'
+
+    Plug 'nvim-lua/plenary.nvim'
 call plug#end()
 
 " LSP
 lua << EOF
 vim.api.nvim_create_autocmd({"LspAttach"}, {
   callback = function(args)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
+    vim.keymap.set('n', 'gd', require'fzf_lsp'.definition_call,
                    { buffer = args.buf, noremap = true })
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,
+    vim.keymap.set('n', 'gD', require'fzf_lsp'.declaration_call,
                    { buffer = args.buf, noremap = true })
-    vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition,
+    vim.keymap.set('n', 'gy', require'fzf_lsp'.type_definition_call,
                    { buffer = args.buf, noremap = true })
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
+    vim.keymap.set('n', 'gi', require'fzf_lsp'.implementation_call,
                    { buffer = args.buf, noremap = true })
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references,
+    vim.keymap.set('n', 'gr', require'fzf_lsp'.references_call,
                    { buffer = args.buf, noremap = true })
     vim.keymap.set('n', ']g', vim.diagnostic.goto_next,
                    { buffer = args.buf, noremap = true })
@@ -86,7 +90,7 @@ EOF
 " Treesitter
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "python" },
+  ensure_installed = { "c", "rust", "python", "vim" },
   sync_install = false,
   auto_install = false,
   highlight = {
