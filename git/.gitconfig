@@ -1,0 +1,22 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Frank Plowman
+	email = post@frankplowman.com
+	signingKey = EE35607A4B0031A4
+[init]
+	defaultBranch = main
+[sendemail]
+	from = Frank Plowman <post@frankplowman.com>
+	smtpserver = <SECRET>
+	smtpuser = <SECRET>
+	smtppassword = <SECRET>
+	smtpencryption = ssl
+	smtpserverport = 465
+[commit]
+	gpgsign = true
+[credential]
+	helper = 
+[format]
+	signoff = true
+[diff]
+	tool = difft
