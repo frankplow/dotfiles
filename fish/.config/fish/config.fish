@@ -1,4 +1,5 @@
 fish_add_path /opt/homebrew/bin
+fish_add_path /opt/homebrew/sbin
 fish_add_path $HOME/.cargo/bin
 
 if command -v pyenv > /dev/null
@@ -13,6 +14,11 @@ end
 if command -v bat > /dev/null
     set BAT_THEME base16
 end
+
+set -x VISUAL nvim
+set -x EDITOR $VISUAL
+set -x PAGER bat -p
+set -x BROWSER firefox
 
 if status is-interactive
     # Remove welcome message
