@@ -23,12 +23,11 @@ call plug#begin()
     Plug 'tpope/vim-unimpaired'
 
     Plug 'airblade/vim-gitgutter'
-    let g:gitgutter_sign_priority='┃'
-    let g:gitgutter_sign_allow_clobber='┃'
     let g:gitgutter_sign_added='┃'
     let g:gitgutter_sign_modified='┃'
     let g:gitgutter_sign_removed='┃'
     let g:gitgutter_sign_removed_first_line='┃'
+    let g:gitgutter_sign_removed_above_and_below='┃'
     let g:gitgutter_sign_modified_removed='┃'
 
     Plug 'lambdalisue/suda.vim'
@@ -41,14 +40,6 @@ call plug#begin()
 
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
-    Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-    call coc#util#install_extension(['coc-clangd'])
-    call coc#util#install_extension(['coc-rust-analyzer'])
-    call coc#util#install_extension(['coc-pyright'])
-    au CursorHold * call CocActionAsync('highlight')
-
-    Plug 'antoinemadec/coc-fzf'
-
     Plug 'rust-lang/rust.vim'
     let g:cargo_makeprg_params='build'
     let g:cargo_shell_command_runner='Start'
@@ -56,11 +47,46 @@ call plug#begin()
     Plug 'psf/black', { 'branch': 'stable' }
 
     Plug 'github/copilot.vim'
+
+    Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
+" LSP
+lua << EOF
+vim.api.nvim_create_autocmd({"LspAttach"}, {
+  callback = function(args)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
+                   { buffer = args.buf, noremap = true })
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,
+                   { buffer = args.buf, noremap = true })
+    vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition,
+                   { buffer = args.buf, noremap = true })
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
+                   { buffer = args.buf, noremap = true })
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references,
+                   { buffer = args.buf, noremap = true })
+    vim.keymap.set('n', ']g', vim.diagnostic.goto_next,
+                   { buffer = args.buf, noremap = true })
+    vim.keymap.set('n', '[g', vim.diagnostic.goto_prev,
+                   { buffer = args.buf, noremap = true })
+
+    vim.keymap.set('n', '<Leader>r', vim.lsp.buf.rename,
+                   { buffer = args.buf, noremap = true})
+    vim.keymap.set('n', '<Leader>a', vim.lsp.buf.code_action,
+                   { buffer = args.buf, noremap = true})
+  end
+})
+
+local lspconfig = require('lspconfig')
+lspconfig.clangd.setup {}
+lspconfig.rust_analyzer.setup {}
+lspconfig.pyright.setup {}
+EOF
+
+" Treesitter
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "python" },
+  ensure_installed = { "c", "python" },
   sync_install = false,
   auto_install = false,
   highlight = {
@@ -96,21 +122,6 @@ call AutoFormat(v:true)
 
 command -nargs=0 EnableAutoFormat call AutoFormat(v:true)
 command -nargs=0 DisableAutoFormat call AutoFormat(v:false)
-
-function! ShowDocumentation()
-    let l:word = expand('<cword>')
-    if CocAction('hasProvider', 'hover')
-        call CocActionAsync('doHover')
-    elseif &keywordprg[0] ==# ':'
-        exec &keywordprg[1:] .. ' ' .. l:word
-    elseif &keywordprg ==# ''
-        exec 'help ' .. l:word
-    else
-        exec '!' .. &keywordprg .. ' ' .. l:word
-    endif
-endfunction
-
-command -nargs=0 ShowDocumentation call ShowDocumentation()
 
 " https://gist.github.com/mattsacks/1544768
 function! Syn()
@@ -187,27 +198,12 @@ let g:mapleader=','
 
 nnoremap <silent> <ESC> :noh<CR>
 
-nnoremap K :ShowDocumentation<CR>
-
 nnoremap '<CR> :Start! -wait=always<CR>
 nnoremap '! :Start! -wait=always
 
 nnoremap <silent> g<CR> :History<CR>
 nnoremap <silent> g/ :Rg<CR>
 nnoremap <silent> g* :Rg <C-R><C-W><CR>
-
-inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
-inoremap <silent><expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<Tab>"
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-nnoremap <silent> gd <Plug>(coc-definition)
-nnoremap <silent> gD <Plug>(coc-declaration)
-nnoremap <silent> gy <Plug>(coc-type-definition)
-nnoremap <silent> gi <Plug>(coc-implementation)
-nnoremap <silent> gr <Plug>(coc-references)
-nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
-nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
 " }}}
 
 " {{{ Misc
@@ -232,6 +228,9 @@ set updatetime=100
 
 " Build with multiple threads
 let &makeprg='make -j'
+
+" Autocompletion
+set completeopt=menu
 " }}}
 
 " vim:et:ts=4:sw=4:fdm=marker
