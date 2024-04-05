@@ -25,6 +25,7 @@ hi CursorColumn             cterm=NONE      ctermfg=NONE    ctermbg=8
 hi FoldColumn               cterm=NONE      ctermfg=NONE    ctermbg=NONE
 hi SignColumn               cterm=NONE      ctermfg=NONE    ctermbg=NONE
 hi Folded                   cterm=NONE      ctermfg=NONE    ctermbg=NONE
+hi LongLine                 cterm=NONE      ctermfg=NONE    ctermbg=1
 
 " file navigation
 hi Directory                cterm=bold      ctermfg=13      ctermbg=NONE
@@ -175,6 +176,7 @@ hi link CocSemToolModule CocSemNamespace
 hi link CocSemUnion CocSemStruct
 hi link CocSemUnresolvedReference Warning
 
+" gitgutter
 hi GitGutterAdd             cterm=NONE      ctermfg=2       ctermbg=NONE
 hi GitGutterChange          cterm=NONE      ctermfg=4       ctermbg=NONE
 hi GitGutterDelete          cterm=NONE      ctermfg=1       ctermbg=NONE

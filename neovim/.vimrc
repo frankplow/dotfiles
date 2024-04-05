@@ -163,6 +163,19 @@ function! Redir(cmd, rng, start, end)
 endfunction
 
 command -nargs=1 -complete=command -bar -range Redir call Redir(<q-args>, <range>, <line1>, <line2>)
+
+function! HighlightLongLines(chars)
+    if exists('b:matchlonglines')
+        call matchdelete(b:matchlonglines)
+    endif
+    if a:chars <= 0
+        return
+    endif
+    let l:pattern = '\%>' . a:chars . 'v.\+'
+    let b:matchlonglines = matchadd('LongLine', l:pattern)
+endfunction
+
+command -nargs=1 -complete=command HighlightLongLines call HighlightLongLines(<q-args>)
 " }}}
 
 " {{{ Appearance

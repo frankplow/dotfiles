@@ -11,4 +11,4 @@ syn region rustCommentBlockNest matchgroup=rustCommentBlock start="/\*" end="\*/
 syn region rustCommentBlockDocNest matchgroup=rustCommentBlockDoc start="/\*" end="\*/" contains=rustTodo,myTodo,rustCommentBlockDocNest,@Spell contained transparent
 syn region rustCommentBlockDocNestError matchgroup=rustCommentBlockDocError start="/\*" end="\*/" contains=rustTodo,myTodo,rustCommentBlockDocNestError,@Spell contained transparent
 
-call matchadd('ColorColumn', '\%>100v', 1)
+call HighlightLongLines(100)
