@@ -168,15 +168,29 @@ endfunction
 
 command -nargs=1 -complete=command -bar -range Redir call Redir(<q-args>, <range>, <line1>, <line2>)
 
+" The following is essentially a way to create a match which is specific
+" specific to a buffer, as opposed to specific to a window like a normal
+" match.
+function! UpdateLongLinesMatch()
+    if exists('w:matchlonglines')
+        call matchdelete(w:matchlonglines)
+        unlet w:matchlonglines
+    endif
+    if exists('b:matchlonglineschars')
+        if b:matchlonglineschars <= 0
+            return
+        endif
+
+        let l:pattern = '\%>' . b:matchlonglineschars . 'v.\+'
+        let w:matchlonglines = matchadd('LongLine', l:pattern)
+    endif
+endfunction
+
+au BufEnter * call UpdateLongLinesMatch()
+
 function! HighlightLongLines(chars)
-    if exists('b:matchlonglines')
-        call matchdelete(b:matchlonglines)
-    endif
-    if a:chars <= 0
-        return
-    endif
-    let l:pattern = '\%>' . a:chars . 'v.\+'
-    let b:matchlonglines = matchadd('LongLine', l:pattern)
+    let b:matchlonglineschars = a:chars
+    call UpdateLongLinesMatch()
 endfunction
 
 command -nargs=1 -complete=command HighlightLongLines call HighlightLongLines(<q-args>)
