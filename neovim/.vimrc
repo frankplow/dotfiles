@@ -56,6 +56,7 @@ call plug#begin()
 call plug#end()
 
 " LSP
+if has('nvim')
 lua << EOF
 vim.api.nvim_create_autocmd({"LspAttach"}, {
   callback = function(args)
@@ -107,6 +108,7 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+endif
 " }}}
 
 " {{{ Commands
@@ -207,7 +209,11 @@ set relativenumber
 set cursorline
 set cursorlineopt=number
 set numberwidth=5
-set signcolumn=yes:1
+if has('nvim')
+    set signcolumn=yes:1
+else
+    set signcolumn=yes
+endif
 
 " Characters
 let &listchars='eol:¶'
