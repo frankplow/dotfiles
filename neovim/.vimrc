@@ -60,6 +60,8 @@ if has('nvim')
 lua << EOF
 vim.api.nvim_create_autocmd({"LspAttach"}, {
   callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+
     vim.keymap.set('n', 'gd', require'fzf_lsp'.definition_call,
                    { buffer = args.buf, noremap = true })
     vim.keymap.set('n', 'gD', require'fzf_lsp'.declaration_call,
@@ -79,6 +81,10 @@ vim.api.nvim_create_autocmd({"LspAttach"}, {
                    { buffer = args.buf, noremap = true})
     vim.keymap.set('n', '<Leader>a', vim.lsp.buf.code_action,
                    { buffer = args.buf, noremap = true})
+
+    if client.server_capabilities.hoverProvider then
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
+    end
   end
 })
 
