@@ -62,15 +62,19 @@ vim.api.nvim_create_autocmd({"LspAttach"}, {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-    vim.keymap.set('n', 'gd', require'fzf_lsp'.definition_call,
+    require 'fzf_lsp'.setup()
+
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
                    { buffer = args.buf, noremap = true })
-    vim.keymap.set('n', 'gD', require'fzf_lsp'.declaration_call,
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,
                    { buffer = args.buf, noremap = true })
-    vim.keymap.set('n', 'gy', require'fzf_lsp'.type_definition_call,
+    vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition,
                    { buffer = args.buf, noremap = true })
-    vim.keymap.set('n', 'gi', require'fzf_lsp'.implementation_call,
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
                    { buffer = args.buf, noremap = true })
-    vim.keymap.set('n', 'gr', require'fzf_lsp'.references_call,
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references,
+                   { buffer = args.buf, noremap = true })
+    vim.keymap.set('n', 'gR', vim.lsp.buf.incoming_calls,
                    { buffer = args.buf, noremap = true })
     vim.keymap.set('n', ']g', vim.diagnostic.goto_next,
                    { buffer = args.buf, noremap = true })
@@ -243,6 +247,9 @@ nnoremap <silent> <ESC> :noh<CR>
 
 nnoremap '<CR> :Start! -wait=always<CR>
 nnoremap '! :Start! -wait=always
+
+" gR is used for navigation, so rebind <leader>R to enter VREPLACE
+nnoremap <silent> <leader>R gR
 
 nnoremap <silent> g<CR> :History<CR>
 nnoremap <silent> g/ :Rg<CR>
