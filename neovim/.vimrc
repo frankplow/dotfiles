@@ -229,6 +229,8 @@ command -nargs=1 -complete=command HighlightTrailingSpaces call HighlightTrailin
 " {{{ Appearance
 " Colourscheme
 set background=dark
+set notermguicolors
+colo vim
 colo ansi16
 
 " Line number
