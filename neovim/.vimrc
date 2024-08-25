@@ -274,6 +274,17 @@ nnoremap <silent> <leader>R gR
 nnoremap <silent> g<CR> :History<CR>
 nnoremap <silent> g/ :Rg<CR>
 nnoremap <silent> g* :Rg <C-R><C-W><CR>
+
+" emacs/shell bindings in command mode
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>
+cnoremap <M-BS> <C-W>
 " }}}
 
 " {{{ Misc
