@@ -206,6 +206,24 @@ function! HighlightLongLines(chars)
 endfunction
 
 command -nargs=1 -complete=command HighlightLongLines call HighlightLongLines(<q-args>)
+
+function! HighlightTrailingSpaces(enable)
+    if a:enable
+        if !exists('g:matchtrailingwhitespace')
+            let g:matchtrailingwhitespace = matchadd('TrailingWhitespace', '\s\+$')
+        endif
+    else
+        if exists('g:matchtrailingwhitespace')
+            call matchdelete(g:matchtrailingwhitespace)
+            unlet g:matchtrailingwhitespace
+        endif
+    endif
+endfunction
+
+call HighlightTrailingSpaces(v:true)
+
+command -nargs=1 -complete=command HighlightTrailingSpaces call HighlightTrailingSpaces(<q-args>)
+
 " }}}
 
 " {{{ Appearance

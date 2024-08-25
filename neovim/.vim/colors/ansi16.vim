@@ -26,6 +26,7 @@ hi FoldColumn               cterm=NONE      ctermfg=NONE    ctermbg=NONE
 hi SignColumn               cterm=NONE      ctermfg=NONE    ctermbg=NONE
 hi Folded                   cterm=NONE      ctermfg=NONE    ctermbg=NONE
 hi LongLine                 cterm=NONE      ctermfg=NONE    ctermbg=1
+hi link TrailingWhitespace LongLine
 
 " file navigation
 hi Directory                cterm=bold      ctermfg=13      ctermbg=NONE
