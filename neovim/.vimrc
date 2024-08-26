@@ -46,8 +46,6 @@ call plug#begin()
 
     Plug 'psf/black', { 'branch': 'stable' }
 
-    Plug 'github/copilot.vim'
-
     Plug 'neovim/nvim-lspconfig'
 
     Plug 'gfanto/fzf-lsp.nvim'
