@@ -48,7 +48,7 @@ call plug#begin()
 
     Plug 'neovim/nvim-lspconfig'
 
-    Plug 'gfanto/fzf-lsp.nvim'
+    Plug 'frankplow/fzf-lsp.nvim'
 
     Plug 'nvim-lua/plenary.nvim'
 call plug#end()
