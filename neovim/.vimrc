@@ -321,6 +321,17 @@ set exrc
 if has('nvim-0.10')
     set notermsync
 endif
+
+" :help last-position-jump
+augroup RestoreCursor
+  autocmd!
+  autocmd BufReadPre * autocmd FileType <buffer> ++once
+    \ let s:line = line("'\"")
+    \ | if s:line >= 1 && s:line <= line("$") && &filetype !~# 'commit'
+    \      && index(['xxd', 'gitrebase'], &filetype) == -1
+    \ |   execute "normal! g`\""
+    \ | endif
+augroup END
 " }}}
 
 " vim:et:ts=4:sw=4:fdm=marker
