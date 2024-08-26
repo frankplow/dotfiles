@@ -137,8 +137,6 @@ function! AutoFormat(enable)
     endif
 endfunction
 
-call AutoFormat(v:true)
-
 command -nargs=0 EnableAutoFormat call AutoFormat(v:true)
 command -nargs=0 DisableAutoFormat call AutoFormat(v:false)
 
