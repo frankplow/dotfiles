@@ -317,6 +317,9 @@ let &makeprg='make -j'
 
 " Autocompletion
 set completeopt=menu
+
+" Per-project configuration
+set exrc
 " }}}
 
 " vim:et:ts=4:sw=4:fdm=marker
