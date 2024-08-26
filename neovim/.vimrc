@@ -93,7 +93,12 @@ vim.api.nvim_create_autocmd({"LspAttach"}, {
 })
 
 local lspconfig = require('lspconfig')
-lspconfig.clangd.setup {}
+lspconfig.clangd.setup {
+    cmd = {
+        "clangd",
+        "--background-index",
+    },
+}
 lspconfig.rust_analyzer.setup {}
 lspconfig.pyright.setup {}
 EOF
