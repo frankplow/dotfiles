@@ -316,6 +316,11 @@ set completeopt=menu
 
 " Per-project configuration
 set exrc
+
+" Disable vsync - reduce latency
+if has('nvim-0.10')
+    set notermsync
+endif
 " }}}
 
 " vim:et:ts=4:sw=4:fdm=marker
