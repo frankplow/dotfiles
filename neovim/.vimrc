@@ -332,6 +332,9 @@ augroup RestoreCursor
     \ |   execute "normal! g`\""
     \ | endif
 augroup END
+
+" Allow straddling wrapped lines
+set wrap smoothscroll
 " }}}
 
 " vim:et:ts=4:sw=4:fdm=marker
