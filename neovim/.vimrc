@@ -286,6 +286,9 @@ cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
 cnoremap <M-BS> <C-W>
+
+" Escape to exit insert mode in terminal windows
+tnoremap <Esc> <C-\><C-n>
 " }}}
 
 " {{{ Misc
@@ -335,6 +338,9 @@ augroup END
 
 " Allow straddling wrapped lines
 set wrap smoothscroll
+
+" Disable line numbers in terminal windows
+autocmd TermOpen * setlocal nonumber norelativenumber
 " }}}
 
 " vim:et:ts=4:sw=4:fdm=marker
