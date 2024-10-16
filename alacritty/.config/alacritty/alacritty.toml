@@ -1,0 +1,33 @@
+[window]
+option_as_alt = "Both"
+
+[font]
+normal = { family = "IBM Plex Mono", style= "Regular" }
+size = 13
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.primary]
+foreground = "#ffffff"
+background = "#1a1917"
+
+[colors.normal]
+black   = "#000000"
+red     = "#d75f00"
+green   = "#5fd700"
+yellow  = "#afaf00"
+blue    = "#5f5fff"
+magenta = "#d75fd7"
+cyan    = "#5fd7d7"
+white   = "#d7d7d7"
+
+[colors.bright]
+black   = "#878787"
+red     = "#ff5f00"
+green   = "#5fff00"
+yellow  = "#ffff00"
+blue    = "#5f5fff"
+magenta = "#ff5fff"
+cyan    = "#5fffff"
+white   = "#ffffff"
