@@ -1,0 +1,22 @@
+diff --git a/YUViewApp/YUViewApp.pro b/YUViewApp/YUViewApp.pro
+index 024fae08..d62062e4 100644
+--- a/YUViewApp/YUViewApp.pro
++++ b/YUViewApp/YUViewApp.pro
+@@ -55,6 +55,17 @@ contains(QT_ARCH, x86_32|i386) {
+ macx {
+     ICON = images/YUView.icns
+     SVNN = $$system("git describe --tags")
++
++    isEmpty(PREFIX) {
++        PREFIX = ""
++    }
++    isEmpty(BIINDIR) {
++        BINDIR = Applications
++    }
++
++    target.path = $$PREFIX/$$BINDIR/
++
++    INSTALLS += target
+ }
+ 
+ linux {
