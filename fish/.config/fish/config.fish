@@ -1,6 +1,7 @@
 fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/sbin
 fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/.local/bin
 
 if command -v pyenv > /dev/null
     set PYENV_ROOT $HOME/.pyenv
