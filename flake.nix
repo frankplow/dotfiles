@@ -43,7 +43,7 @@
         hostPlatform = "aarch64-darwin";
         config.allowUnfree = true;
         overlays = [
-          (import ./overlays/yuview.nix)
+          (import ./nix-overlays/yuview.nix)
         ];
       };
 
