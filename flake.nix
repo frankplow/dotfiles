@@ -56,7 +56,6 @@
         enable = true;
         casks = [
           "chromium"
-          "rectangle"
           "spotify"
           # "textual"
         ];
