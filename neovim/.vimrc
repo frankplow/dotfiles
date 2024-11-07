@@ -105,7 +105,7 @@ EOF
 " Treesitter
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "rust", "python", "vim" },
+  ensure_installed = { "c", "cpp", "rust", "python", "vim" },
   sync_install = false,
   auto_install = false,
   highlight = {
