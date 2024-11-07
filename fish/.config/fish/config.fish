@@ -20,6 +20,13 @@ set -x EDITOR $VISUAL
 set -x PAGER bat -p
 set -x BROWSER firefox
 
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gco="git checkout"
+alias gl="git log"
+alias gd="git diff"
+
 if status is-interactive
     # Remove welcome message
     set -U fish_greeting
