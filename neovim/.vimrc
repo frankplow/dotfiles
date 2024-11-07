@@ -33,6 +33,7 @@ call plug#begin()
     Plug 'lambdalisue/suda.vim'
 
     Plug 'junegunn/fzf'
+    autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
 
     Plug 'junegunn/fzf.vim'
 
