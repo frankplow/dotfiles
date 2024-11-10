@@ -7,9 +7,9 @@
 	defaultBranch = main
 [sendemail]
 	from = Frank Plowman <post@frankplowman.com>
-	smtpserver = <SECRET>
-	smtpuser = <SECRET>
-	smtppassword = <SECRET>
+	smtpServer = <SECRET>
+	smtpUser = <SECRET>
+	smtpPass = <SECRET>
 	smtpencryption = ssl
 	smtpserverport = 465
 [commit]
@@ -18,5 +18,3 @@
 	helper = 
 [format]
 	signoff = true
-[diff]
-	tool = difft
