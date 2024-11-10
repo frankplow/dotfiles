@@ -18,5 +18,3 @@
 	helper = 
 [format]
 	signoff = true
-[diff]
-	tool = difft
