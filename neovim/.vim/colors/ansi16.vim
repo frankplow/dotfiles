@@ -61,22 +61,24 @@ hi Conceal                  cterm=NONE      ctermfg=NONE    ctermbg=NONE
 hi DiffText                 cterm=bold      ctermfg=NONE    ctermbg=NONE
 
 " variable types
-hi Constant                 cterm=NONE      ctermfg=11      ctermbg=NONE
+hi Constant                 cterm=NONE      ctermfg=9       ctermbg=NONE
 hi Identifier               cterm=NONE      ctermfg=9       ctermbg=NONE
 
 " literals
-hi Number                   cterm=NONE      ctermfg=10      ctermbg=NONE
+hi Literal                  cterm=NONE      ctermfg=10      ctermbg=NONE
+hi link Number Literal
 hi link Float Number
-hi link Boolean Number
-hi link Char Number
-hi link SpecialChar Number
-hi link String Number
+hi link Boolean Literal
+hi link Char Literal
+hi link SpecialChar Char
+hi link String Literal
 hi link StringDelimiter String
+hi link EnumMember Literal
 
 " language constructs
 hi Function                 cterm=NONE      ctermfg=12      ctermbg=NONE
 hi Statement                cterm=NONE      ctermfg=13      ctermbg=NONE
-hi Repeat                   cterm=NONE      ctermfg=11      ctermbg=NONE
+hi link Repeat Keyword
 hi Label                    cterm=NONE      ctermfg=11      ctermbg=NONE
 hi Operator                 cterm=NONE      ctermfg=NONE    ctermbg=NONE
 hi Keyword                  cterm=NONE      ctermfg=13      ctermbg=NONE
@@ -85,7 +87,7 @@ hi Comment                  cterm=NONE      ctermfg=8       ctermbg=NONE
 hi Special                  cterm=NONE      ctermfg=14      ctermbg=NONE
 hi SpecialChar              cterm=NONE      ctermfg=14      ctermbg=NONE
 hi Tag                      cterm=NONE      ctermfg=9       ctermbg=NONE
-hi Delimiter                cterm=NONE      ctermfg=13      ctermbg=NONE
+hi Delimiter                cterm=NONE      ctermfg=NONE    ctermbg=NONE
 hi SpecialComment           cterm=NONE      ctermfg=14      ctermbg=NONE
 hi Debug                    cterm=NONE      ctermfg=9       ctermbg=NONE
 hi link Decorator Macro
@@ -99,7 +101,7 @@ hi Macro                    cterm=NONE      ctermfg=14      ctermbg=NONE
 hi PreCondit                cterm=NONE      ctermfg=13      ctermbg=NONE
 hi Type                     cterm=NONE      ctermfg=11      ctermbg=NONE
 hi StorageClass             cterm=NONE      ctermfg=14      ctermbg=NONE
-hi Structure                cterm=NONE      ctermfg=13      ctermbg=NONE
+hi link Structure Type
 hi Typedef                  cterm=NONE      ctermfg=11      ctermbg=NONE
 
 " tex-specific
@@ -112,6 +114,9 @@ hi link cppCast Function
 " haskell-specific
 hi link ConId Type
 hi link VarId Identifier
+
+" zig-specific
+hi link zigDummyVariable Delimiter
 
 " coc
 hi link CocHighlightText MatchParen
@@ -127,7 +132,7 @@ hi link CocSemTypeParameter Type
 hi link CocSemParameter Identifier
 hi link CocSemVariable Identifier
 hi link CocSemProperty Identifier
-hi link CocSemEnumMember Constant
+hi link CocSemEnumMember EnumMember
 hi link CocSemEvent Keyword
 hi link CocSemFunction Function
 hi link CocSemMethod Function
@@ -181,3 +186,12 @@ hi link CocSemUnresolvedReference Warning
 hi GitGutterAdd             cterm=NONE      ctermfg=2       ctermbg=NONE
 hi GitGutterChange          cterm=NONE      ctermfg=4       ctermbg=NONE
 hi GitGutterDelete          cterm=NONE      ctermfg=1       ctermbg=NONE
+
+" treesitter
+hi link @type.builtin.c Type
+hi link @keyword.type.c Keyword
+hi link @keyword.import.rust Keyword
+
+" lsp
+hi link @lsp.type.namespace.rust Include
+hi link @lsp.type.enumMember.c EnumMember
