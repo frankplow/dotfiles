@@ -20,6 +20,8 @@ set -x VISUAL nvim
 set -x EDITOR $VISUAL
 set -x PAGER bat -p
 set -x BROWSER firefox
+set -x MANPAGER bat -p -l man
+set -x DIFFPROG nvim -d
 
 alias gs="git status"
 alias ga="git add"
