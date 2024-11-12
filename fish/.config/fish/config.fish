@@ -14,6 +14,7 @@ end
 
 if command -v bat > /dev/null
     set BAT_THEME base16
+    alias bat="bat -p"
 end
 
 set -x VISUAL nvim
