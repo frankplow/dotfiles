@@ -31,3 +31,6 @@ blue    = "#5f5fff"
 magenta = "#ff5fff"
 cyan    = "#5fffff"
 white   = "#ffffff"
+
+[bell]
+command = { program = "osascript", args = ["-e", "beep"] }
