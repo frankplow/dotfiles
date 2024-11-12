@@ -31,6 +31,15 @@ alias gco="git checkout"
 alias gl="git log"
 alias gd="git diff"
 
+function rpaste -a path
+    if set -q XDG_CONFIG_DIR; and test -d _Z_DATA
+        set confdir "$XDG_CONFIG_DIR/rpaste"
+    else
+        set confdir "$HOME/.config/rpaste"
+    end
+    curl -F "file=@$path" -H "@$confdir/auth" "https://files.frankplowman.com"
+end
+
 if status is-interactive
     # Remove welcome message
     set -U fish_greeting
