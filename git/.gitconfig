@@ -9,7 +9,7 @@
 	from = Frank Plowman <post@frankplowman.com>
 	smtpserver = <SECRET>
 	smtpuser = <SECRET>
-	smtppassword = <SECRET>
+	smtppass = <SECRET>
 	smtpencryption = ssl
 	smtpserverport = 465
 [commit]
