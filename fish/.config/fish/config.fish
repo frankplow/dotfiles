@@ -40,6 +40,10 @@ function rpaste -a path
     curl -F "file=@$path" -H "@$confdir/auth" "https://files.frankplowman.com"
 end
 
+function bellend -a cmd
+    eval "$argv" && tput bel
+end
+
 if status is-interactive
     # Remove welcome message
     set -U fish_greeting
