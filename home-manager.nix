@@ -15,6 +15,7 @@
     ripgrep
     libsForQt5.yuview
     pkgs-unstable.zotero
+    zulip
   ];
   home.stateVersion = "24.05";
 }

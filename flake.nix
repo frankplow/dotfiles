@@ -75,6 +75,7 @@
         config.allowUnfree = true;
         overlays = [
           (import ./nix-overlays/yuview.nix)
+          (import ./nix-overlays/zulip.nix)
         ];
       };
 
