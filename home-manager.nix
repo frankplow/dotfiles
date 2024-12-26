@@ -5,6 +5,7 @@
     alacritty
     bat
     pkgs-unstable.fzf
+    ghostty
     htop
     ibm-plex
     obsidian

@@ -74,6 +74,7 @@
         hostPlatform = "aarch64-darwin";
         config.allowUnfree = true;
         overlays = [
+          (import ./nix-overlays/ghostty.nix)
           (import ./nix-overlays/yuview.nix)
           (import ./nix-overlays/zulip.nix)
         ];

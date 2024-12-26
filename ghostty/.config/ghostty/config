@@ -1,0 +1,16 @@
+# Colours
+window-colorspace = display-p3
+theme = mytheme
+
+# Font
+font-family = IBM Plex Mono
+font-size = 14
+font-thicken = true
+
+# Hide the mouse cursor as soon as one starts typing
+mouse-hide-while-typing = true
+
+# Use a non-blinking bar cursor on the shell
+cursor-style-blink = false
+shell-integration-features = no-cursor
+cursor-style = bar

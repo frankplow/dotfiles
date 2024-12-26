@@ -17,6 +17,10 @@ if command -v bat > /dev/null
     alias bat="bat -p"
 end
 
+if set -q GHOSTTY_RESOURCES_DIR
+    source "$GHOSTTY_RESOURCES_DIR/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish"
+end
+
 set -x VISUAL nvim
 set -x EDITOR $VISUAL
 set -x PAGER bat -p
