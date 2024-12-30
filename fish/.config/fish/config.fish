@@ -25,7 +25,6 @@ set -x VISUAL nvim
 set -x EDITOR $VISUAL
 set -x PAGER bat -p
 set -x BROWSER firefox
-set -x MANPAGER "sh -c 'col -bx | bat -l man -p --pager \"less -RX\"'"
 set -x DIFFPROG nvim -d
 
 alias gs="git status"
