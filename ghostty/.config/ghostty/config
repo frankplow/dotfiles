@@ -14,3 +14,9 @@ mouse-hide-while-typing = true
 cursor-style-blink = false
 shell-integration-features = no-cursor
 cursor-style = bar
+
+# Don't show the wxh overlay after resizing
+resize-overlay = never
+
+# Don't prompt to automatically update
+auto-update = off
