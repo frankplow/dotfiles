@@ -4,13 +4,17 @@
   home.packages = with pkgs; [
     alacritty
     bat
+    browserpass
     pkgs-unstable.fzf
     ghostty
+    gnupg
     htop
     ibm-plex
     obsidian
     pkgs-unstable.neovim
     net-news-wire
+    pass
+    pinentry_mac
     raycast
     rectangle
     ripgrep
