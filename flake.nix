@@ -21,7 +21,13 @@
       environment.systemPackages = [];
 
       environment.shells = with pkgs; [ bashInteractive zsh fish ];
-      programs.zsh.enable = true;
+      programs.zsh = rec {
+        enable = true;
+        # Disable system-wide completions for speed because we configure zsh using
+        # home-manager.  See https://github.com/nix-community/home-manager/issues/108
+        enableCompletion = false;
+        enableBashCompletion = enableCompletion;
+      };
       programs.fish.enable = true;
       # FIXME: This is needed to address bug where the $PATH is re-ordered by
       # the `path_helper` tool, prioritising Apple’s tools over the ones we’ve
