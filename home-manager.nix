@@ -52,6 +52,9 @@
       zle -N edit-command-line
       bindkey "^[e" edit-command-line
 
+      autoload -U select-word-style
+      select-word-style bash
+
       eval "$(direnv hook zsh)"
     '';
   };
