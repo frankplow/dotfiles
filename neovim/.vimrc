@@ -91,6 +91,10 @@ vim.api.nvim_create_autocmd({"LspAttach"}, {
   end
 })
 
+vim.diagnostic.config({
+  severity_sort = true,
+})
+
 local lspconfig = require('lspconfig')
 lspconfig.clangd.setup {
     cmd = {

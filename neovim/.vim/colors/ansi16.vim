@@ -56,6 +56,8 @@ hi WarningMsg               cterm=NONE      ctermfg=1       ctermbg=NONE
 hi Ignore                   cterm=NONE      ctermfg=8       ctermbg=NONE
 hi SpecialKey               cterm=NONE      ctermfg=7       ctermbg=NONE
 hi Conceal                  cterm=NONE      ctermfg=NONE    ctermbg=NONE
+hi DiagnosticUnderlineError cterm=undercurl guisp=Red
+hi DiagnosticUnderlineWarn  cterm=undercurl guisp=Yellow
 
 " vimdiff
 hi DiffText                 cterm=bold      ctermfg=NONE    ctermbg=NONE
