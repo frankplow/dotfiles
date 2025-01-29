@@ -48,6 +48,10 @@
       DIFFPROG = "nvim -d";
     };
     initExtra = ''
+      autoload -z edit-command-line
+      zle -N edit-command-line
+      bindkey "^[e" edit-command-line
+
       eval "$(direnv hook zsh)"
     '';
   };
