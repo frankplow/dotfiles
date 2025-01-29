@@ -7,6 +7,7 @@
     browserpass
     pkgs-unstable.fzf
     ghostty
+    direnv
     gnupg
     htop
     ibm-plex
@@ -46,5 +47,8 @@
       BROWSER = "firefox";
       DIFFPROG = "nvim -d";
     };
+    initExtra = ''
+      eval "$(direnv hook zsh)"
+    '';
   };
 }
