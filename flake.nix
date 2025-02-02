@@ -101,14 +101,6 @@
       };
     };
 
-    # hm-module = args@{ pkgs, pkgs-unstable, lib, config, ... }: home-manager.darwinModules.home-manager
-    #   ({
-    #     inherit pkgs lib config;
-    #     home-manager.extraSpecialArgs = { inherit pkgs-unstable; };
-    #     home-manager.useGlobalPkgs = true;
-    #     home-manager.useUserPackages = true;
-    #     home-manager.users.frank = import ./home-manager.nix;
-    #   } // args);
   in
   {
     # Build darwin flake using:
@@ -122,7 +114,6 @@
       };
       modules = [
         cfg-module
-        # hm-module
         home-manager.darwinModules.home-manager
         {
           home-manager.extraSpecialArgs = { pkgs-unstable = specialArgs.pkgs-unstable; };
