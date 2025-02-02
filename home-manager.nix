@@ -5,13 +5,13 @@
     alacritty
     bat
     browserpass
-    pkgs-unstable.fzf
+    fzf
     ghostty
     gnupg
     htop
     ibm-plex
     obsidian
-    pkgs-unstable.neovim
+    neovim
     net-news-wire
     pass
     pinentry_mac
@@ -19,7 +19,7 @@
     rectangle
     ripgrep
     libsForQt5.yuview
-    pkgs-unstable.zotero
+    zotero
     zulip
   ];
   home.stateVersion = "24.05";
