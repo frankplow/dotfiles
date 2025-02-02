@@ -5,12 +5,12 @@
 }:
   stdenv.mkDerivation rec {
     pname = "ghostty";
-    version = "1.0.1";
+    version = "1.1.0";
     nativeBuildInputs = [ _7zz ];
     phases = ["unpackPhase" "installPhase"];
     src = fetchurl {
       url = "https://release.files.ghostty.org/${version}/Ghostty.dmg";
-      hash = "sha256-QA9oy9EXLSFbzcRybKM8CxmBnUYhML82w48C+0gnRmM=";
+      hash = "sha256-3KKyJOpkbhGKtq01aDGDealjI2BCL6fpz5DW6rn0A/0=";
       name="${pname}-${version}.dmg";
     };
     installPhase = ''
