@@ -7,7 +7,6 @@
     browserpass
     pkgs-unstable.fzf
     ghostty
-    direnv
     gnupg
     htop
     ibm-plex
@@ -24,6 +23,15 @@
     zulip
   ];
   home.stateVersion = "24.05";
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+    config = {
+      hide_env_diff = true;
+    };
+  };
 
   programs.zsh = {
     enable = true;
@@ -54,8 +62,6 @@
 
       autoload -U select-word-style
       select-word-style bash
-
-      eval "$(direnv hook zsh)"
     '';
   };
 }
