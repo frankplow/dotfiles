@@ -25,3 +25,7 @@ function rpaste {
 function bellend {
     eval "$argv" && tput bel
 }
+
+if command -v ls &>/dev/null; then
+    alias ls="ls --color=auto"
+fi
