@@ -98,7 +98,6 @@
       homebrew = {
         enable = true;
         casks = [
-          "chromium"
           "spotify"
           # "textual"
         ];

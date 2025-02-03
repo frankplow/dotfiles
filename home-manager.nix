@@ -73,4 +73,8 @@
       select-word-style bash
     '';
   };
+
+  imports = [
+    firefox/firefox.nix
+  ];
 }
