@@ -40,6 +40,11 @@
     syntaxHighlighting.enable = true;
     plugins = [
       {
+        name = "zsh-fzf-history-search";
+        src = pkgs.zsh-fzf-history-search;
+        file = "share/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh";
+      }
+      {
         name = "prompt";
         src = ./zsh/prompt;
       }
@@ -54,6 +59,10 @@
       PAGER = "bat -p";
       BROWSER = "firefox";
       DIFFPROG = "nvim -d";
+
+      ZSH_FZF_HISTORY_SEARCH_EVENT_NUMBERS = 0;
+      ZSH_FZF_HISTORY_SEARCH_DATES_IN_SEARCH = 0;
+      ZSH_FZF_HISTORY_SEARCH_REMOVE_DUPLICATES = 1;
     };
     initExtra = ''
       autoload -z edit-command-line
