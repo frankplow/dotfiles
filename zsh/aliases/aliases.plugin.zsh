@@ -5,6 +5,10 @@ if command -v git &>/dev/null; then
     alias gco="git checkout"
     alias gl="git log"
     alias gd="git diff"
+    alias gsw="git switch"
+    alias gbr="git branch"
+    alias grst="git restore"
+    alias gre="git reset"
 fi
 
 if command -v bat &>/dev/null; then
