@@ -52,6 +52,8 @@ call plug#begin()
     Plug 'frankplow/fzf-lsp.nvim'
 
     Plug 'nvim-lua/plenary.nvim'
+
+    Plug 'Saghen/blink.cmp', { 'tag': 'v1.0.0' }
 call plug#end()
 
 " LSP
@@ -96,14 +98,23 @@ vim.diagnostic.config({
 })
 
 local lspconfig = require('lspconfig')
-lspconfig.clangd.setup {
-    cmd = {
-        "clangd",
-        "--background-index",
+lsp_servers = {
+    clangd = {
+        cmd = {
+            "clangd",
+            "--background-index",
+        },
     },
+    rust_analyzer = {},
+    pyright = {},
 }
-lspconfig.rust_analyzer.setup {}
-lspconfig.pyright.setup {}
+for server, config in pairs(lsp_servers) do
+    config.capabilities = require('blink.cmp').get_lsp_capabilities()
+    lspconfig[server].setup(config)
+end
+
+-- blink.cmp completion
+require'blink.cmp'.setup()
 EOF
 
 " Treesitter
