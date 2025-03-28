@@ -1,0 +1,1 @@
+call HighlightLongLines(100)

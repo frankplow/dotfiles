@@ -119,6 +119,7 @@ hi link VarId Identifier
 
 " zig-specific
 hi link zigDummyVariable Delimiter
+hi link zigBuiltinFn Macro
 
 " coc
 hi link CocHighlightText MatchParen

@@ -47,6 +47,8 @@ call plug#begin()
 
     Plug 'psf/black', { 'branch': 'stable' }
 
+    Plug 'ziglang/zig.vim'
+
     Plug 'neovim/nvim-lspconfig'
 
     Plug 'frankplow/fzf-lsp.nvim'
@@ -97,6 +99,8 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
+vim.g.zig_fmt_parse_errors = 0
+
 local lspconfig = require('lspconfig')
 lsp_servers = {
     clangd = {
@@ -107,6 +111,7 @@ lsp_servers = {
     },
     rust_analyzer = {},
     pyright = {},
+    zls = {},
 }
 for server, config in pairs(lsp_servers) do
     config.capabilities = require('blink.cmp').get_lsp_capabilities()
