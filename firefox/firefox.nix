@@ -25,6 +25,9 @@ in
   programs.firefox = {
     enable = true;
     package = pkgs-unstable.firefox-unwrapped;
+    profiles.frank.settings = {
+      "extensions.autoDisableScopes" = 0;
+    };
     profiles.frank.extensions = [
       (buildFirefoxXpiAddon rec {
         pname = "vimium-ff";
@@ -41,27 +44,54 @@ in
       })
       (buildFirefoxXpiAddon rec {
         pname = "ublock_origin";
-        version = "1.54.0";
-        addonId = "";
-        url = "https://addons.mozilla.org/firefox/downloads/file/4198829/${pname}-${version}.xpi";
-        sha256 = "sha256-l5cWCQgZFxD/CFhTa6bcKeytmSPDCyrW0+XjcddZ5E0=";
+        version = "1.63.2";
+        addonId = "uBlock0@raymondhill.net";
+        url = "https://addons.mozilla.org/firefox/downloads/file/4458450/${pname}-${version}.xpi";
+        sha256 = "sha256-2TF2zvTcBC5BulAKoqkOXVe1vndEnL1SIRFYXjoM0Vg=";
         meta = with lib; {
-          homepage = "https://ublockorigin.com/";
           description = "Free, open-source ad content blocker.";
           license = licenses.gpl3;
           platforms = platforms.all;
+          mozPermissions = [
+            "alarms"
+            "dns"
+            "menus"
+            "privacy"
+            "storage"
+            "tabs"
+            "unlimitedStorage"
+            "webNavigation"
+            "webRequest"
+            "webRequestBlocking"
+            "<all_urls>"
+            "http://*/*"
+            "https://*/*"
+          ];
         };
       })
       (buildFirefoxXpiAddon rec {
         pname = "browserpass_ce";
         version = "3.9.0";
-        addonId = "af7b04d9-914d-4aa8-b62f-67b40bcf02c7";
+        addonId = "browserpass@maximbaz.com";
         url = "https://addons.mozilla.org/firefox/downloads/file/4406417/${pname}-${version}.xpi";
         sha256 = "sha256-UUwaYG17yCBF0hvLxuWx5QB0RqsyqgHw8X++C94D7ww=";
         meta = with lib; {
           homepage = "https://github.com/browserpass/browserpass-extension";
           description = "Browserpass web extension ";
           license = licenses.isc;
+          mozPermissions = [
+            "activeTab"
+            "alarms"
+            "tabs"
+            "clipboardRead"
+            "clipboardWrite"
+            "nativeMessaging"
+            "notifications"
+            "webRequest"
+            "webRequestBlocking"
+            "http://*/*"
+            "https://*/*"
+          ];
           platforms = platforms.all;
         };
       })
