@@ -1,27 +1,33 @@
 { config, lib, pkgs, pkgs-unstable, ... }:
 
-{
+let
+  # @TODO: Add isGraphical
+  isDarwin = pkgs.stdenv.isDarwin;
+  isLinux = pkgs.stdenv.isLinux;
+in {
   home.packages = with pkgs; [
-    alacritty
     bat
     browserpass
     fzf
-    ghostty-bin
+    git
     gnupg
     htop
     ibm-plex
     obsidian
     neovim
-    net-news-wire
+    parallel
     pass
-    pinentry_mac
-    raycast
-    rectangle
     ripgrep
     yuview
     zotero
     zulip
-  ];
+  ] ++ (lib.optionals isDarwin [
+    ghostty-bin
+    net-news-wire
+    pinentry_mac
+    raycast
+    rectangle
+  ]);
   home.stateVersion = "24.05";
 
   programs.direnv = {
@@ -32,6 +38,8 @@
       hide_env_diff = true;
     };
   };
+
+  programs.tmux.enable = true;
 
   programs.zsh = {
     enable = true;
@@ -76,6 +84,8 @@
   };
 
   imports = [
-    firefox/firefox.nix
+    # firefox/firefox.nix
   ];
 }
+
+# vi:sw=2:ts=2:et

@@ -50,7 +50,7 @@ in
       description = "Shrinkray is a modern multi-format test-case reducer ";
       homepage = "https://github.com/DRMacIver/shrinkray";
       license = licenses.mit;
-      platforms = [ "aarch64-darwin" "x86_64-darwin" ];
+      platforms = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       mainProgram = "shrinkray";
     };
   }

@@ -5,7 +5,15 @@ autoload -Uz vcs_info
 precmd() {
 	vcs_info
 	print
-	print -rP "%F{8}%n@%m %~ ${vcs_info_msg_0_}"
+
+	default_prompt_color="%F{8}"
+	if [[ -n "$SSH_CONNECTION" ]]; then
+		hostname_color="%F{yellow}"
+	else
+		hostname_color=default_prompt_color
+	fi
+
+	print -rP "${default_prompt_color}%n@${hostname_color}%m${default_prompt_color} %~ ${vcs_info_msg_0_}"
 }
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr ' +'
