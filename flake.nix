@@ -1,16 +1,16 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/nix-darwin-24.11";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -60,8 +60,7 @@
         '';
 
       # Auto upgrade nix package and the daemon service.
-      services.nix-daemon.enable = true;
-      # nix.package = pkgs.nix;
+      nix.enable = true;
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
@@ -87,13 +86,13 @@
           # karabiner-elements pinned to 14.13.0 pending resolution of
           # https://github.com/LnL7/nix-darwin/issues/1041
           (import ./nix-overlays/karabiner-elements.nix)
-          (import ./nix-overlays/net-news-wire.nix)
           (import ./nix-overlays/shrinkray.nix)
           (import ./nix-overlays/yuview.nix)
           (import ./nix-overlays/zulip.nix)
         ];
       };
 
+      system.primaryUser = "frank";
       users.users.frank = {
         home = "/Users/frank";
         shell = pkgs.fish;

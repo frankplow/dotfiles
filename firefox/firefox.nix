@@ -24,11 +24,10 @@ in
   {
   programs.firefox = {
     enable = true;
-    package = pkgs-unstable.firefox-unwrapped;
     profiles.frank.settings = {
       "extensions.autoDisableScopes" = 0;
     };
-    profiles.frank.extensions = [
+    profiles.frank.extensions.packages = [
       (buildFirefoxXpiAddon rec {
         pname = "vimium-ff";
         version = "2.1.2";

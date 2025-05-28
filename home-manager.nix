@@ -64,7 +64,7 @@
       ZSH_FZF_HISTORY_SEARCH_DATES_IN_SEARCH = 0;
       ZSH_FZF_HISTORY_SEARCH_REMOVE_DUPLICATES = 1;
     };
-    initExtra = ''
+    initContent = ''
       autoload -z edit-command-line
       zle -N edit-command-line
       bindkey "^[e" edit-command-line
