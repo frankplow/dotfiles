@@ -38,6 +38,7 @@
     autosuggestion.enable = true;
     historySubstringSearch.enable = true;
     syntaxHighlighting.enable = true;
+    defaultKeymap = "emacs";
     plugins = [
       {
         name = "zsh-fzf-history-search";
