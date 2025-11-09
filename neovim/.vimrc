@@ -49,7 +49,9 @@ call plug#begin()
 
     Plug 'ziglang/zig.vim'
 
-    Plug 'neovim/nvim-lspconfig'
+    if !has('nvim-0.11')
+        Plug 'neovim/nvim-lspconfig'
+    endif
 
     Plug 'ojroques/nvim-lspfuzzy'
 
@@ -101,7 +103,6 @@ vim.diagnostic.config({
 
 vim.g.zig_fmt_parse_errors = 0
 
-local lspconfig = require('lspconfig')
 lsp_servers = {
     clangd = {
         cmd = {
@@ -121,7 +122,12 @@ for server, config in pairs(lsp_servers) do
         client.request = require('lspfuzzy').wrap_request(client.request)
     end
 
-    lspconfig[server].setup(config)
+    if vim.fn.has('nvim-0.11') then
+        vim.lsp.config[server] = config
+        vim.lsp.enable(server)
+    else
+        require('lspconfig')[server].setup(config)
+    end
 end
 
 -- blink.cmp completion
