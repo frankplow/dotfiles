@@ -95,45 +95,66 @@ in
         };
       })
     ];
-    profiles.frank.search.engines = {
-      "Nix Packages" = {
-        urls = [{
-          template = "https://search.nixos.org/packages";
-          params = [
-            { name = "type"; value = "packages"; }
-            { name = "query"; value = "{searchTerms}"; }
-          ];
-        }];
-        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-        definedAliases = [ "@np" ];
-      };
-      "Home Manager" = {
-        urls = [{
-          template = "https://home-manager-options.extranix.com";
-          params = [
-            { name = "query"; value = "{searchTerms}"; }
-          ];
-        }];
-        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-        definedAliases = [ "@hm" ];
-      };
-      "cppreference.com" = {
-        urls = [{
-          template = "https://www.google.com/search";
-          params = [
-            { name = "q"; value = "site%3Acppreference.com+{searchTerms}"; }
-          ];
-        }];
-        definedAliases = [ "@cpp" ];
-      };
-      "docs.python.org" = {
-        urls = [{
-          template = "https://docs.python.org/3/search.html";
-          params = [
-            { name = "q"; value = "{searchTerms}"; }
-          ];
-        }];
-        definedAliases = [ "@py" ];
+    profiles.frank.search = {
+      force = true;
+      engines = {
+        "Nix Packages" = {
+          urls = [{
+            template = "https://search.nixos.org/packages";
+            params = [
+              { name = "type"; value = "packages"; }
+              { name = "query"; value = "{searchTerms}"; }
+            ];
+          }];
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = [ "@np" ];
+        };
+        "Home Manager" = {
+          urls = [{
+            template = "https://home-manager-options.extranix.com";
+            params = [
+              { name = "query"; value = "{searchTerms}"; }
+            ];
+          }];
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = [ "@hm" ];
+        };
+        "cppreference.com" = {
+          urls = [{
+            template = "https://www.google.com/search";
+            params = [
+              { name = "q"; value = "site%3Acppreference.com+{searchTerms}"; }
+            ];
+          }];
+          definedAliases = [ "@cpp" ];
+        };
+        "docs.python.org" = {
+          urls = [{
+            template = "https://docs.python.org/3/search.html";
+            params = [
+              { name = "q"; value = "{searchTerms}"; }
+            ];
+          }];
+          definedAliases = [ "@py" ];
+        };
+        "doc.rust-lang.org" = {
+          urls = [{
+            template = "https://doc.rust-lang.org/std/index.html";
+            params = [
+              { name = "search"; value = "{searchTerms}"; }
+            ];
+          }];
+          definedAliases = [ "@rs" ];
+        };
+        "crates.io" = {
+          urls = [{
+            template = "https://crates.io/search";
+            params = [
+              { name = "q"; value = "{searchTerms}"; }
+            ];
+          }];
+          definedAliases = [ "@crates" ];
+        };
       };
     };
   };
