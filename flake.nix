@@ -1,16 +1,16 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -82,11 +82,9 @@
         hostPlatform = "aarch64-darwin";
         config.allowUnfree = true;
         overlays = [
-          (import ./nix-overlays/ghostty.nix)
           # karabiner-elements pinned to 14.13.0 pending resolution of
           # https://github.com/LnL7/nix-darwin/issues/1041
           (import ./nix-overlays/karabiner-elements.nix)
-          (import ./nix-overlays/shrinkray.nix)
           (import ./nix-overlays/yuview.nix)
           (import ./nix-overlays/zulip.nix)
         ];

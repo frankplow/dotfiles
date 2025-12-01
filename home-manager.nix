@@ -6,7 +6,7 @@
     bat
     browserpass
     fzf
-    ghostty
+    ghostty-bin
     gnupg
     htop
     ibm-plex
@@ -18,7 +18,7 @@
     raycast
     rectangle
     ripgrep
-    libsForQt5.yuview
+    yuview
     zotero
     zulip
   ];
