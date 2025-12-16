@@ -49,8 +49,6 @@ call plug#begin()
     let g:cargo_makeprg_params='build'
     let g:cargo_shell_command_runner='Start'
 
-    Plug 'psf/black', { 'branch': 'stable' }
-
     Plug 'ziglang/zig.vim'
 
     if !has('nvim-0.11')
@@ -62,6 +60,16 @@ call plug#begin()
     Plug 'nvim-lua/plenary.nvim'
 
     Plug 'Saghen/blink.cmp', { 'tag': 'v1.0.0' }
+
+    Plug 'sbdchd/neoformat'
+    let g:neoformat_ocaml_ocamlformat = {
+                \ 'exe': 'ocamlformat',
+                \ 'no_append': 1,
+                \ 'stdin': 1,
+                \ 'args': ['--enable-outside-detected-project', '--name', '"%:p"', '-']
+                \ }
+    let g:neoformat_enabled_ocaml = ['ocamlformat']
+    let g:neoformat_enabled_python = ['black']
 call plug#end()
 
 " LSP
@@ -141,7 +149,7 @@ EOF
 " Treesitter
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "comment", "c", "cpp", "rust", "python", "vim" },
+  ensure_installed = { "comment", "c", "cpp", "rust", "python", "vim", "ocaml", "bash" },
   sync_install = false,
   auto_install = false,
   highlight = {
@@ -167,7 +175,7 @@ function! AutoFormat(enable)
 
     if a:enable
         augroup Format
-            au BufWritePre *.py call black#Black()
+            au BufWritePre * try | undojoin | silent Neoformat | catch /E790/ | silent Neoformat | endtry
         augroup END
     else
         autocmd! Format *
