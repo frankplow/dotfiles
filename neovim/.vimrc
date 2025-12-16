@@ -39,7 +39,11 @@ call plug#begin()
 
     Plug 'christoomey/vim-tmux-navigator'
 
-    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+    " Breaking changes between v0.10.0.
+    " Should update configuration to match new API once v1 is out.
+    Plug 'nvim-treesitter/nvim-treesitter', {
+        \ 'tag': 'v0.10.0',
+        \ 'do': ':TSUpdate' }
 
     Plug 'rust-lang/rust.vim'
     let g:cargo_makeprg_params='build'
