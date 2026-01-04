@@ -38,6 +38,21 @@ in
           homepage = "https://github.com/philc/vimium";
           description = " The hacker's browser.";
           license = licenses.mit;
+          mozPermissions = [
+            "tabs"
+            "bookmarks"
+            "history"
+            "storage"
+            "sessions"
+            "notifications"
+            "scripting"
+            "webNavigation"
+            "clipboardRead"
+            "clipboardWrite"
+            "<all_urls>"
+            "file:///"
+            "file:///*/"
+          ];
           platforms = platforms.all;
         };
       })
