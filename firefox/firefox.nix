@@ -109,6 +109,20 @@ in
           platforms = platforms.all;
         };
       })
+      (buildFirefoxXpiAddon rec {
+        pname = "consent_o_matic";
+        version = "1.1.5";
+        addonId = "gdpr@cavi.au.dk";
+        url = "https://addons.mozilla.org/firefox/downloads/file/4515369/${pname}-${version}.xpi";
+        sha256 = "sha256-ohGavDKWONbnrxq05VSKNIRl4C7sEd4I3uCvhJGZI9w=";
+        meta = with lib; {
+          homepage = "https://consentomatic.au.dk/";
+          description = "Automatic handling of GDPR consent forms";
+          license = licenses.mit;
+          mozPermissions = [ "activeTab" "tabs" "storage" "<all_urls>" ];
+          platforms = platforms.all;
+        };
+      })
     ];
     profiles.frank.search = {
       force = true;
