@@ -51,9 +51,7 @@ call plug#begin()
 
     Plug 'ziglang/zig.vim'
 
-    if !has('nvim-0.11')
-        Plug 'neovim/nvim-lspconfig'
-    endif
+    Plug 'neovim/nvim-lspconfig'
 
     Plug 'nvim-lua/plenary.nvim'
 
