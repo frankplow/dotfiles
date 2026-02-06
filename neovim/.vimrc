@@ -55,11 +55,7 @@ call plug#begin()
         Plug 'neovim/nvim-lspconfig'
     endif
 
-    Plug 'ojroques/nvim-lspfuzzy'
-
     Plug 'nvim-lua/plenary.nvim'
-
-    Plug 'Saghen/blink.cmp', { 'tag': 'v1.0.0' }
 
     Plug 'sbdchd/neoformat'
     let g:neoformat_ocaml_ocamlformat = {
@@ -70,16 +66,29 @@ call plug#begin()
                 \ }
     let g:neoformat_enabled_ocaml = ['ocamlformat']
     let g:neoformat_enabled_python = ['black']
+
+    if !exists('g:vscode')
+        Plug 'ojroques/nvim-lspfuzzy'
+
+        Plug 'Saghen/blink.cmp', { 'tag': 'v1.0.0' }
+    endif
 call plug#end()
 
 " LSP
 if has('nvim')
 lua << EOF
+
+-- Falliable requires for packages not installed in e.g. VSCode
+local blink_exists, blink = pcall(require, 'blink.cmp')
+local lspfuzzy_exists, lspfuzzy = pcall(require, 'lspfuzzy')
+
 vim.api.nvim_create_autocmd({"LspAttach"}, {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-    require('lspfuzzy').setup()
+    if lspfuzzy_exists then
+        lspfuzzy.setup()
+    end
 
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
                    { buffer = args.buf, noremap = true })
@@ -126,12 +135,17 @@ lsp_servers = {
     pyright = {},
     zls = {},
 }
+
 for server, config in pairs(lsp_servers) do
-    config.capabilities = require('blink.cmp').get_lsp_capabilities()
+    if blink_exists then
+        config.capabilities = blink.get_lsp_capabilities()
+    end
 
     -- Needed to make lspfuzzy work for nvim >= 0.11
-    config.on_attach = function(client, _)
-        client.request = require('lspfuzzy').wrap_request(client.request)
+    if lspfuzzy_exists then
+        config.on_attach = function(client, _)
+            client.request = lspfuzzy.wrap_request(client.request)
+        end
     end
 
     if vim.fn.has('nvim-0.11') then
@@ -143,7 +157,9 @@ for server, config in pairs(lsp_servers) do
 end
 
 -- blink.cmp completion
-require'blink.cmp'.setup()
+if blink_exists then
+    blink.setup()
+end
 EOF
 
 " Treesitter
