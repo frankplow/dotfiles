@@ -53,6 +53,7 @@
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
     overlays = [
+      (import ./nix-overlays/firefox-audio-fix.nix)
       (import ../../nix-overlays/mi-code.nix)
       # karabiner-elements pinned to 14.13.0 pending resolution of
       # https://github.com/LnL7/nix-darwin/issues/1041
