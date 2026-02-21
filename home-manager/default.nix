@@ -55,11 +55,11 @@ in {
       }
       {
         name = "prompt";
-        src = ./zsh/prompt;
+        src = ../zsh/prompt;
       }
       {
         name = "aliases";
-        src = ./zsh/aliases;
+        src = ../zsh/aliases;
       }
     ];
     sessionVariables = rec {
@@ -84,7 +84,7 @@ in {
   };
 
   imports = [
-    # firefox/firefox.nix
+    ./modules/firefox.nix
   ];
 }
 
