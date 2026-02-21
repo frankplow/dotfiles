@@ -2,7 +2,7 @@
 [user]
 	name = Frank Plowman
 	email = post@frankplowman.com
-	signingKey = EE35607A4B0031A4
+	signingkey = BBE2CCD01749DE8A
 [init]
 	defaultBranch = main
 [sendemail]
