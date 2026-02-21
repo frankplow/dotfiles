@@ -77,6 +77,7 @@
     casks = [
       "spotify"
       # "textual"
+      "zoom"
     ];
   };
 }

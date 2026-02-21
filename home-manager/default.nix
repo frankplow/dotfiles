@@ -8,16 +8,21 @@ in {
   home.packages = with pkgs; [
     bat
     browserpass
+    pkgs-unstable.claude-code
+    fd
     fzf
     git
     gnupg
     htop
     ibm-plex
+    jq
     obsidian
     neovim
     parallel
     pass
     ripgrep
+    texliveFull
+    yq
     yuview
     zotero
     zulip
