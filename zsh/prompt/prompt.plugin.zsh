@@ -10,7 +10,7 @@ precmd() {
 	if [[ -n "$SSH_CONNECTION" ]]; then
 		hostname_color="%F{yellow}"
 	else
-		hostname_color=default_prompt_color
+		hostname_color=$default_prompt_color
 	fi
 
 	print -rP "${default_prompt_color}%n@${hostname_color}%m${default_prompt_color} %~ ${vcs_info_msg_0_}"
