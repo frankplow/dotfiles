@@ -3,7 +3,7 @@
 return {
   {
     'sbdchd/neoformat',
-    cmd = { 'Neoformat' },
+    cmd = { 'Neoformat', 'EnableAutoFormat', 'DisableAutoFormat' },
     init = function()
       -- Neoformat configuration for ocaml
       vim.g.neoformat_ocaml_ocamlformat = {
