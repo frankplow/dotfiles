@@ -89,7 +89,7 @@ in {
   };
 
   imports = [
-    ./modules/firefox.nix
+    ../firefox/firefox.nix
   ];
 }
 
