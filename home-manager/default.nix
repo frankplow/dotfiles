@@ -20,6 +20,14 @@ in {
     neovim
     parallel
     pass
+    (python3.withPackages (ps: with ps; [
+      ipykernel
+      ipywidgets
+      matplotlib
+      numpy
+      scipy
+      tqdm
+    ]))
     ripgrep
     texliveFull
     yq
