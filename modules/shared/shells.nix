@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Make bash, zsh, and fish available as login shells
-  environment.shells = with pkgs; [ bashInteractive zsh fish ];
+  # Make bash, zsh available as login shells
+  environment.shells = with pkgs; [ bashInteractive zsh ];
 
   # Enable zsh but disable system-wide completions for performance
   # Completions are configured via home-manager instead
@@ -12,7 +12,4 @@
     enableCompletion = false;
     enableBashCompletion = false;
   };
-
-  # Enable fish shell
-  programs.fish.enable = true;
 }
