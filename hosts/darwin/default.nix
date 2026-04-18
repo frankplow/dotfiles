@@ -32,6 +32,7 @@
       # karabiner-elements pinned to 14.13.0 pending resolution of
       # https://github.com/LnL7/nix-darwin/issues/1041
       (import ../../nix-overlays/karabiner-elements.nix)
+      (import ../../nix-overlays/ssh-agent-mux.nix)
       (import ../../nix-overlays/yuview.nix)
       (import ../../nix-overlays/zulip.nix)
     ];

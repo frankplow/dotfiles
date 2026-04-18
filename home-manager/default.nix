@@ -98,6 +98,7 @@ in {
 
   imports = [
     ../firefox/firefox.nix
+    ./ssh-agent-mux.nix
   ];
 }
 
