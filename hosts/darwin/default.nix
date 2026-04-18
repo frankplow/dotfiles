@@ -4,6 +4,7 @@
   imports = [
     ../../modules/shared/nix.nix
     ../../modules/shared/shells.nix
+    ../../kanata/default.nix
   ];
 
   # Auto upgrade nix package and the daemon service
@@ -16,8 +17,12 @@
   # $ darwin-rebuild changelog
   system.stateVersion = 5;
 
-  # Enable Karabiner Elements for keyboard customization
-  services.karabiner-elements.enable = true;
+  # Kanata keyboard remapper
+  services.kanata = {
+    enable = true;
+    package = pkgs-unstable.kanata;
+    keyboards.default.configFile = "/Users/frank/.dotfiles/kanata/kanata.kbd";
+  };
 
   # The platform the configuration will be used on
   nixpkgs = {
