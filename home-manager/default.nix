@@ -9,6 +9,7 @@ in {
     bat
     browserpass
     pkgs-unstable.claude-code
+    clockify
     fd
     fzf
     git
