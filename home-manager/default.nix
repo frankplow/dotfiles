@@ -18,6 +18,7 @@ in {
     ibm-plex
     jq
     obsidian
+    ltspice
     neovim
     parallel
     pass

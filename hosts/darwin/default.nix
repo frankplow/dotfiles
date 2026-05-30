@@ -33,6 +33,7 @@
       # https://github.com/LnL7/nix-darwin/issues/1041
       (import ../../nix-overlays/clockify.nix)
       (import ../../nix-overlays/karabiner-elements.nix)
+      (import ../../nix-overlays/ltspice.nix)
       (import ../../nix-overlays/ssh-agent-mux.nix)
       (import ../../nix-overlays/yuview.nix)
       (import ../../nix-overlays/zulip.nix)
