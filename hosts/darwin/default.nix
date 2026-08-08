@@ -55,6 +55,7 @@
     enable = true;
     casks = [
       "spotify"
+      "tailscale-app"
       # "textual"
       "zoom"
     ];
