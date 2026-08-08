@@ -20,6 +20,7 @@ let
 in {
   home.packages = with pkgs; [
     bat
+    pkgs-unstable.bitwarden-desktop
     browserpass
     claude-code
     clockify
