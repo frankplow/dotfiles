@@ -45,6 +45,7 @@ in {
     ]))
     ripgrep
     texliveFull
+    tree-sitter
     yq
     yuview
     zotero
