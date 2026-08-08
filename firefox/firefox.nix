@@ -231,4 +231,24 @@ in
       };
     };
   };
+
+  home.activation.restartFirefoxIfExtensionsChanged = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    extensionsDir="$HOME/Library/Application Support/Firefox/Profiles/frank/extensions"
+    stateFile="$HOME/.local/state/hm-firefox-extensions-hash"
+    mkdir -p "$(dirname "$stateFile")"
+
+    currentHash=$(ls "$extensionsDir"/*.xpi 2>/dev/null \
+      | xargs realpath 2>/dev/null | sort | ${pkgs.coreutils}/bin/sha256sum || echo "none")
+    savedHash=$(cat "$stateFile" 2>/dev/null || echo "")
+
+    if [ "$currentHash" != "$savedHash" ]; then
+      printf '%s' "$currentHash" > "$stateFile"
+      if pgrep -q firefox >/dev/null 2>&1; then
+        echo "Firefox extensions changed — restarting Firefox..."
+        osascript -e 'tell application "Firefox" to quit'
+        while pgrep -q firefox >/dev/null 2>&1; do sleep 0.5; done
+        open -a Firefox
+      fi
+    fi
+  '';
 }
