@@ -29,3 +29,6 @@ keybind = cmd+l=goto_split:right
 
 # Don't dim unfocused splits so much
 unfocused-split-opacity = 0.85
+
+# Enable audio bell
+bell-features = system
