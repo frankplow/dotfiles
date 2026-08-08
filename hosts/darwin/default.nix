@@ -27,6 +27,9 @@
   # The platform the configuration will be used on
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
+    config.permittedInsecurePackages = [
+      "electron-39.8.10"
+    ];
     overlays = [
       (import ../../nix-overlays/mi-code.nix)
       # karabiner-elements pinned to 14.13.0 pending resolution of

@@ -1,30 +1,37 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     impermanence.url = "github:nix-community/impermanence";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
+
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin, vscode-server, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin, vscode-server, mac-app-util, ... }:
   let
     # Helper function to create pkgs-unstable for a given system
     mkPkgsUnstable = system: import nixpkgs-unstable {
       inherit system;
-      config.allowUnfree = true;
+      config = {
+        allowUnfree = true;
+        permittedInsecurePackages = [
+          "electron-39.8.10"
+        ];
+      };
     };
 
     # Helper function to create home-manager configuration
@@ -50,11 +57,17 @@
         { system.configurationRevision = self.rev or self.dirtyRev or null; }
         ./hosts/darwin/default.nix
         ./hosts/darwin/nix-darwin/default.nix
+        mac-app-util.darwinModules.default
         home-manager.darwinModules.home-manager
         (mkHomeManagerConfig {
           system = "aarch64-darwin";
           username = "frank";
         })
+        {
+          home-manager.sharedModules = [
+            mac-app-util.homeManagerModules.default
+          ];
+        }
       ];
     };
     darwinPackages = self.darwinConfigurations.nix-darwin.pkgs;
