@@ -34,6 +34,7 @@ in {
     jq
     obsidian
     ltspice
+    mpv
     neovim
     parallel
     pass
