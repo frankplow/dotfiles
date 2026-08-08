@@ -26,6 +26,8 @@ in
     enable = true;
     profiles.frank.settings = {
       "extensions.autoDisableScopes" = 0;
+      # Disable Firefox 128+ multi-profile UI (removes the star/avatar toolbar icon).
+      "browser.profiles.enabled" = false;
     };
     profiles.frank.extensions.packages = [
       (buildFirefoxXpiAddon rec {
