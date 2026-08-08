@@ -47,7 +47,7 @@
   users.users.frank = {
     home = "/Users/frank";
     shell = pkgs.zsh;
-    uid = 1000;
+    uid = 501;
   };
 
   # Enable Homebrew for macOS-specific applications
