@@ -32,10 +32,10 @@ in {
     pkgs-unstable.hunk
     ibm-plex
     jq
-    obsidian
     ltspice
     mpv
     neovim
+    obsidian
     parallel
     pass
     (python3.withPackages (ps: with ps; [
