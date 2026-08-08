@@ -22,6 +22,17 @@ let
     };
 in
   {
+  # Declaratively manages the native messaging host manifest under
+  # ~/Library/Application Support/Mozilla/NativeMessagingHosts so it always
+  # points at the current browserpass store path. Without this, the manifest
+  # has to be created by hand and goes stale (pointing at a since-GC'd store
+  # path) the next time browserpass is rebuilt, causing the extension to hang
+  # forever on "Loading available logins...".
+  programs.browserpass = {
+    enable = true;
+    browsers = [ "firefox" ];
+  };
+
   programs.firefox = {
     enable = true;
     profiles.frank.settings = {
