@@ -4,11 +4,24 @@ let
   # @TODO: Add isGraphical
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
+
+  claude-code =
+    let
+      manifest = {
+        version = "2.1.226";
+        platforms.darwin-arm64 = {
+          checksum = "sha256-AToc8X31/x3MGJ1db9P91fCX3cPNQaqZkumYBVdP674=";
+        };
+      };
+    in
+      lib.throwIf (lib.versionOlder manifest.version pkgs.claude-code.version)
+        "claude-code is pinned to ${manifest.version} but nixpkgs has ${pkgs.claude-code.version}"
+        (pkgs-unstable.claude-code.override { inherit manifest; });
 in {
   home.packages = with pkgs; [
     bat
     browserpass
-    pkgs-unstable.claude-code
+    claude-code
     clockify
     fd
     fzf
