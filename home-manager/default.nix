@@ -29,6 +29,7 @@ in {
     git
     gnupg
     htop
+    pkgs-unstable.hunk
     ibm-plex
     jq
     obsidian
