@@ -12,8 +12,8 @@
   h    j    k    l    ;)
 
 (defvar
-  tap-time  200
-  hold-time 500)
+  tap-time  100
+  hold-time 150)
 
 (deflayer base
   (layer-while-held fkeys)
@@ -21,16 +21,16 @@
   ;; tap caps → esc, hold caps → nav layer
   (tap-hold $tap-time $hold-time esc (layer-while-held nav))
   ;; home row mods (left): a s d f → shift ctrl alt cmd
-  (tap-hold-press $tap-time $hold-time a lsft)
-  (tap-hold-press $tap-time $hold-time s lctl)
-  (tap-hold-press $tap-time $hold-time d lalt)
-  (tap-hold-press $tap-time $hold-time f lmet)
+  (tap-hold $tap-time $hold-time a lsft)
+  (tap-hold $tap-time $hold-time s lctl)
+  (tap-hold $tap-time $hold-time d lalt)
+  (tap-hold $tap-time $hold-time f lmet)
   h
   ;; home row mods (right): j k l ; → cmd alt ctrl shift
-  (tap-hold-press $tap-time $hold-time j rmet)
-  (tap-hold-press $tap-time $hold-time k ralt)
-  (tap-hold-press $tap-time $hold-time l rctl)
-  (tap-hold-press $tap-time $hold-time ; rsft))
+  (tap-hold $tap-time $hold-time j rmet)
+  (tap-hold $tap-time $hold-time k ralt)
+  (tap-hold $tap-time $hold-time l rctl)
+  (tap-hold $tap-time $hold-time ; rsft))
 
 (deflayer fkeys
   _
