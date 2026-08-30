@@ -11,7 +11,7 @@
   users.defaultUserShell = pkgs.zsh;
   users.users.frank = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "cdrom" "networkmanager" ]; # Enable sudo; cdrom for DVD/CD drive access; networkmanager for WiFi
+    extraGroups = [ "wheel" "cdrom" "networkmanager" "systemd-journal" ]; # Enable sudo; cdrom for DVD/CD drive access; networkmanager for WiFi; systemd-journal to read the system journal (e.g. NetworkManager logs)
     initialHashedPassword = "$6$48pOH4dFViMVqfe/$G2AprxUueKf3HuzKmRb46w4w47qjRMMkpgwFPrP0H.jylC55v5eEdAaVk75y32A4Ne9OhssEKnxLnp14pGgY20";
   };
 
