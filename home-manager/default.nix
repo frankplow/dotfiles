@@ -13,6 +13,10 @@ let
   #         binary = "claude.zst";
   #         checksum = "sha256-IU+v2dYLwDl8todHt2WrdSvktTMDwXatiFxMr74wgm8=";
   #       };
+  #       platforms.linux-x64 = {
+  #         binary = "claude.zst";
+  #         checksum = lib.fakeHash;
+  #       };
   #     };
   #   in
   #     lib.throwIf (lib.versionOlder manifest.version pkgs.claude-code.version)
