@@ -16,6 +16,8 @@
       "/var/lib/lastlog"
       "/var/lib/systemd/coredump"
       "/var/lib/systemd/timers"
+      "/etc/NetworkManager/system-connections"
+      "/var/lib/iwd"
     ];
 
     files = [

@@ -11,7 +11,7 @@
   users.defaultUserShell = pkgs.zsh;
   users.users.frank = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable sudo
+    extraGroups = [ "wheel" "cdrom" "networkmanager" ]; # Enable sudo; cdrom for DVD/CD drive access; networkmanager for WiFi
     initialHashedPassword = "$6$48pOH4dFViMVqfe/$G2AprxUueKf3HuzKmRb46w4w47qjRMMkpgwFPrP0H.jylC55v5eEdAaVk75y32A4Ne9OhssEKnxLnp14pGgY20";
   };
 
@@ -31,6 +31,10 @@
 
   # Disable firewall (adjust for your security requirements)
   networking.firewall.enable = false;
+
+  # Enable NetworkManager for WiFi/network management (nmtui, nmcli, or a GUI applet)
+  networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.backend = "iwd";
 
   # Enable VS Code Server for remote development
   services.vscode-server.enable = true;
