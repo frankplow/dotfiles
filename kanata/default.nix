@@ -20,6 +20,23 @@ let
       text = keyboard.config;
     };
 
+  # macOS tears down the DriverKit virtual-HID connection across sleep. If kanata
+  # has a modifier down at that moment — trivially easy with home-row mods — the
+  # matching release is written into a dead sink and dropped:
+  #
+  #   [WARN] dropping KEY_LEFTCTRL Release: output backend unavailable (will recover)
+  #
+  # kanata recovers the *connection* but only clears stale virtual-keyboard state
+  # on startup, so the modifier stays latched until something re-sends a release.
+  # Restarting kanata on wake takes that startup path and clears the latch.
+  wakeReset = pkgs.writeShellScript "kanata-wake-reset" ''
+    # Let DriverKit re-attach before kanata reconnects to it on startup.
+    sleep 3
+    ${lib.concatMapStringsSep "\n    "
+      (name: "/bin/launchctl kickstart -k system/org.nixos.kanata.${name}")
+      (lib.attrNames cfg.keyboards)}
+  '';
+
   mkDaemon = name: keyboard:
     lib.nameValuePair "kanata-${name}" {
       serviceConfig = {
@@ -84,10 +101,11 @@ in
     '';
 
     system.activationScripts.postActivation.text = lib.mkAfter ''
-      # Keep a stable kanata binary path so the Input Monitoring TCC grant
-      # survives Nix store hash changes across rebuilds.
+      # Copy (not symlink) so macOS anchors the TCC Input Monitoring grant to
+      # this real path rather than resolving the symlink to the Nix store hash.
       mkdir -p /usr/local/bin
-      ln -sf ${lib.getExe cfg.package} ${stableBin}
+      rm -f ${stableBin}
+      cp ${lib.getExe cfg.package} ${stableBin}
     '';
 
     # Activate the DriverKit system extension at login. Harmless if already
@@ -109,6 +127,24 @@ in
     # karabiner-elements nix-darwin module as Karabiner-DriverKit-VirtualHIDDeviceClient;
     # the binary was renamed to Karabiner-VirtualHIDDevice-Daemon in 15.7.0.
     launchd.daemons = lib.mapAttrs' mkDaemon cfg.keyboards // {
+      # sleepwatcher runs wakeReset on wake; see the comment on wakeReset for why.
+      # Must be a daemon, not an agent: launchctl kickstart on a system/ service
+      # requires root.
+      kanata-wake-reset = {
+        serviceConfig = {
+          Label = "org.nixos.kanata.wake-reset";
+          ProgramArguments = [
+            (lib.getExe pkgs.sleepwatcher)
+            "-w"
+            "${wakeReset}"
+          ];
+          RunAtLoad = true;
+          KeepAlive = true;
+          StandardOutPath = "/var/log/kanata-wake-reset.out";
+          StandardErrorPath = "/var/log/kanata-wake-reset.err";
+        };
+      };
+
       karabiner-vhid-daemon = {
         serviceConfig = {
           Label = "org.pqrs.Karabiner-VirtualHIDDevice-Daemon";
