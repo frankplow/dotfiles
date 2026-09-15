@@ -31,8 +31,6 @@
       "electron-39.8.10"
     ];
     overlays = [
-      # karabiner-elements pinned to 14.13.0 pending resolution of
-      # https://github.com/LnL7/nix-darwin/issues/1041
       (import ../../nix-overlays/clockify.nix)
       (import ../../nix-overlays/karabiner-elements.nix)
       (import ../../nix-overlays/ltspice.nix)
@@ -57,7 +55,7 @@
       "spotify"
       "tailscale-app"
       # "textual"
-      "zoom"
+      # "zoom" # brew bug: cask_struct_generator depends_on crash
     ];
   };
 }
