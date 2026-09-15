@@ -32,3 +32,6 @@ unfocused-split-opacity = 0.85
 
 # Enable audio bell
 bell-features = system
+
+# SSH integration
+shell-integration-features = ssh-env
