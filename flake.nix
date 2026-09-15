@@ -18,7 +18,19 @@
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
-    mac-app-util.url = "github:hraban/mac-app-util";
+    mac-app-util = {
+      url = "github:hraban/mac-app-util";
+      # mac-app-util is an SBCL script, and sbcl before 2.6.8 cannot map its heap
+      # at the fixed address it wants on macOS 27:
+      #
+      #   failed to allocate 1048576 bytes at 0x300100000
+      #
+      # nix-darwin runs mac-app-util before the home-manager activation, so the
+      # crash aborts the rest of activation -- no home file relinking, no
+      # /run/current-system update.  Both nixpkgs 26.05 and the nixpkgs
+      # mac-app-util pins itself are too old; unstable carries a working sbcl.
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin, vscode-server, mac-app-util, ... }:
