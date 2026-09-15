@@ -49,6 +49,7 @@ in {
     ripgrep
     texliveFull
     tree-sitter
+    winbox
     yq
     yuview
     zotero
