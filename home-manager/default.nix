@@ -5,19 +5,21 @@ let
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
 
-  claude-code =
-    let
-      manifest = {
-        version = "2.1.280";
-        platforms.darwin-arm64 = {
-          binary = "claude.zst";
-          checksum = "sha256-IU+v2dYLwDl8todHt2WrdSvktTMDwXatiFxMr74wgm8=";
-        };
-      };
-    in
-      lib.throwIf (lib.versionOlder manifest.version pkgs.claude-code.version)
-        "claude-code is pinned to ${manifest.version} but nixpkgs has ${pkgs.claude-code.version}"
-        (pkgs-unstable.claude-code.override { inherit manifest; });
+  # claude-code =
+  #   let
+  #     manifest = {
+  #       version = "2.1.280";
+  #       platforms.darwin-arm64 = {
+  #         binary = "claude.zst";
+  #         checksum = "sha256-IU+v2dYLwDl8todHt2WrdSvktTMDwXatiFxMr74wgm8=";
+  #       };
+  #     };
+  #   in
+  #     lib.throwIf (lib.versionOlder manifest.version pkgs.claude-code.version)
+  #       "claude-code is pinned to ${manifest.version} but nixpkgs has ${pkgs.claude-code.version}"
+  #       (pkgs-unstable.claude-code.override { inherit manifest; });
+
+  claude-code = pkgs-unstable.claude-code;
 in {
   home.packages = with pkgs; [
     bat
