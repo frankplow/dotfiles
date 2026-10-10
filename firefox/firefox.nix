@@ -23,6 +23,33 @@ let
 
   # Matches programs.firefox.configPath below; used by the extension-restart hook.
   firefoxProfilePath = ".mozilla/firefox/Profiles/frank";
+
+  # The nixpkgs wrapper makes Contents/MacOS/firefox a script that sets some environment
+  # variables and execs the real binary.  On macOS 27, whenever CFBundleExecutable
+  # execs into another binary (script or compiled wrapper alike), LaunchServices never
+  # ties the running app back to its pid: NSRunningApplication reports pid -1, so
+  # nothing can reach Firefox's windows through the Accessibility API, and Rectangle
+  # cannot move or resize them.
+  #
+  # So put the real binary back at CFBundleExecutable, and have LaunchServices set the
+  # wrapper's --set variables (MOZ_APP_DATA among them) through Info.plist's
+  # LSEnvironment instead.  overrideAttrs survives home-manager's .override call, as
+  # the wrapper is built with lib.makeOverridable.
+  firefox = pkgs.firefox.overrideAttrs (old: {
+    buildCommand = old.buildCommand + ''
+      mv "$oldExe" "$executablePath"
+
+      env=""
+      set -- "''${makeWrapperArgs[@]}"
+      while (( $# )); do
+        if [[ $1 == --set ]]; then env+="<key>$2</key><string>$3</string>"; shift 3; else shift; fi
+      done
+      plist="$out/Applications/Firefox.app/Contents/Info.plist"
+      sed '/<key>LSEnvironment<\/key>/{n; s|<dict>|<dict>'"$env"'|}' "$(readlink -f "$plist")" > plist.tmp
+      grep -q MOZ_SYSTEM_DIR plist.tmp
+      mv -f plist.tmp "$plist"
+    '';
+  });
 in
   {
   # Declaratively manages the native messaging host manifest under
@@ -38,6 +65,7 @@ in
 
   programs.firefox = {
     enable = true;
+    package = firefox;
     # macOS 27 denies Firefox builds not signed by Mozilla write access to
     # ~/Library/Application Support/Firefox (TCC app-data protection), which surfaces
     # as the misleading "A copy of Firefox is already open" dialog.  A non-default
