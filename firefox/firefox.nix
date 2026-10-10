@@ -251,7 +251,7 @@ let
   # wrapper's --set variables (MOZ_APP_DATA among them) through Info.plist's
   # LSEnvironment instead.  overrideAttrs survives home-manager's .override call, as
   # the wrapper is built with lib.makeOverridable.
-  firefox = pkgs.firefox.overrideAttrs (old: {
+  firefox = if !pkgs.stdenv.isDarwin then pkgs.firefox else pkgs.firefox.overrideAttrs (old: {
     buildCommand = old.buildCommand + ''
       mv "$oldExe" "$executablePath"
 
