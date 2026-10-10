@@ -39,7 +39,9 @@ in {
     pkgs-unstable.hunk
     ibm-plex
     jq
-    ltspice
+    # msitools' tests fail against libgsf 1.14.59 on release-26.05, so it is
+    # not in the binary cache.  Unstable still carries libgsf 1.14.58.
+    (ltspice.override { msitools = pkgs-unstable.msitools; })
     mpv
     neovim
     obsidian
