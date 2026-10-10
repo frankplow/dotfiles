@@ -8,9 +8,10 @@ let
   claude-code =
     let
       manifest = {
-        version = "2.1.226";
+        version = "2.1.280";
         platforms.darwin-arm64 = {
-          checksum = "sha256-AToc8X31/x3MGJ1db9P91fCX3cPNQaqZkumYBVdP674=";
+          binary = "claude.zst";
+          checksum = "sha256-IU+v2dYLwDl8todHt2WrdSvktTMDwXatiFxMr74wgm8=";
         };
       };
     in
