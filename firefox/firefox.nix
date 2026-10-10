@@ -21,54 +21,8 @@ let
       '';
     };
 
-  # macOS 27 tightened TCC's app-data protection (kTCCServiceSystemPolicyAppDataDetailed).
-  # ~/Library/Application Support/Firefox is guarded, and because the nixpkgs wrapper
-  # replaces Contents/MacOS/firefox with an unsigned bash script, TCC refuses to even
-  # prompt for an "unentitled binary" and denies outright:
-  #
-  #   System Policy: deny(1) file-write-create .../Profiles/frank/.parentlock
-  #
-  # Firefox then cannot take the profile lock, which surfaces as the thoroughly
-  # misleading "A copy of Firefox is already open. Only one copy of Firefox can be open
-  # at a time." with no Firefox running.  Patching CFBundleIdentifier and ad-hoc signing
-  # both fail; TCC wants a real Developer ID matching the directory's owner record.
-  #
-  # Keeping the profile outside the guarded directory sidesteps the denial completely.
-  # Firefox's macOS profile root is not settable by environment variable (its
-  # MOZ_LEGACY_PROFILES is Linux-only), so the profile must be selected with --profile
-  # at launch, which means shipping an app bundle whose entry point adds the flag.
-  # Everything but that entry point is mirrored as symlinks to avoid duplicating the
-  # ~500MB bundle in the store.
+  # Matches programs.firefox.configPath below; used by the extension-restart hook.
   firefoxProfilePath = ".mozilla/firefox/Profiles/frank";
-
-  # Threaded through .override because home-manager's wrapPackage calls
-  # package.override to inject its own cfg/extraPolicies/pkcs11Modules; without
-  # re-applying the patch there the override hands back an unwrapped launcher.
-  withRelocatedProfile = firefox:
-    pkgs.runCommand "${firefox.name}-relocated-profile"
-    {
-      inherit (firefox) meta;
-      passthru = (firefox.passthru or { }) // {
-        override = args: withRelocatedProfile (firefox.override args);
-      };
-    }
-    ''
-      mkdir -p "$out"
-      cp -as ${firefox}/. "$out"
-      # cp -a preserves the store's read-only directory modes; reopen the directories
-      # (only the directories, so symlink targets are left alone) for writing.
-      find "$out" -type d -exec chmod u+w {} +
-
-      for launcher in "$out/Applications/Firefox.app/Contents/MacOS/firefox" "$out/bin/firefox"; do
-        [ -e "$launcher" ] || continue
-        rm "$launcher"
-        {
-          echo '#!${pkgs.runtimeShell}'
-          echo 'exec "${firefox}/Applications/Firefox.app/Contents/MacOS/firefox" --profile "$HOME/${firefoxProfilePath}" "$@"'
-        } > "$launcher"
-        chmod +x "$launcher"
-      done
-    '';
 in
   {
   # Declaratively manages the native messaging host manifest under
@@ -84,10 +38,12 @@ in
 
   programs.firefox = {
     enable = true;
-    package = withRelocatedProfile pkgs.firefox;
-    # Moves home-manager's own profile writes (user.js, extensions, search.json.mozlz4)
-    # alongside the relocated profile.  Internal option, but it is the only seam for
-    # this; profilesPath defaults to "${configPath}/Profiles" on Darwin.
+    # macOS 27 denies Firefox builds not signed by Mozilla write access to
+    # ~/Library/Application Support/Firefox (TCC app-data protection), which surfaces
+    # as the misleading "A copy of Firefox is already open" dialog.  A non-default
+    # configPath makes home-manager pass it to the nixpkgs wrapper as appDataDir
+    # (MOZ_APP_DATA), moving Firefox's data, and the profile, out of the guarded
+    # directory.
     configPath = ".mozilla/firefox";
     profiles.frank.settings = {
       "extensions.autoDisableScopes" = 0;
