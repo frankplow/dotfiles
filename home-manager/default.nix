@@ -82,6 +82,12 @@ in {
     historySubstringSearch.enable = true;
     syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
+    history = {
+      size = 999999999;
+      save = 999999999;
+      extended = true;
+      share = true;
+    };
     plugins = [
       {
         name = "zsh-fzf-history-search";
